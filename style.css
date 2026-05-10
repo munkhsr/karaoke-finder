@@ -118,3 +118,41 @@ tr:hover td strong {
     color: #ff4d4d;
     font-weight: bold;
 }
+
+/* Гар утсанд зориулсан тохиргоо (Responsive Design) */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+
+    #searchInput {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px; /* Утас дээр текст бичихэд Zoom хийхээс сэргийлнэ */
+        box-sizing: border-box;
+    }
+
+    /* Хүснэгтийг утсан дээр гүйдэг (scroll) болгох */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        width: 100%;
+        min-width: 400px; /* Хүснэгтийг хэтэрхий шахцалдахаас сэргийлнэ */
+    }
+
+    th, td {
+        padding: 10px 5px;
+        font-size: 14px;
+    }
+}
