@@ -1,46 +1,41 @@
-// Дууны өгөгдлийн сан (Жагсаалтыг энд нэмнэ)
-const songs = [
-    { code: "1024", title: "Цагаан суварга", artist: "Жавхлан" },
-    { code: "5501", title: "Чингис хаан", artist: "Чингис хаан хамтлаг" },
-    { code: "8823", title: "Миний ээж", artist: "Харанга" },
-    { code: "3045", title: "Зүүдэн зэрэглээ", artist: "Ариунаа" },
-    { code: "4412", title: "Би чамд хайртай", artist: "Номин Талст" },
-    { code: "7761", title: "Uptown Funk", artist: "Bruno Mars" }
-];
-
-const songList = document.getElementById('songList');
+const tableBody = document.getElementById('songTableBody');
 const searchInput = document.getElementById('searchInput');
-const noResult = document.getElementById('noResult');
 
-// Дуунуудыг дэлгэцэнд гаргах функц
-function displaySongs(data) {
-    songList.innerHTML = "";
-    
-    if (data.length === 0) {
-        noResult.classList.remove('hidden');
-    } else {
-        noResult.classList.add('hidden');
-        data.forEach(song => {
-            const row = `<tr>
-                <td><strong>${song.code}</strong></td>
-                <td>${song.title}</td>
-                <td>${song.artist}</td>
-            </tr>`;
-            songList.innerHTML += row;
-        });
+let songs = []; // Дуунууд энд хадгалагдана
+
+// JSON файлаас дуунуудыг татаж авах функц
+async function fetchSongs() {
+    try {
+        const response = await fetch('songs.json');
+        songs = await response.json();
+        displaySongs(songs); // Эхний удаа бүх дууг харуулна
+    } catch (error) {
+        console.error('Дууг уншихад алдаа гарлаа:', error);
     }
 }
 
-// Хайлт хийх хэсэг
-searchInput.addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase();
+function displaySongs(songsToDisplay) {
+    tableBody.innerHTML = '';
+    songsToDisplay.forEach(song => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${song.code}</td>
+            <td>${song.title}</td>
+            <td>${song.artist}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.toLowerCase();
     const filteredSongs = songs.filter(song => 
-        song.title.toLowerCase().includes(term) || 
-        song.artist.toLowerCase().includes(term) ||
-        song.code.includes(term)
+        song.title.toLowerCase().includes(searchTerm) || 
+        song.artist.toLowerCase().includes(searchTerm) ||
+        song.code.includes(searchTerm)
     );
     displaySongs(filteredSongs);
 });
 
-// Эхлээд бүх дууг харуулах
-displaySongs(songs);
+// Вэб ачаалагдахад дуунуудыг уншиж эхэлнэ
+fetchSongs();
