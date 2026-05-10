@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaoke Code Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎤 Karaoke Finder</h1>
+        <p>Дууны нэр эсвэл дуучны нэрээр хайгаарай</p>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Хайх утгаа оруулна уу...">
+        </div>
+
+        <table id="songTable">
+            <thead>
+                <tr>
+                    <th>Код</th>
+                    <th>Дууны нэр</th>
+                    <th>Дуучин</th>
+                </tr>
+            </thead>
+            <tbody id="songList">
+                <!-- Дуунууд энд гарч ирнэ -->
+            </tbody>
+        </table>
+        
+        <div id="noResult" class="hidden">Ийм дуу олдсонгүй.</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

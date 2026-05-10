@@ -1,0 +1,120 @@
+/* 1. Ерөнхий суурь загвар */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0b0e14; /* Гүн бараан дэвсгэр */
+    margin: 0;
+    padding: 20px;
+    color: #ffffff;
+}
+
+/* 2. Контейнер - Төв хэсэг */
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    background: #161b22;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.15);
+    border: 1px solid #30363d;
+}
+
+/* 3. Гарчиг */
+h1 {
+    text-align: center;
+    color: #00d4ff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+p {
+    text-align: center;
+    color: #8b949e;
+    margin-bottom: 30px;
+}
+
+/* 4. Хайлтын хэсэг */
+.search-box {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 15px 25px;
+    font-size: 18px;
+    background: #0d1117;
+    border: 2px solid #30363d;
+    border-radius: 50px;
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+#searchInput:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+/* 5. Хүснэгтийн загвар */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 15px;
+    background-color: #0f3460; /* Таны сонгосон бараан цэнхэр */
+    color: #00d4ff;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #30363d;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #30363d;
+    color: #e6edf3;
+    transition: all 0.3s ease; /* Зөөлөн шилжилт */
+}
+
+/* 6. ДУУНЫ БОЛОН ДУУЧНЫ НЭРНИЙ HOVER ЭФФЕКТ (Шинэ) */
+tr {
+    transition: transform 0.2s ease;
+}
+
+tr:hover {
+    background-color: rgba(30, 144, 255, 0.15); /* Зөөлөн цэнхэр туяа */
+    transform: scale(1.01); /* Бага зэрэг томрох */
+}
+
+/* Хулгана очих үед текстийн өнгө өөрчлөгдөх */
+tr:hover td {
+    color: #00d4ff; /* Текст неон цэнхэр болно */
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+    cursor: pointer;
+}
+
+/* Дууны код (strong) хулгана очих үед */
+td strong {
+    color: #00d4ff; /* Үндсэн өнгө нь ягаан */
+    transition: all 0.3s ease;
+}
+
+tr:hover td strong {
+    color: #00d4ff; /* Хулгана очиход цагаан болж гэрэлтэнэ */
+    text-shadow: 0 0 10px #51b3e4;
+}
+
+/* 7. Бусад туслах хэсэг */
+.hidden {
+    display: none;
+}
+
+#noResult {
+    text-align: center;
+    padding: 20px;
+    color: #ff4d4d;
+    font-weight: bold;
+}
