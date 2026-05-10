@@ -6,7 +6,7 @@ let songs = []; // Дуунууд энд хадгалагдана
 // JSON файлаас дуунуудыг татаж авах функц
 async function fetchSongs() {
     try {
-        const response = await fetch('songs.json');
+        const response = await fetch('song.json');
         songs = await response.json();
         displaySongs(songs); // Эхний удаа бүх дууг харуулна
     } catch (error) {
