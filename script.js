@@ -1,41 +1,55 @@
-const tableBody = document.getElementById('songTableBody');
-const searchInput = document.getElementById('searchInput');
+const songs = [
+  { code: "59400", title: "Арганд ороогүй хайр", artist: "Г.Чинболор" },
+  { code: "59401", title: "Би чамд хайртай", artist: "Д.Хишигбаяр & Р.Дэлгэрмаа" },
+  { code: "59402", title: "Бодол шиг өдрүүд", artist: "Хишигдэлгэр & Хишигжаргал" },
+  { code: "59403", title: "Дуулж л явъя даа", artist: "Г.Эрдэнэтунгалаг" },
+  { code: "59404", title: "Дэлхий гэрэлтэх хайр", artist: "Г.Чинболор" },
+  { code: "59405", title: "Зөөлөн хайр", artist: "A Cool" },
+  { code: "59406", title: "Зүүдний дагина", artist: "Ж.Энхбаяр" },
+  { code: "59407", title: "Итгэлийн гэрэлтэй амраг", artist: "Р.Дэлгэрмаа" },
+  { code: "59409", title: "Мартаж чадахгүй хайр", artist: "Х.Лхагвасүрэн /Харанга/" },
+  { code: "59410", title: "Сэтгэл", artist: "Ц.Чулуунбат /Харанга/" },
+  { code: "59411", title: "Төрсөн өдрийн дуу", artist: "О.Анхаа & Б.Халиун" },
+  { code: "59412", title: "Улаангом", artist: "С.Жавхлан" },
+  { code: "59413", title: "Хааяа", artist: "L-Guards хамтлаг" },
+  { code: "59414", title: "Хайрын зарлан", artist: "Г.Тэмүүжин" },
+  { code: "59415", title: "Хань минь", artist: "С.Батсүх" },
+  { code: "59416", title: "Хатан хаан", artist: "Б.Сарантуяа" },
+  { code: "59417", title: "Хонгор нутаг", artist: "Д.Энхзул" },
+  { code: "59418", title: "Чамд би", artist: "Никитон хамтлаг" },
+  { code: "59419", title: "Ээж минь", artist: "Мотив хамтлаг" }
+];
 
-let songs = []; // Дуунууд энд хадгалагдана
+function renderTable(data) {
+  const tableBody = document.getElementById("tableBody");
+  const songCount = document.getElementById("songCount");
+  
+  tableBody.innerHTML = "";
+  
+  data.forEach(song => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${song.code}</td>
+      <td>${song.title}</td>
+      <td>${song.artist}</td>
+    `;
+    tableBody.appendChild(row);
+  });
 
-// JSON файлаас дуунуудыг татаж авах функц
-async function fetchSongs() {
-    try {
-        const response = await fetch('song.json');
-        songs = await response.json();
-        displaySongs(songs); // Эхний удаа бүх дууг харуулна
-    } catch (error) {
-        console.error('Дууг уншихад алдаа гарлаа:', error);
-    }
+  songCount.textContent = `Total: ${data.length} songs`;
 }
 
-function displaySongs(songsToDisplay) {
-    tableBody.innerHTML = '';
-    songsToDisplay.forEach(song => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${song.code}</td>
-            <td>${song.title}</td>
-            <td>${song.artist}</td>
-        `;
-        tableBody.appendChild(row);
-    });
+function filterTable() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  
+  const filtered = songs.filter(song => 
+    song.code.toLowerCase().includes(query) ||
+    song.title.toLowerCase().includes(query) ||
+    song.artist.toLowerCase().includes(query)
+  );
+
+  renderTable(filtered);
 }
 
-searchInput.addEventListener('input', () => {
-    const searchTerm = searchInput.value.toLowerCase();
-    const filteredSongs = songs.filter(song => 
-        song.title.toLowerCase().includes(searchTerm) || 
-        song.artist.toLowerCase().includes(searchTerm) ||
-        song.code.includes(searchTerm)
-    );
-    displaySongs(filteredSongs);
-});
-
-// Вэб ачаалагдахад дуунуудыг уншиж эхэлнэ
-fetchSongs();
+// Анх ачаалахад бүх дууг харуулах
+renderTable(songs);
