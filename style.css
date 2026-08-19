@@ -1,158 +1,164 @@
-/* 1. Ерөнхий суурь загвар */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #0b0e14; /* Гүн бараан дэвсгэр */
-    margin: 0;
-    padding: 20px;
-    color: #ffffff;
+  background-color: #0b0e14;
+  color: #ffffff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 
-/* 2. Контейнер - Төв хэсэг */
+/* Ард талын Glow эффект */
+.glow-bg {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(60px);
+  z-index: 1;
+}
+
 .container {
-    max-width: 850px;
-    margin: 40px auto;
-    background: #161b22;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(0, 212, 255, 0.15);
-    border: 1px solid #30363d;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  padding: 20px;
 }
 
-/* 3. Гарчиг */
-h1 {
-    text-align: center;
-    color: #00d4ff;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-    font-size: 2.5rem;
-    margin-bottom: 5px;
+/* Glassmorphism Кардан хүрээ */
+.card {
+  background: rgba(18, 26, 38, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 0 30px rgba(14, 165, 233, 0.15), 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-h1 {
-    text-align: center;
-    /* color: #8b949e; */
-    margin-bottom: 30px;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-/* 4. Хайлтын хэсэг */
+.logo-icon {
+  font-size: 24px;
+  color: #38bdf8;
+}
+
+.header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
+}
+
+/* Хайлтын хэсэг */
 .search-box {
-    margin-bottom: 30px;
-    width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-#searchInput {
-    width: 100%;
-    padding: 15px 25px;
-    font-size: 18px;
-    background: #0d1117;
-    border: 2px solid #30363d;
-    border-radius: 50px;
-    color: #ffffff;
-    outline: none;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+.search-box input {
+  width: 100%;
+  padding: 12px 40px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
-#searchInput:focus {
-    border-color: #00d4ff;
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+.search-box input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
 }
 
-/* 5. Хүснэгтийн загвар */
+.search-icon {
+  position: absolute;
+  left: 14px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.settings-icon {
+  position: absolute;
+  right: 14px;
+  color: #64748b;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Тасралтгүй скроллтой хүснэгт */
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 6px;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
 }
 
-th {
-    text-align: left;
-    padding: 15px;
-    background-color: #0f3460; /* Таны сонгосон бараан цэнхэр */
-    color: #00d4ff;
-    font-size: 1.1rem;
-    border-bottom: 2px solid #30363d;
+thead th {
+  position: sticky;
+  top: 0;
+  background: #0284c7;
+  color: #ffffff;
+  padding: 10px 12px;
+  font-weight: 600;
+  z-index: 3;
 }
 
-td {
-    padding: 15px;
-    border-bottom: 1px solid #30363d;
-    color: #e6edf3;
-    transition: all 0.3s ease; /* Зөөлөн шилжилт */
+tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s ease;
 }
 
-/* 6. ДУУНЫ БОЛОН ДУУЧНЫ НЭРНИЙ HOVER ЭФФЕКТ (Шинэ) */
-tr {
-    transition: transform 0.2s ease;
+tbody tr:hover {
+  background: rgba(56, 189, 248, 0.1);
 }
 
-tr:hover {
-    background-color: rgba(30, 144, 255, 0.15); /* Зөөлөн цэнхэр туяа */
-    transform: scale(1.01); /* Бага зэрэг томрох */
+tbody td {
+  padding: 10px 12px;
+  color: #cbd5e1;
 }
 
-/* Хулгана очих үед текстийн өнгө өөрчлөгдөх */
-tr:hover td {
-    color: #00d4ff; /* Текст неон цэнхэр болно */
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
-    cursor: pointer;
+tbody td:first-child {
+  font-weight: 500;
+  color: #f8fafc;
 }
 
-/* Дууны код (strong) хулгана очих үед */
-td strong {
-    color: #00d4ff; /* Үндсэн өнгө нь ягаан */
-    transition: all 0.3s ease;
-}
-
-tr:hover td strong {
-    color: #00d4ff; /* Хулгана очиход цагаан болж гэрэлтэнэ */
-    text-shadow: 0 0 10px #51b3e4;
-}
-
-/* 7. Бусад туслах хэсэг */
-.hidden {
-    display: none;
-}
-
-#noResult {
-    text-align: center;
-    padding: 20px;
-    color: #ff4d4d;
-    font-weight: bold;
-}
-
-/* Гар утсанд зориулсан тохиргоо (Responsive Design) */
-@media screen and (max-width: 600px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-        margin: 0;
-        box-sizing: border-box;
-    }
-
-    h1 {
-        font-size: 24px;
-        margin-top: 10px;
-    }
-
-    #searchInput {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px; /* Утас дээр текст бичихэд Zoom хийхээс сэргийлнэ */
-        box-sizing: border-box;
-    }
-
-    /* Хүснэгтийг утсан дээр гүйдэг (scroll) болгох */
-    .table-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    table {
-        width: 100%;
-        min-width: 400px; /* Хүснэгтийг хэтэрхий шахцалдахаас сэргийлнэ */
-    }
-
-    th, td {
-        padding: 10px 5px;
-        font-size: 14px;
-    }
+.card-footer {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #64748b;
 }
