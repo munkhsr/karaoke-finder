@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karaoke Code Finder</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karaoke Code Finder</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🎤 Karaoke Finder</h1>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Дууны нэр, код эсвэл дуучнаар хайх...">
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Код</th>
-                    <th>Дууны нэр</th>
-                    <th>Дуучин</th>
-                </tr>
-            </thead>
-            <tbody id="songTableBody">
-                </tbody>
-        </table>
-        
-        <div id="noResult" class="hidden">Ийм дуу олдсонгүй.</div>
-    </div>
+  <div class="glow-bg"></div>
 
-    <script src="script.js"></script>
+  <main class="container">
+    <div class="card">
+      <!-- Title -->
+      <div class="header">
+        <i class="fa-solid fa-microphone-lines logo-icon"></i>
+        <h1>Karaoke Code Finder</h1>
+      </div>
+
+      <!-- Search Input -->
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Дууны нэр, код эсвэл дуучнаар хайх..." onkeyup="filterTable()">
+        <i class="fa-solid fa-gear settings-icon"></i>
+      </div>
+
+      <!-- Table -->
+      <div class="table-container">
+        <table id="songTable">
+          <thead>
+            <tr>
+              <th>Код</th>
+              <th>Дууны нэр</th>
+              <th>Дуучин</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- JavaScript-ээр дуунууд орж ирнэ -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="card-footer">
+        <span id="songCount">Total: 0 songs</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
