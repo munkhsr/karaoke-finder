@@ -20,6 +20,22 @@ const songs = [
   { code: "59419", title: "Ээж минь", artist: "Мотив хамтлаг" }
 ];
 
+// Тухайн ангилалд багтах кодыг эндээс өөрчилж болно.
+const songGroups = {
+  new: ["59415", "59416", "59417", "59418", "59419"],
+  hit: ["59400", "59401", "59403", "59405", "59410"]
+};
+
+let activeSongGroup = null;
+
+function getVisibleSongs() {
+  if (!activeSongGroup) {
+    return songs;
+  }
+
+  return songs.filter(song => songGroups[activeSongGroup].includes(song.code));
+}
+
 function renderTable(data) {
   const tableBody = document.getElementById("tableBody");
   const songCount = document.getElementById("songCount");
@@ -41,8 +57,8 @@ function renderTable(data) {
 
 function filterTable() {
   const query = document.getElementById("searchInput").value.toLowerCase();
-  
-  const filtered = songs.filter(song => 
+
+  const filtered = getVisibleSongs().filter(song =>
     song.code.toLowerCase().includes(query) ||
     song.title.toLowerCase().includes(query) ||
     song.artist.toLowerCase().includes(query)
@@ -53,3 +69,39 @@ function filterTable() {
 
 // Анх ачаалахад бүх дууг харуулах
 renderTable(songs);
+
+document.querySelectorAll("[data-song-filter]").forEach(button => {
+  button.addEventListener("click", event => {
+    event.preventDefault();
+    activeSongGroup = button.dataset.songFilter;
+    document.getElementById("searchInput").value = "";
+    renderTable(getVisibleSongs());
+  });
+});
+
+document.querySelector(".nav-brand").addEventListener("click", event => {
+  event.preventDefault();
+  activeSongGroup = null;
+  document.getElementById("searchInput").value = "";
+  renderTable(songs);
+});
+
+const bannerModal = document.getElementById("bannerModal");
+const closeBannerButtons = document.querySelectorAll("[data-close-banner]");
+
+function closeBanner() {
+  bannerModal.hidden = true;
+}
+
+// localStorage ашиглаагүй тул хуудас refresh хийх бүрт banner дахин гарна.
+bannerModal.hidden = false;
+
+closeBannerButtons.forEach(button => {
+  button.addEventListener("click", closeBanner);
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !bannerModal.hidden) {
+    closeBanner();
+  }
+});

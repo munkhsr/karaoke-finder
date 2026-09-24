@@ -3,26 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Karaoke Code Finder</title>
+  <title>Karaoke hub</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="glow-bg"></div>
 
-  <main class="container">
-    <div class="card">
+  <header class="site-header">
+    <nav class="navbar" aria-label="Үндсэн цэс">
+      <a class="nav-brand" href="#" aria-label="Karaoke hub нүүр хуудас">
+        <i class="fa-solid fa-microphone-lines"></i>
+        <span>Karaoke hub</span>
+      </a>
+      <div class="nav-links">
+        <a href="#new-songs" data-song-filter="new">Шинэ дуу</a>
+        <a href="#hit-songs" data-song-filter="hit">Хит дуу</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-content">
+    <main class="container">
+      <div class="card">
       <!-- Title -->
       <div class="header">
         <i class="fa-solid fa-microphone-lines logo-icon"></i>
-        <h1>Karaoke Code Finder</h1>
+        <h1>Karaoke hub</h1>
       </div>
 
       <!-- Search Input -->
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
         <input type="text" id="searchInput" placeholder="Дууны нэр, код эсвэл дуучнаар хайх..." onkeyup="filterTable()">
-        <i class="fa-solid fa-gear settings-icon"></i>
       </div>
 
       <!-- Table -->
@@ -45,8 +58,39 @@
       <div class="card-footer">
         <span id="songCount">Total: 0 songs</span>
       </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-content">
+      <div class="footer-contact">
+        <p><span>Хаяг байршил:</span> СБД, 1-р хороо</p>
+        <p><span>Холбоо барих:</span> <a href="tel:99551199">99551199</a></p>
+      </div>
+      <div class="social-links" aria-label="Сошиал холбоосууд">
+        <a href="#facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <p class="copyright">© 2026 Karaoke hub. All rights reserved.</p>
     </div>
-  </main>
+  </footer>
+
+  <!-- Banner-ийн гарчиг, тайлбар болон зураг/линкээ энэ хэсэгт оруулна. -->
+  <div class="banner-modal" id="bannerModal" role="dialog" aria-modal="true" aria-labelledby="bannerTitle" hidden>
+    <div class="banner-backdrop" data-close-banner></div>
+    <section class="banner-card">
+      <button class="banner-close" type="button" aria-label="Banner хаах" data-close-banner>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="banner-content" id="bannerContent">
+        <p class="banner-label">МЭДЭЭЛЭЛ</p>
+        <h2 id="bannerTitle">Таны рекламний орон зай</h2>
+        <p>Бидэнтэй холбоо барих бол 99551199 дугаарт холбогдоно уу.</p>
+      </div>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>
