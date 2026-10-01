@@ -46,6 +46,19 @@ function normalizeForSearch(value) {
     .replace(/\p{Diacritic}/gu, "");
 }
 
+function relaxedLatin(value) {
+  return value
+    .replace(/y/g, "i")
+    .replace(/([aeiou])\1+/g, "$1")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function matchesSearch(value, query) {
+  const normalizedValue = normalizeForSearch(value);
+  return normalizedValue.includes(query) ||
+    relaxedLatin(normalizedValue).includes(relaxedLatin(query));
+}
+
 function getVisibleSongs() {
   return activeSongGroup
     ? songs.filter(song => songGroups[activeSongGroup].includes(song.code))
@@ -79,7 +92,7 @@ function renderTable(data) {
 function updateResults() {
   const query = normalizeForSearch(document.getElementById("searchInput").value.trim());
   const filtered = getVisibleSongs().filter(song =>
-    [song.code, song.title, song.artist].some(value => normalizeForSearch(value).includes(query))
+    [song.code, song.title, song.artist].some(value => matchesSearch(value, query))
   );
   renderTable(filtered);
 }
