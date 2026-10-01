@@ -7,8 +7,9 @@ const songs = [
   { code: "59405", title: "Зөөлөн хайр", artist: "A Cool" },
   { code: "59406", title: "Зүүдний дагина", artist: "Ж.Энхбаяр" },
   { code: "59407", title: "Итгэлийн гэрэлтэй амраг", artist: "Р.Дэлгэрмаа" },
-  { code: "59409", title: "Мартаж чадахгүй хайр", artist: "Х.Лхагвасүрэн /Харанга/" },
-  { code: "59410", title: "Сэтгэл", artist: "Ц.Чулуунбат /Харанга/" },
+  { code: "59408", title: "Мартаж чадахгүй хайр", artist: "Д.Балдан" },
+  { code: "59409", title: "Морин хуур", artist: "Х.Лхагвасүрэн /Харанга/" },
+  { code: "59410", title: "Сэтгэл", artist: "Ц.Чулуунбаатар /Харанга/" },
   { code: "59411", title: "Төрсөн өдрийн дуу", artist: "О.Анхаа & Б.Халиун" },
   { code: "59412", title: "Улаангом", artist: "С.Жавхлан" },
   { code: "59413", title: "Хааяа", artist: "L-Guards хамтлаг" },
@@ -20,7 +21,6 @@ const songs = [
   { code: "59419", title: "Ээж минь", artist: "Мотив хамтлаг" }
 ];
 
-// Тухайн ангилалд багтах кодыг эндээс өөрчилж болно.
 const songGroups = {
   new: ["59415", "59416", "59417", "59418", "59419"],
   hit: ["59400", "59401", "59403", "59405", "59410"]
@@ -28,80 +28,97 @@ const songGroups = {
 
 let activeSongGroup = null;
 
-function getVisibleSongs() {
-  if (!activeSongGroup) {
-    return songs;
-  }
+const cyrillicToLatin = {
+  а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "yo", ж: "j",
+  з: "z", и: "i", й: "i", к: "k", л: "l", м: "m", н: "n", о: "o",
+  ө: "o", п: "p", р: "r", с: "s", т: "t", у: "u", ү: "u", ф: "f",
+  х: "h", ц: "ts", ч: "ch", ш: "sh", щ: "sh", ъ: "", ы: "i", ь: "",
+  э: "e", ю: "yu", я: "ya", ё: "yo"
+};
 
-  return songs.filter(song => songGroups[activeSongGroup].includes(song.code));
+function normalizeForSearch(value) {
+  return value
+    .toLocaleLowerCase("mn")
+    .split("")
+    .map(character => cyrillicToLatin[character] ?? character)
+    .join("")
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+}
+
+function getVisibleSongs() {
+  return activeSongGroup
+    ? songs.filter(song => songGroups[activeSongGroup].includes(song.code))
+    : songs;
 }
 
 function renderTable(data) {
   const tableBody = document.getElementById("tableBody");
   const songCount = document.getElementById("songCount");
-  
-  tableBody.innerHTML = "";
-  
-  data.forEach(song => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${song.code}</td>
-      <td>${song.title}</td>
-      <td>${song.artist}</td>
-    `;
-    tableBody.appendChild(row);
-  });
+  tableBody.replaceChildren();
 
-  songCount.textContent = `Total: ${data.length} songs`;
+  if (!data.length) {
+    const row = document.createElement("tr");
+    row.innerHTML = '<td colspan="3" class="empty-state">Илэрц олдсонгүй.</td>';
+    tableBody.appendChild(row);
+  } else {
+    data.forEach(song => {
+      const row = document.createElement("tr");
+      [song.code, song.title, song.artist].forEach(value => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.appendChild(cell);
+      });
+      tableBody.appendChild(row);
+    });
+  }
+
+  songCount.textContent = `${data.length} дуу`;
 }
 
-function filterTable() {
-  const query = document.getElementById("searchInput").value.toLowerCase();
-
+function updateResults() {
+  const query = normalizeForSearch(document.getElementById("searchInput").value.trim());
   const filtered = getVisibleSongs().filter(song =>
-    song.code.toLowerCase().includes(query) ||
-    song.title.toLowerCase().includes(query) ||
-    song.artist.toLowerCase().includes(query)
+    [song.code, song.title, song.artist].some(value => normalizeForSearch(value).includes(query))
   );
-
   renderTable(filtered);
 }
 
-// Анх ачаалахад бүх дууг харуулах
-renderTable(songs);
+function setGroup(group) {
+  activeSongGroup = group;
+  document.querySelectorAll("[data-song-filter]").forEach(link => {
+    const isActive = link.dataset.songFilter === group;
+    link.classList.toggle("is-active", isActive);
+    link.setAttribute("aria-current", isActive ? "page" : "false");
+  });
+  updateResults();
+}
 
-document.querySelectorAll("[data-song-filter]").forEach(button => {
-  button.addEventListener("click", event => {
+document.getElementById("searchInput").addEventListener("input", updateResults);
+document.querySelectorAll("[data-song-filter]").forEach(link => {
+  link.addEventListener("click", event => {
     event.preventDefault();
-    activeSongGroup = button.dataset.songFilter;
-    document.getElementById("searchInput").value = "";
-    renderTable(getVisibleSongs());
+    setGroup(link.dataset.songFilter);
   });
 });
 
 document.querySelector(".nav-brand").addEventListener("click", event => {
   event.preventDefault();
-  activeSongGroup = null;
   document.getElementById("searchInput").value = "";
-  renderTable(songs);
+  setGroup(null);
 });
 
 const bannerModal = document.getElementById("bannerModal");
-const closeBannerButtons = document.querySelectorAll("[data-close-banner]");
-
 function closeBanner() {
   bannerModal.hidden = true;
 }
 
-// localStorage ашиглаагүй тул хуудас refresh хийх бүрт banner дахин гарна.
 bannerModal.hidden = false;
-
-closeBannerButtons.forEach(button => {
+document.querySelectorAll("[data-close-banner]").forEach(button => {
   button.addEventListener("click", closeBanner);
 });
-
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && !bannerModal.hidden) {
-    closeBanner();
-  }
+  if (event.key === "Escape" && !bannerModal.hidden) closeBanner();
 });
+
+renderTable(songs);

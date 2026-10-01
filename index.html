@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Karaoke hub</title>
+  <meta name="description" content="Караоке дууны код, дууны нэр, дуучнаар хялбар хайх үйлчилгээ.">
+  <title>Karaoke Hub — Дууны код хайх</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,9 +13,9 @@
 
   <header class="site-header">
     <nav class="navbar" aria-label="Үндсэн цэс">
-      <a class="nav-brand" href="#" aria-label="Karaoke hub нүүр хуудас">
+      <a class="nav-brand" href="#" aria-label="Karaoke Hub нүүр хуудас">
         <i class="fa-solid fa-microphone-lines"></i>
-        <span>Karaoke hub</span>
+        <span>Karaoke Hub</span>
       </a>
       <div class="nav-links">
         <a href="#new-songs" data-song-filter="new">Шинэ дуу</a>
@@ -25,40 +26,34 @@
 
   <div class="page-content">
     <main class="container">
-      <div class="card">
-      <!-- Title -->
-      <div class="header">
-        <i class="fa-solid fa-microphone-lines logo-icon"></i>
-        <h1>Karaoke hub</h1>
-      </div>
+      <section class="card" aria-labelledby="pageTitle">
+        <div class="header">
+          <i class="fa-solid fa-microphone-lines logo-icon" aria-hidden="true"></i>
+          <h1 id="pageTitle">Караоке дууны код хайх</h1>
+        </div>
 
-      <!-- Search Input -->
-      <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="searchInput" placeholder="Дууны нэр, код эсвэл дуучнаар хайх..." onkeyup="filterTable()">
-      </div>
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+          <input type="search" id="searchInput" placeholder="Дууны нэр, код, дуучнаар (латинаар ч) хайх..." aria-label="Дуу хайх" autocomplete="off">
+        </div>
 
-      <!-- Table -->
-      <div class="table-container">
-        <table id="songTable">
-          <thead>
-            <tr>
-              <th>Код</th>
-              <th>Дууны нэр</th>
-              <th>Дуучин</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <!-- JavaScript-ээр дуунууд орж ирнэ -->
-          </tbody>
-        </table>
-      </div>
+        <div class="table-container">
+          <table id="songTable">
+            <thead>
+              <tr>
+                <th>Код</th>
+                <th>Дууны нэр</th>
+                <th>Дуучин</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
 
-      <!-- Footer Info -->
-      <div class="card-footer">
-        <span id="songCount">Total: 0 songs</span>
-      </div>
-      </div>
+        <div class="card-footer">
+          <span id="songCount">0 дуу</span>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -73,20 +68,19 @@
         <a href="#instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="#youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       </div>
-      <p class="copyright">© 2026 Karaoke hub. All rights reserved.</p>
+      <p class="copyright">© 2026 Karaoke Hub. Бүх эрх хуулиар хамгаалагдсан.</p>
     </div>
   </footer>
 
-  <!-- Banner-ийн гарчиг, тайлбар болон зураг/линкээ энэ хэсэгт оруулна. -->
   <div class="banner-modal" id="bannerModal" role="dialog" aria-modal="true" aria-labelledby="bannerTitle" hidden>
     <div class="banner-backdrop" data-close-banner></div>
     <section class="banner-card">
-      <button class="banner-close" type="button" aria-label="Banner хаах" data-close-banner>
+      <button class="banner-close" type="button" aria-label="Баннер хаах" data-close-banner>
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div class="banner-content" id="bannerContent">
+      <div class="banner-content">
         <p class="banner-label">МЭДЭЭЛЭЛ</p>
-        <h2 id="bannerTitle">Таны рекламний орон зай</h2>
+        <h2 id="bannerTitle">Таны рекламны орон зай</h2>
         <p>Бидэнтэй холбоо барих бол 99551199 дугаарт холбогдоно уу.</p>
       </div>
     </section>
