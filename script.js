@@ -1,24 +1,25 @@
 const songs = [
-  { code: "59400", title: "Арганд ороогүй хайр", artist: "Г.Чинболор" },
-  { code: "59401", title: "Би чамд хайртай", artist: "Д.Хишигбаяр & Р.Дэлгэрмаа" },
-  { code: "59402", title: "Бодол шиг өдрүүд", artist: "Хишигдэлгэр & Хишигжаргал" },
-  { code: "59403", title: "Дуулж л явъя даа", artist: "Г.Эрдэнэтунгалаг" },
-  { code: "59404", title: "Дэлхий гэрэлтэх хайр", artist: "Г.Чинболор" },
-  { code: "59405", title: "Зөөлөн хайр", artist: "A Cool" },
-  { code: "59406", title: "Зүүдний дагина", artist: "Ж.Энхбаяр" },
-  { code: "59407", title: "Итгэлийн гэрэлтэй амраг", artist: "Р.Дэлгэрмаа" },
-  { code: "59408", title: "Мартаж чадахгүй хайр", artist: "Д.Балдан" },
-  { code: "59409", title: "Морин хуур", artist: "Х.Лхагвасүрэн /Харанга/" },
-  { code: "59410", title: "Сэтгэл", artist: "Ц.Чулуунбаатар /Харанга/" },
-  { code: "59411", title: "Төрсөн өдрийн дуу", artist: "О.Анхаа & Б.Халиун" },
-  { code: "59412", title: "Улаангом", artist: "С.Жавхлан" },
-  { code: "59413", title: "Хааяа", artist: "L-Guards хамтлаг" },
-  { code: "59414", title: "Хайрын зарлан", artist: "Г.Тэмүүжин" },
-  { code: "59415", title: "Хань минь", artist: "С.Батсүх" },
-  { code: "59416", title: "Хатан хаан", artist: "Б.Сарантуяа" },
-  { code: "59417", title: "Хонгор нутаг", artist: "Д.Энхзул" },
-  { code: "59418", title: "Чамд би", artist: "Никитон хамтлаг" },
-  { code: "59419", title: "Ээж минь", artist: "Мотив хамтлаг" }
+  { code1: "59400", code2: "", title: "Арганд ороогүй хайр", artist: "Г.Чинболор" },
+  { code1: "59401", code2: "", title: "Би чамд хайртай", artist: "Д.Хишигбаяр & Р.Дэлгэрмаа" },
+  { code1: "59402", code2: "", title: "Бодол шиг өдрүүд", artist: "Хишигдэлгэр & Хишигжаргал" },
+  { code1: "59403", code2: "", title: "Дуулж л явъя даа", artist: "Г.Эрдэнэтунгалаг" },
+  { code1: "59404", code2: "", title: "Дэлхий гэрэлтэх хайр", artist: "Г.Чинболор" },
+  { code1: "59405", code2: "", title: "Зөөлөн хайр", artist: "A Cool" },
+  { code1: "59406", code2: "", title: "Зүүдний дагина", artist: "Ж.Энхбаяр" },
+  { code1: "59407", code2: "", title: "Итгэлийн гэрэлтэй амраг", artist: "Р.Дэлгэрмаа" },
+  { code1: "59408", code2: "", title: "Мартаж чадахгүй хайр", artist: "Д.Балдан" },
+  { code1: "59409", code2: "", title: "Морин хуур", artist: "Х.Лхагвасүрэн /Харанга/" },
+  { code1: "59410", code2: "", title: "Сэтгэл", artist: "Ц.Чулуунбаатар /Харанга/" },
+  { code1: "59411", code2: "", title: "Төрсөн өдрийн дуу", artist: "О.Анхаа & Б.Халиун" },
+  { code1: "59412", code2: "", title: "Улаангом", artist: "С.Жавхлан" },
+  { code1: "59413", code2: "", title: "Хааяа", artist: "L-Guards хамтлаг" },
+  { code1: "59414", code2: "", title: "Хайрын зарлан", artist: "Г.Тэмүүжин" },
+  { code1: "59415", code2: "", title: "Хань минь", artist: "С.Батсүх" },
+  { code1: "59416", code2: "", title: "Хатан хаан", artist: "Б.Сарантуяа" },
+  { code1: "59417", code2: "", title: "Хонгор нутаг", artist: "Д.Энхзул" },
+  { code1: "59418", code2: "", title: "Чамд би", artist: "Никитон хамтлаг" },
+  { code1: "59419", code2: "", title: "Ээж минь", artist: "Мотив хамтлаг" },
+  { code1: "38117", code2: "75197", title: "BINGO", artist: "290 & TUUG18" }
 ];
 
 const songGroups = {
@@ -33,11 +34,11 @@ const cyrillicToLatin = {
   з: "z", и: "i", й: "i", к: "k", л: "l", м: "m", н: "n", о: "o",
   ө: "o", п: "p", р: "r", с: "s", т: "t", у: "u", ү: "u", ф: "f",
   х: "h", ц: "ts", ч: "ch", ш: "sh", щ: "sh", ъ: "", ы: "i", ь: "",
-  э: "e", ю: "yu", я: "ya", ё: "yo"
+  э: "e", ю: "yu", я: "ya"
 };
 
 function normalizeForSearch(value) {
-  return value
+  return String(value)
     .toLocaleLowerCase("mn")
     .split("")
     .map(character => cyrillicToLatin[character] ?? character)
@@ -47,22 +48,16 @@ function normalizeForSearch(value) {
 }
 
 function relaxedLatin(value) {
-  return value
-    .replace(/y/g, "i")
-    .replace(/([aeiou])\1+/g, "$1")
-    .replace(/[^a-z0-9]/g, "");
+  return value.replace(/y/g, "i").replace(/([aeiou])\1+/g, "$1").replace(/[^a-z0-9]/g, "");
 }
 
 function matchesSearch(value, query) {
   const normalizedValue = normalizeForSearch(value);
-  return normalizedValue.includes(query) ||
-    relaxedLatin(normalizedValue).includes(relaxedLatin(query));
+  return normalizedValue.includes(query) || relaxedLatin(normalizedValue).includes(relaxedLatin(query));
 }
 
 function getVisibleSongs() {
-  return activeSongGroup
-    ? songs.filter(song => songGroups[activeSongGroup].includes(song.code))
-    : songs;
+  return activeSongGroup ? songs.filter(song => songGroups[activeSongGroup].includes(song.code1)) : songs;
 }
 
 function renderTable(data) {
@@ -72,12 +67,12 @@ function renderTable(data) {
 
   if (!data.length) {
     const row = document.createElement("tr");
-    row.innerHTML = '<td colspan="3" class="empty-state">Илэрц олдсонгүй.</td>';
+    row.innerHTML = '<td colspan="4" class="empty-state">Илэрц олдсонгүй.</td>';
     tableBody.appendChild(row);
   } else {
     data.forEach(song => {
       const row = document.createElement("tr");
-      [song.code, song.title, song.artist].forEach(value => {
+      [song.code1 || "—", song.code2 || "—", song.title, song.artist].forEach(value => {
         const cell = document.createElement("td");
         cell.textContent = value;
         row.appendChild(cell);
@@ -85,16 +80,14 @@ function renderTable(data) {
       tableBody.appendChild(row);
     });
   }
-
   songCount.textContent = `${data.length} дуу`;
 }
 
 function updateResults() {
   const query = normalizeForSearch(document.getElementById("searchInput").value.trim());
-  const filtered = getVisibleSongs().filter(song =>
-    [song.code, song.title, song.artist].some(value => matchesSearch(value, query))
-  );
-  renderTable(filtered);
+  renderTable(getVisibleSongs().filter(song =>
+    [song.code1, song.code2, song.title, song.artist].some(value => matchesSearch(value, query))
+  ));
 }
 
 function setGroup(group) {
@@ -108,13 +101,10 @@ function setGroup(group) {
 }
 
 document.getElementById("searchInput").addEventListener("input", updateResults);
-document.querySelectorAll("[data-song-filter]").forEach(link => {
-  link.addEventListener("click", event => {
-    event.preventDefault();
-    setGroup(link.dataset.songFilter);
-  });
-});
-
+document.querySelectorAll("[data-song-filter]").forEach(link => link.addEventListener("click", event => {
+  event.preventDefault();
+  setGroup(link.dataset.songFilter);
+}));
 document.querySelector(".nav-brand").addEventListener("click", event => {
   event.preventDefault();
   document.getElementById("searchInput").value = "";
@@ -122,14 +112,9 @@ document.querySelector(".nav-brand").addEventListener("click", event => {
 });
 
 const bannerModal = document.getElementById("bannerModal");
-function closeBanner() {
-  bannerModal.hidden = true;
-}
-
+function closeBanner() { bannerModal.hidden = true; }
 bannerModal.hidden = false;
-document.querySelectorAll("[data-close-banner]").forEach(button => {
-  button.addEventListener("click", closeBanner);
-});
+document.querySelectorAll("[data-close-banner]").forEach(button => button.addEventListener("click", closeBanner));
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && !bannerModal.hidden) closeBanner();
 });

@@ -3,90 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Караоке дууны код, дууны нэр, дуучнаар хялбар хайх үйлчилгээ.">
+  <meta name="description" content="Караоке дууны хоёр төрлийн код, дууны нэр, дуучнаар хялбар хайх үйлчилгээ.">
   <title>Karaoke Hub — Дууны код хайх</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="glow-bg"></div>
-
   <header class="site-header">
     <nav class="navbar" aria-label="Үндсэн цэс">
-      <a class="nav-brand" href="#" aria-label="Karaoke Hub нүүр хуудас">
-        <i class="fa-solid fa-microphone-lines"></i>
-        <span>Karaoke Hub</span>
-      </a>
+      <a class="nav-brand" href="#" aria-label="Karaoke Hub нүүр хуудас"><i class="fa-solid fa-microphone-lines"></i><span>Karaoke Hub</span></a>
       <div class="nav-links">
         <a href="#new-songs" data-song-filter="new">Шинэ дуу</a>
         <a href="#hit-songs" data-song-filter="hit">Хит дуу</a>
       </div>
     </nav>
   </header>
-
   <div class="page-content">
     <main class="container">
       <section class="card" aria-labelledby="pageTitle">
-        <div class="header">
-          <i class="fa-solid fa-microphone-lines logo-icon" aria-hidden="true"></i>
-          <h1 id="pageTitle">Караоке дууны код хайх</h1>
-        </div>
-
+        <div class="header"><i class="fa-solid fa-microphone-lines logo-icon" aria-hidden="true"></i><h1 id="pageTitle">Караоке дууны код хайх</h1></div>
         <div class="search-box">
           <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
           <input type="search" id="searchInput" placeholder="Дууны нэр, код, дуучнаар (латинаар ч) хайх..." aria-label="Дуу хайх" autocomplete="off">
         </div>
-        <p class="search-hint">Жишээ: <span>argand oroogui hair</span>, <span>setgel</span>, <span>eej</span></p>
-
+        <p class="search-hint">Жишээ: <span>38117</span>, <span>75197</span>, <span>bingo</span></p>
         <div class="table-container">
           <table id="songTable">
-            <thead>
-              <tr>
-                <th>Код</th>
-                <th>Дууны нэр</th>
-                <th>Дуучин</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Код 1</th><th>Код 2</th><th>Дууны нэр</th><th>Дуучин</th></tr></thead>
             <tbody id="tableBody"></tbody>
           </table>
         </div>
-
-        <div class="card-footer">
-          <span id="songCount">0 дуу</span>
-        </div>
+        <div class="card-footer"><span id="songCount">0 дуу</span></div>
       </section>
     </main>
   </div>
-
   <footer class="site-footer" id="contact">
     <div class="footer-content">
-      <div class="footer-contact">
-        <p><span>Хаяг байршил:</span> СБД, 1-р хороо</p>
-        <p><span>Холбоо барих:</span> <a href="tel:99551199">99551199</a></p>
-      </div>
-      <div class="social-links" aria-label="Сошиал холбоосууд">
-        <a href="#facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-      </div>
+      <div class="footer-contact"><p><span>Хаяг байршил:</span> СБД, 1-р хороо</p><p><span>Холбоо барих:</span> <a href="tel:99551199">99551199</a></p></div>
+      <div class="social-links" aria-label="Сошиал холбоосууд"><a href="#facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div>
       <p class="copyright">© 2026 Karaoke Hub. Бүх эрх хуулиар хамгаалагдсан.</p>
     </div>
   </footer>
-
   <div class="banner-modal" id="bannerModal" role="dialog" aria-modal="true" aria-labelledby="bannerTitle" hidden>
     <div class="banner-backdrop" data-close-banner></div>
-    <section class="banner-card">
-      <button class="banner-close" type="button" aria-label="Баннер хаах" data-close-banner>
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div class="banner-content">
-        <p class="banner-label">МЭДЭЭЛЭЛ</p>
-        <h2 id="bannerTitle">Таны рекламны орон зай</h2>
-        <p>Бидэнтэй холбоо барих бол 99551199 дугаарт холбогдоно уу.</p>
-      </div>
-    </section>
+    <section class="banner-card"><button class="banner-close" type="button" aria-label="Баннер хаах" data-close-banner><i class="fa-solid fa-xmark"></i></button><div class="banner-content"><p class="banner-label">МЭДЭЭЛЭЛ</p><h2 id="bannerTitle">Таны рекламны орон зай</h2><p>Бидэнтэй холбоо барих бол 99551199 дугаарт холбогдоно уу.</p></div></section>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
