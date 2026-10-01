@@ -1,26 +1,4 @@
-const songs = [
-  { code1: "59400", code2: "", title: "Арганд ороогүй хайр", artist: "Г.Чинболор" },
-  { code1: "59401", code2: "", title: "Би чамд хайртай", artist: "Д.Хишигбаяр & Р.Дэлгэрмаа" },
-  { code1: "59402", code2: "", title: "Бодол шиг өдрүүд", artist: "Хишигдэлгэр & Хишигжаргал" },
-  { code1: "59403", code2: "", title: "Дуулж л явъя даа", artist: "Г.Эрдэнэтунгалаг" },
-  { code1: "59404", code2: "", title: "Дэлхий гэрэлтэх хайр", artist: "Г.Чинболор" },
-  { code1: "59405", code2: "", title: "Зөөлөн хайр", artist: "A Cool" },
-  { code1: "59406", code2: "", title: "Зүүдний дагина", artist: "Ж.Энхбаяр" },
-  { code1: "59407", code2: "", title: "Итгэлийн гэрэлтэй амраг", artist: "Р.Дэлгэрмаа" },
-  { code1: "59408", code2: "", title: "Мартаж чадахгүй хайр", artist: "Д.Балдан" },
-  { code1: "59409", code2: "", title: "Морин хуур", artist: "Х.Лхагвасүрэн /Харанга/" },
-  { code1: "59410", code2: "", title: "Сэтгэл", artist: "Ц.Чулуунбаатар /Харанга/" },
-  { code1: "59411", code2: "", title: "Төрсөн өдрийн дуу", artist: "О.Анхаа & Б.Халиун" },
-  { code1: "59412", code2: "", title: "Улаангом", artist: "С.Жавхлан" },
-  { code1: "59413", code2: "", title: "Хааяа", artist: "L-Guards хамтлаг" },
-  { code1: "59414", code2: "", title: "Хайрын зарлан", artist: "Г.Тэмүүжин" },
-  { code1: "59415", code2: "", title: "Хань минь", artist: "С.Батсүх" },
-  { code1: "59416", code2: "", title: "Хатан хаан", artist: "Б.Сарантуяа" },
-  { code1: "59417", code2: "", title: "Хонгор нутаг", artist: "Д.Энхзул" },
-  { code1: "59418", code2: "", title: "Чамд би", artist: "Никитон хамтлаг" },
-  { code1: "59419", code2: "", title: "Ээж минь", artist: "Мотив хамтлаг" },
-  { code1: "38117", code2: "75197", title: "BINGO", artist: "290 & TUUG18" }
-];
+const songs = [...(window.karaokeSongs ?? []), ...(window.karaokeExtraSongs ?? []), ...(window.karaokeExtraSongs2 ?? []), ...(window.karaokeExtraSongs3 ?? [])];
 
 const songGroups = {
   new: ["59415", "59416", "59417", "59418", "59419"],
