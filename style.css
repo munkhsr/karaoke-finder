@@ -470,14 +470,7 @@ tbody td:nth-child(2) {
 }
 
 @media (max-width: 680px) {
-  html,
-  body {
-    height: 100dvh;
-    overflow: hidden;
-  }
-
   .page-content {
-    min-height: 0;
     align-items: flex-start;
   }
 
@@ -517,17 +510,10 @@ tbody td:nth-child(2) {
   }
 
   .container {
-    display: flex;
-    height: 100%;
-    min-height: 0;
-    padding: 16px 23px;
+    padding: 18px 12px 24px;
   }
 
   .card {
-    display: flex;
-    flex: 1;
-    min-height: 0;
-    flex-direction: column;
     border-radius: 12px;
     padding: 16px;
   }
@@ -548,13 +534,6 @@ tbody td:nth-child(2) {
 
   .search-box {
     margin-bottom: 12px;
-  }
-
-  .table-container {
-    flex: 1;
-    min-height: 0;
-    max-height: none;
-    overscroll-behavior: contain;
   }
 
   .search-box input {
