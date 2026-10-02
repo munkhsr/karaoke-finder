@@ -1,10 +1,6 @@
 const songs = [...(window.karaokeSongs ?? []), ...(window.karaokeExtraSongs ?? []), ...(window.karaokeExtraSongs2 ?? []), ...(window.karaokeExtraSongs3 ?? [])];
 
-const curatedNewCodes = ["59415", "59416", "59417", "59418", "59419"];
-const curatedHitCodes = ["59400", "59401", "59403", "59405", "59410"];
-
-// Keep the curated songs first, then complete each section with the latest
-// catalogue entries. This makes both navigation filters contain 100 songs.
+// Use the newest catalogue entries for both navigation filters.
 const recentCatalogueCodes = [...new Set(
   songs
     .filter(song => /^3\d{4}$/.test(song.code1))
@@ -12,17 +8,8 @@ const recentCatalogueCodes = [...new Set(
     .map(song => song.code1)
 )];
 
-const newSongCodes = [
-  ...curatedNewCodes,
-  ...recentCatalogueCodes.filter(code => !curatedNewCodes.includes(code)).slice(0, 95)
-];
-
-const hitSongCodes = [
-  ...curatedHitCodes,
-  ...recentCatalogueCodes
-    .filter(code => !newSongCodes.includes(code) && !curatedHitCodes.includes(code))
-    .slice(0, 95)
-];
+const newSongCodes = recentCatalogueCodes.slice(0, 100);
+const hitSongCodes = recentCatalogueCodes.slice(100, 200);
 
 const songGroups = {
   new: newSongCodes,
