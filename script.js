@@ -9,14 +9,36 @@ const recentCatalogueCodes = [...new Set(
 )];
 
 const newSongCodes = recentCatalogueCodes.slice(0, 100);
-const hitSongCodes = recentCatalogueCodes.slice(100, 200);
+
+// Curated from the catalogue for songs that are especially popular in Mongolian karaoke.
+// `code1` is included where present so songs with a shared second code stay unambiguous.
+const hitSongs = [
+  { code2: "73284" }, { code2: "70638" }, { code2: "70774" }, { code2: "71131" }, { code2: "71540" }, { code2: "70048" },
+  { code2: "72427" }, { code2: "72426" }, { code2: "70565" }, { code2: "72765" }, { code2: "72852" },
+  { code2: "70624" }, { code2: "71514" }, { code2: "70245" }, { code2: "71521" }, { code2: "72587" }, { code2: "70481" },
+  { code2: "74306" }, { code2: "74336" }, { code2: "70047" }, { code2: "70489" }, { code2: "74284" },
+  { code2: "70089" }, { code2: "72511" }, { code2: "72482" }, { code2: "70991" }, { code2: "73519" },
+  { code2: "74343" }, { code2: "71623" }, { code2: "71903" }, { code2: "72847" }, { code2: "73516" },
+  { code1: "37360", code2: "74401" }, { code1: "37714", code2: "74794" }, { code1: "37744", code2: "74824" },
+  { code1: "37778", code2: "74855" }, { code1: "37809", code2: "74889" }, { code1: "37905", code2: "74985" },
+  { code1: "37941", code2: "75021" }, { code1: "37969", code2: "75049" }, { code1: "37974", code2: "75052" },
+  { code1: "38029", code2: "75109" }, { code1: "38030", code2: "75110" }, { code1: "38115", code2: "75195" },
+  { code1: "38130", code2: "75210" }, { code1: "38132", code2: "75212" }, { code1: "37530", code2: "74610" },
+  { code1: "37656", code2: "74736" }, { code1: "37683", code2: "74763" }, { code1: "37684", code2: "74764" }
+];
 
 const songGroups = {
-  new: newSongCodes,
-  hit: hitSongCodes
+  new: newSongCodes
 };
 
 let activeSongGroup = null;
+
+function groupFromLocation() {
+  if (history.state?.songGroup) return history.state.songGroup;
+  if (location.hash === "#new-songs") return "new";
+  if (location.hash === "#hit-songs") return "hit";
+  return null;
+}
 
 const cyrillicToLatin = {
   а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "yo", ж: "j",
@@ -46,6 +68,22 @@ function matchesSearch(value, query) {
 }
 
 function getVisibleSongs() {
+  if (activeSongGroup === "hit") {
+    return hitSongs
+      .map(selection => songs.find(song =>
+        song.code2 === selection.code2 && (!selection.code1 || song.code1 === selection.code1)
+      ))
+      .filter(Boolean);
+  }
+
+  if (activeSongGroup === "new") {
+    // Keep the catalogue order and return one row per selected primary code.
+    // A few catalogue imports contain duplicate records with the same code.
+    return newSongCodes
+      .map(code => songs.find(song => song.code1 === code))
+      .filter(Boolean);
+  }
+
   return activeSongGroup ? songs.filter(song => songGroups[activeSongGroup].includes(song.code1)) : songs;
 }
 
@@ -89,15 +127,26 @@ function setGroup(group) {
   updateResults();
 }
 
+function navigateToGroup(group) {
+  const hash = group ? `#${group}-songs` : "";
+  history.pushState({ songGroup: group }, "", `${location.pathname}${location.search}${hash}`);
+  setGroup(group);
+}
+
 document.getElementById("searchInput").addEventListener("input", updateResults);
 document.querySelectorAll("[data-song-filter]").forEach(link => link.addEventListener("click", event => {
   event.preventDefault();
-  setGroup(link.dataset.songFilter);
+  navigateToGroup(link.dataset.songFilter);
 }));
 document.querySelector(".nav-brand").addEventListener("click", event => {
   event.preventDefault();
   document.getElementById("searchInput").value = "";
-  setGroup(null);
+  navigateToGroup(null);
+});
+
+window.addEventListener("popstate", () => {
+  document.getElementById("searchInput").value = "";
+  setGroup(groupFromLocation());
 });
 
 const bannerModal = document.getElementById("bannerModal");
@@ -108,4 +157,5 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape" && !bannerModal.hidden) closeBanner();
 });
 
-renderTable(songs);
+history.replaceState({ songGroup: groupFromLocation() }, "", location.href);
+setGroup(groupFromLocation());
