@@ -581,3 +581,10 @@ tbody td:nth-child(2) {
     text-align: center;
   }
 }
+
+@media (max-width: 680px) {
+  .navbar { min-height: 64px; padding: 0; }
+  .container { display: block; height: auto; min-height: auto; }
+  .card { display: block; flex: none; min-height: auto; }
+  .table-container { flex: none; min-height: 0; max-height: min(410px, calc(100dvh - 420px)); }
+}
