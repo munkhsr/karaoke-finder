@@ -272,5 +272,8 @@ window.karaokeExtraSongs3 = [
   { code1: "", code2: "71125", title: "ШИНЭ ОНЫ МЭНД ХҮРГЭЕ", artist: "МӨНХБАТ.Ц" },
   { code1: "", code2: "72009", title: "ШИНЭ ЦЭРЭГ", artist: "ГАНТУЛГА.Н" },
   { code1: "", code2: "72045", title: "ШИНЭ ӨГЛӨӨ", artist: "—" },
-  { code1: "", code2: "73956", title: "ШИНЭЭР ЭХЛЭЕ", artist: "H2 ХАМТЛАГ" }
+  { code1: "", code2: "73956", title: "ШИНЭЭР ЭХЛЭЕ", artist: "H2 ХАМТЛАГ" },
+  { code1: "", code2: "74181", title: "ГООЛИНГОО", artist: "NENE & АЛТАНЖАРГАЛ.Б" },
+  { code1: "", code2: "73501", title: "ЧАС ТАС", artist: "NENE" },
+  { code1: "38117", code2: "75197", title: "BINGO", artist: "290 & TUUG18" }
 ];

@@ -311,7 +311,8 @@ tbody td {
   overflow-wrap: anywhere;
 }
 
-tbody td:first-child {
+tbody td:first-child,
+tbody td:nth-child(2) {
   font-weight: 500;
   color: #f8fafc;
 }
