@@ -469,7 +469,11 @@ tbody td:nth-child(2) {
   text-align: right;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 680px) {
+  .page-content {
+    align-items: flex-start;
+  }
+
   .navbar {
     width: min(100% - 24px, 1080px);
     min-height: auto;
@@ -506,7 +510,7 @@ tbody td:nth-child(2) {
   }
 
   .container {
-    padding: 0 12px;
+    padding: 18px 12px 24px;
   }
 
   .card {
