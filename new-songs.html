@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Караоке дууны хоёр төрлийн код, дууны нэр, дуучнаар хялбар хайх үйлчилгээ.">
-  <title>Karaoke Hub — Дууны код хайх</title>
+  <title>Karaoke Hub — Шинэ дуу</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body data-song-group="new">
   <div class="glow-bg"></div>
   <header class="site-header">
     <nav class="navbar" aria-label="Үндсэн цэс">
@@ -22,7 +22,8 @@
   <div class="page-content">
     <main class="container">
       <section class="card" aria-labelledby="pageTitle">
-        <div class="header"><i class="fa-solid fa-microphone-lines logo-icon" aria-hidden="true"></i><h1 id="pageTitle">Караоке дууны код хайх</h1></div>
+        <a class="back-home" href="index.html"><span aria-hidden="true">←</span> Нүүр хуудас руу буцах</a>
+        <div class="header"><i class="fa-solid fa-microphone-lines logo-icon" aria-hidden="true"></i><h1 id="pageTitle">Шинэ дуу</h1></div>
         <div class="search-box">
           <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
           <input type="search" id="searchInput" placeholder="Дууны нэр, код, дуучнаар (латинаар ч) хайх..." aria-label="Дуу хайх" autocomplete="off">

@@ -105,6 +105,27 @@ body {
   font-size: 21px;
 }
 
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  border-radius: 8px;
+  color: #cbd5e1;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.back-home:hover,
+.back-home:focus-visible {
+  border-color: #38bdf8;
+  background: rgba(14, 165, 233, 0.15);
+  color: #fff;
+}
+
 .nav-links {
   display: flex;
   align-items: center;

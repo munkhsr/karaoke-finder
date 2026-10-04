@@ -1,4 +1,4 @@
-const songs = [...(window.karaokeSongs ?? []), ...(window.karaokeExtraSongs ?? []), ...(window.karaokeExtraSongs2 ?? []), ...(window.karaokeExtraSongs3 ?? [])];
+const songs = [...(window.karaokeSongs ?? []), ...(window.karaokeExtraSongs ?? []), ...(window.karaokeExtraSongs2 ?? []), ...(window.karaokeExtraSongs3 ?? []), ...(window.karaokeExtraSongs4 ?? [])];
 
 // Use the newest catalogue entries for both navigation filters.
 const recentCatalogueCodes = [...new Set(
@@ -34,7 +34,7 @@ const songGroups = {
 let activeSongGroup = null;
 
 function groupFromLocation() {
-  if (history.state?.songGroup) return history.state.songGroup;
+  if (document.body.dataset.songGroup) return document.body.dataset.songGroup;
   if (location.hash === "#new-songs") return "new";
   if (location.hash === "#hit-songs") return "hit";
   return null;
@@ -127,24 +127,8 @@ function setGroup(group) {
   updateResults();
 }
 
-function navigateToGroup(group) {
-  const hash = group ? `#${group}-songs` : "";
-  history.pushState({ songGroup: group }, "", `${location.pathname}${location.search}${hash}`);
-  setGroup(group);
-}
-
 document.getElementById("searchInput").addEventListener("input", updateResults);
-document.querySelectorAll("[data-song-filter]").forEach(link => link.addEventListener("click", event => {
-  event.preventDefault();
-  navigateToGroup(link.dataset.songFilter);
-}));
-document.querySelector(".nav-brand").addEventListener("click", event => {
-  event.preventDefault();
-  document.getElementById("searchInput").value = "";
-  navigateToGroup(null);
-});
-
-window.addEventListener("popstate", () => {
+window.addEventListener("hashchange", () => {
   document.getElementById("searchInput").value = "";
   setGroup(groupFromLocation());
 });
@@ -157,5 +141,4 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape" && !bannerModal.hidden) closeBanner();
 });
 
-history.replaceState({ songGroup: groupFromLocation() }, "", location.href);
 setGroup(groupFromLocation());
