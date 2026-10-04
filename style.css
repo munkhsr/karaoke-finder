@@ -604,10 +604,73 @@ tbody td:nth-child(2) {
 }
 
 @media (max-width: 680px) {
-  .navbar { min-height: 64px; padding: 0; }
-  .container { display: block; height: auto; min-height: auto; }
-  .card { display: block; flex: none; min-height: auto; }
-  .table-container { flex: none; min-height: 0; max-height: min(410px, calc(100dvh - 420px)); }
+  body { -webkit-text-size-adjust: 100%; }
+  .site-header { padding-top: env(safe-area-inset-top, 0px); }
+  .navbar {
+    width: auto;
+    margin: 0 max(12px, env(safe-area-inset-left, 0px)) 0 max(12px, env(safe-area-inset-right, 0px));
+    min-height: 72px;
+    padding: 8px 0;
+    flex-wrap: wrap;
+  }
+  .nav-brand, .nav-links a, .back-home { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .nav-links a { padding: 10px 12px; border-radius: 12px; font-size: 13px; white-space: nowrap; }
+  .container {
+    display: block;
+    max-width: 600px;
+    height: auto;
+    padding: 16px max(12px, env(safe-area-inset-right, 0px)) 24px max(12px, env(safe-area-inset-left, 0px));
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 16px 12px;
+    border-radius: 20px;
+    background: #101824;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .24);
+  }
+  .back-home { order: 0; margin-bottom: 16px; }
+  .header { order: 1; justify-content: flex-start; margin-bottom: 18px; }
+  .header h1 { line-height: 1.4; }
+  .search-box {
+    order: 2;
+    position: sticky;
+    top: max(8px, env(safe-area-inset-top, 0px));
+    z-index: 5;
+    background: #101824;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .2);
+  }
+  .search-box input { min-height: 52px; border-radius: 14px; padding: 14px 36px; background: #0b1220; }
+  .search-icon { pointer-events: none; }
+  .search-hint { order: 2; font-size: 12px; line-height: 1.5; margin: 0 2px 12px; }
+  .table-container {
+    order: 3;
+    flex: none;
+    min-height: 0;
+    max-height: clamp(180px, calc(100dvh - 420px), 410px);
+    overflow-y: auto;
+    border-radius: 6px;
+  }
+  .card-footer { order: 4; margin: 12px 0 0; color: #94a3b8; font-size: 13px; }
+  .social-links a { width: 44px; height: 44px; border-radius: 12px; }
+  .footer-contact a { display: inline-flex; min-height: 44px; align-items: center; }
+  .footer-content { padding-bottom: max(20px, env(safe-area-inset-bottom, 0px)); }
+}
+
+@media (max-width: 360px) {
+  .navbar { justify-content: center; gap: 4px; }
+  .nav-brand { width: 100%; }
+  .nav-links { width: 100%; margin-left: 0; justify-content: center; }
+  .nav-links a { flex: 1; }
+}
+
+@media (max-height: 500px) and (pointer: coarse) {
+  .search-box { position: relative; top: auto; }
 }
 
 /* Small, coordinated movements keep the catalogue calm and responsive. */

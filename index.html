@@ -2,7 +2,8 @@
 <html lang="mn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#070a10">
   <meta name="description" content="Караоке дууны хоёр төрлийн код, дууны нэр, дуучнаар хялбар хайх үйлчилгээ.">
   <title>Karaoke Hub — Дууны код хайх</title>
   <link rel="stylesheet" href="style.css">
@@ -25,12 +26,13 @@
         <div class="header"><i class="fa-solid fa-microphone-lines logo-icon" aria-hidden="true"></i><h1 id="pageTitle">Караоке дууны код хайх</h1></div>
         <div class="search-box">
           <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-          <input type="search" id="searchInput" placeholder="Дууны нэр, код, дуучнаар (латинаар ч) хайх..." aria-label="Дуу хайх" autocomplete="off">
+          <input type="search" id="searchInput" placeholder="Дуу, дуучин эсвэл код..." aria-label="Дуу хайх" aria-describedby="searchHint" autocomplete="off" enterkeyhint="search" spellcheck="false">
         </div>
+        <p class="search-hint" id="searchHint">Кирилл болон латин үсгээр хайж болно.</p>
         <div class="table-container">
-          <table id="songTable">
-            <thead><tr><th>Код 1</th><th>Код 2</th><th>Дууны нэр</th><th>Дуучин</th></tr></thead>
-            <tbody id="tableBody"></tbody>
+          <table id="songTable" role="table" aria-labelledby="pageTitle">
+            <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Код 1</th><th scope="col" role="columnheader">Код 2</th><th scope="col" role="columnheader">Дууны нэр</th><th scope="col" role="columnheader">Дуучин</th></tr></thead>
+            <tbody id="tableBody" role="rowgroup"></tbody>
           </table>
         </div>
         <div class="card-footer"><span id="songCount">0 дуу</span></div>

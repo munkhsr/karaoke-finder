@@ -34,9 +34,13 @@ function relaxedLatin(value) {
   return value.replace(/y/g, "i").replace(/([aeiou])\1+/g, "$1").replace(/[^a-z0-9]/g, "");
 }
 
+function songCodes(song, field) {
+  return [...new Set([song[field], ...(song.alternateCodes?.[field] ?? [])].filter(Boolean))];
+}
+
 // Prepare the catalogue once so typing does not repeatedly transliterate every song.
 const searchIndex = new Map(songs.map(song => [song,
-  [song.code1, song.code2, song.title, song.artist].map(value => {
+  [...songCodes(song, "code1"), ...songCodes(song, "code2"), song.title, song.artist].map(value => {
     const normalized = normalizeForSearch(value);
     return { normalized, relaxed: relaxedLatin(normalized) };
   })
@@ -63,13 +67,18 @@ function renderTable(data) {
 
   if (!data.length) {
     const row = document.createElement("tr");
+    row.setAttribute("role", "row");
+    row.className = "empty-row";
     row.innerHTML = '<td colspan="4" class="empty-state">Илэрц олдсонгүй.</td>';
     fragment.appendChild(row);
   } else {
     data.forEach(song => {
       const row = document.createElement("tr");
-      [song.code1 || "—", song.code2 || "—", song.title, song.artist].forEach(value => {
+      row.setAttribute("role", "row");
+      [songCodes(song, "code1").join(" / ") || "—", songCodes(song, "code2").join(" / ") || "—", song.title, song.artist].forEach((value, index) => {
         const cell = document.createElement("td");
+        cell.setAttribute("role", "cell");
+        cell.setAttribute("data-label", ["Код 1", "Код 2", "Дууны нэр", "Дуучин"][index]);
         cell.textContent = value;
         row.appendChild(cell);
       });
@@ -77,6 +86,7 @@ function renderTable(data) {
     });
   }
   tableBody.replaceChildren(fragment);
+  document.querySelector(".table-container").scrollTop = 0;
   songCount.textContent = `${data.length} дуу`;
 }
 
