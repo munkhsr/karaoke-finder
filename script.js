@@ -135,7 +135,9 @@ window.addEventListener("hashchange", () => {
 
 const bannerModal = document.getElementById("bannerModal");
 function closeBanner() { bannerModal.hidden = true; }
-bannerModal.hidden = false;
+// Set to true when the promotional popup should be shown again.
+const bannerEnabled = false;
+bannerModal.hidden = !bannerEnabled;
 document.querySelectorAll("[data-close-banner]").forEach(button => button.addEventListener("click", closeBanner));
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && !bannerModal.hidden) closeBanner();
