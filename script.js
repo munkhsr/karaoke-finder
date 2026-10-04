@@ -1,35 +1,7 @@
 const songs = [...(window.karaokeSongs ?? []), ...(window.karaokeExtraSongs ?? []), ...(window.karaokeExtraSongs2 ?? []), ...(window.karaokeExtraSongs3 ?? []), ...(window.karaokeExtraSongs4 ?? [])];
 
-// Use the newest catalogue entries for both navigation filters.
-const recentCatalogueCodes = [...new Set(
-  songs
-    .filter(song => /^3\d{4}$/.test(song.code1))
-    .sort((first, second) => Number(second.code1) - Number(first.code1))
-    .map(song => song.code1)
-)];
-
-const newSongCodes = recentCatalogueCodes.slice(0, 100);
-
-// Curated from the catalogue for songs that are especially popular in Mongolian karaoke.
-// `code1` is included where present so songs with a shared second code stay unambiguous.
-const hitSongs = [
-  { code2: "73284" }, { code2: "70638" }, { code2: "70774" }, { code2: "71131" }, { code2: "71540" }, { code2: "70048" },
-  { code2: "72427" }, { code2: "72426" }, { code2: "70565" }, { code2: "72765" }, { code2: "72852" },
-  { code2: "70624" }, { code2: "71514" }, { code2: "70245" }, { code2: "71521" }, { code2: "72587" }, { code2: "70481" },
-  { code2: "74306" }, { code2: "74336" }, { code2: "70047" }, { code2: "70489" }, { code2: "74284" },
-  { code2: "70089" }, { code2: "72511" }, { code2: "72482" }, { code2: "70991" }, { code2: "73519" },
-  { code2: "74343" }, { code2: "71623" }, { code2: "71903" }, { code2: "72847" }, { code2: "73516" },
-  { code1: "37360", code2: "74401" }, { code1: "37714", code2: "74794" }, { code1: "37744", code2: "74824" },
-  { code1: "37778", code2: "74855" }, { code1: "37809", code2: "74889" }, { code1: "37905", code2: "74985" },
-  { code1: "37941", code2: "75021" }, { code1: "37969", code2: "75049" }, { code1: "37974", code2: "75052" },
-  { code1: "38029", code2: "75109" }, { code1: "38030", code2: "75110" }, { code1: "38115", code2: "75195" },
-  { code1: "38130", code2: "75210" }, { code1: "38132", code2: "75212" }, { code1: "37530", code2: "74610" },
-  { code1: "37656", code2: "74736" }, { code1: "37683", code2: "74763" }, { code1: "37684", code2: "74764" }
-];
-
-const songGroups = {
-  new: newSongCodes
-};
+// Explicit, researched selections; see SONG-SELECTION-RESEARCH.md.
+const songGroups = window.karaokeSelections ?? { new: [], hit: [] };
 
 let activeSongGroup = null;
 
@@ -62,40 +34,37 @@ function relaxedLatin(value) {
   return value.replace(/y/g, "i").replace(/([aeiou])\1+/g, "$1").replace(/[^a-z0-9]/g, "");
 }
 
-function matchesSearch(value, query) {
-  const normalizedValue = normalizeForSearch(value);
-  return normalizedValue.includes(query) || relaxedLatin(normalizedValue).includes(relaxedLatin(query));
-}
+// Prepare the catalogue once so typing does not repeatedly transliterate every song.
+const searchIndex = new Map(songs.map(song => [song,
+  [song.code1, song.code2, song.title, song.artist].map(value => {
+    const normalized = normalizeForSearch(value);
+    return { normalized, relaxed: relaxedLatin(normalized) };
+  })
+]));
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let resultsAnimation;
+let searchFrame;
 
 function getVisibleSongs() {
-  if (activeSongGroup === "hit") {
-    return hitSongs
-      .map(selection => songs.find(song =>
-        song.code2 === selection.code2 && (!selection.code1 || song.code1 === selection.code1)
-      ))
-      .filter(Boolean);
-  }
-
-  if (activeSongGroup === "new") {
-    // Keep the catalogue order and return one row per selected primary code.
-    // A few catalogue imports contain duplicate records with the same code.
-    return newSongCodes
-      .map(code => songs.find(song => song.code1 === code))
-      .filter(Boolean);
-  }
-
-  return activeSongGroup ? songs.filter(song => songGroups[activeSongGroup].includes(song.code1)) : songs;
+  if (!activeSongGroup) return songs;
+  // Shared codes can identify different songs: match the complete catalogue identity.
+  return (songGroups[activeSongGroup] ?? [])
+    .map(selection => songs.find(song =>
+      song.code1 === selection.code1 && song.code2 === selection.code2 &&
+      song.title === selection.title && song.artist === selection.artist
+    ))
+    .filter(Boolean);
 }
 
 function renderTable(data) {
   const tableBody = document.getElementById("tableBody");
   const songCount = document.getElementById("songCount");
-  tableBody.replaceChildren();
+  const fragment = document.createDocumentFragment();
 
   if (!data.length) {
     const row = document.createElement("tr");
     row.innerHTML = '<td colspan="4" class="empty-state">Илэрц олдсонгүй.</td>';
-    tableBody.appendChild(row);
+    fragment.appendChild(row);
   } else {
     data.forEach(song => {
       const row = document.createElement("tr");
@@ -104,17 +73,29 @@ function renderTable(data) {
         cell.textContent = value;
         row.appendChild(cell);
       });
-      tableBody.appendChild(row);
+      fragment.appendChild(row);
     });
   }
+  tableBody.replaceChildren(fragment);
   songCount.textContent = `${data.length} дуу`;
 }
 
-function updateResults() {
+function updateResults(animate = false) {
   const query = normalizeForSearch(document.getElementById("searchInput").value.trim());
+  const relaxedQuery = relaxedLatin(query);
   renderTable(getVisibleSongs().filter(song =>
-    [song.code1, song.code2, song.title, song.artist].some(value => matchesSearch(value, query))
+    searchIndex.get(song).some(value =>
+      value.normalized.includes(query) || value.relaxed.includes(relaxedQuery)
+    )
   ));
+  resultsAnimation?.cancel();
+  const panel = document.querySelector(".table-container");
+  if (animate && !reducedMotion.matches && panel?.animate) {
+    resultsAnimation = panel.animate(
+      [{ opacity: 0.65 }, { opacity: 1 }],
+      { duration: 180, easing: "ease-out" }
+    );
+  }
 }
 
 function setGroup(group) {
@@ -127,7 +108,13 @@ function setGroup(group) {
   updateResults();
 }
 
-document.getElementById("searchInput").addEventListener("input", updateResults);
+document.getElementById("searchInput").addEventListener("input", () => {
+  cancelAnimationFrame(searchFrame);
+  searchFrame = requestAnimationFrame(() => updateResults(true));
+});
+reducedMotion.addEventListener("change", () => {
+  if (reducedMotion.matches) resultsAnimation?.cancel();
+});
 window.addEventListener("hashchange", () => {
   document.getElementById("searchInput").value = "";
   setGroup(groupFromLocation());

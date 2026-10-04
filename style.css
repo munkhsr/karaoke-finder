@@ -609,3 +609,71 @@ tbody td:nth-child(2) {
   .card { display: block; flex: none; min-height: auto; }
   .table-container { flex: none; min-height: 0; max-height: min(410px, calc(100dvh - 420px)); }
 }
+
+/* Small, coordinated movements keep the catalogue calm and responsive. */
+:root {
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+.card { animation: card-arrive 650ms var(--motion-ease) both; }
+.card .header { animation: content-arrive 550ms 80ms var(--motion-ease) both; }
+.search-box { animation: content-arrive 550ms 140ms var(--motion-ease) both; }
+.card-footer { animation: content-arrive 550ms 200ms var(--motion-ease) both; }
+
+.nav-links a, .nav-brand, .back-home, .social-links a {
+  transition: transform 250ms var(--motion-ease), background-color 250ms ease,
+    border-color 250ms ease, color 250ms ease, box-shadow 250ms ease;
+}
+
+.back-home span { transition: transform 250ms var(--motion-ease); }
+.search-icon { transition: color 220ms ease, transform 250ms var(--motion-ease); }
+.search-box:focus-within .search-icon { color: #38bdf8; transform: scale(1.08); }
+.search-box input { transition: border-color 250ms ease, box-shadow 250ms ease, background-color 250ms ease; }
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-links a:hover, .social-links a:hover, .back-home:hover { transform: translateY(-2px); }
+  .nav-brand:hover { transform: translateY(-1px); }
+  .back-home:hover span { transform: translateX(-3px); }
+}
+
+.nav-links a:active, .social-links a:active, .back-home:active { transform: scale(.97); }
+a:focus-visible { outline: 2px solid #38bdf8; outline-offset: 4px; }
+
+.glow-bg::before { animation: glow-cyan 22s ease-in-out infinite alternate; }
+.glow-bg::after { animation: glow-violet 26s ease-in-out infinite alternate; }
+
+@keyframes card-arrive {
+  from { opacity: 0; transform: translateY(16px) scale(.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes content-arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow-cyan {
+  from { transform: translate3d(0, 0, 0) rotate(9deg); }
+  to { transform: translate3d(3vw, -12px, 0) rotate(12deg); }
+}
+@keyframes glow-violet {
+  from { transform: translate3d(0, 0, 0) rotate(-8deg); }
+  to { transform: translate3d(-3vw, 12px, 0) rotate(-11deg); }
+}
+
+/* Native page navigation gains a short dissolve in supporting browsers. */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: ease-in-out;
+}
+
+@media (max-width: 680px) {
+  .glow-bg::before, .glow-bg::after { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+}
