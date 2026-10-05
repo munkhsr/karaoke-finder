@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import catalogue from '../lib/catalogue.json';
 import selections from '../lib/selections.json';
@@ -28,13 +29,19 @@ function Banner({ detailed=false }) {
   return <aside className={`ad-banner reference-banner${detailed?' detail-banner':''}`} aria-label="Реклам"><span className="reference-frame"><img className="reference-image" src="/assets/design-reference.png" alt={detailed?'Good friends, great beer':'Амттай хоол, сайхан дууны хамт'} width="1312" height="1199"/></span><button className="banner-details-button" type="button" onClick={()=>window.dispatchEvent(new CustomEvent('karaoke-promo-open',{detail:{detailed}}))}>Дэлгэрэнгүй <Icon name="arrow-right"/></button></aside>;
 }
 function Codes({ song, copy, detailed=false }) {
-  return <div className="code-grid">{['code1','code2'].map((field,i)=><div className={`code-box${i?' ky':''}`} key={field}><span className="code-label">Код {i+1}</span>{codes(song,field).length?codes(song,field).map(code=><button className="copy-button" type="button" key={code} aria-label={`Код ${i+1} ${code} хуулах`} onClick={()=>copy(String(code))}><span className="code-value">{code}</span><span className="copy-mark" aria-hidden="true"><Icon name="copy"/>{detailed&&<span>Хуулах</span>}</span></button>):<span className="missing-code">Байхгүй</span>}</div>)}</div>;
+  return <div className="code-grid">{['code2','code1'].map((field,i)=><div className={`code-box${field==='code2'?' ky':''}`} key={field}><span className="code-label">Код {i+1}</span>{codes(song,field).length?codes(song,field).map(code=><button className="copy-button" type="button" key={code} aria-label={`Код ${i+1} ${code} хуулах`} onClick={()=>copy(String(code))}><span className="code-value">{code}</span><span className="copy-mark" aria-hidden="true"><Icon name="copy"/>{detailed&&<span>Хуулах</span>}</span></button>):<span className="missing-code">Байхгүй</span>}</div>)}</div>;
 }
 function SongCard({ song, rank, saved, toggle, open, copy }) {
-  return <article className="song-card">{rank&&<span className="home-rank">{rank}</span>}<div className="song-heading"><Artwork song={song}/><div className="song-info"><h3><button className="song-title" onClick={()=>open(song)} aria-label={`${song.title}, ${song.artist} — дэлгэрэнгүй харах`}>{song.title}</button></h3><p className="song-artist">Дуучин: {song.artist}</p></div></div><Codes song={song} copy={copy}/><button className="favorite-button" aria-pressed={saved} aria-label={saved?'Дуртай дуунаас хасах':'Дуртай дуунд хадгалах'} onClick={()=>toggle(song)}><Icon name="heart"/></button></article>;
+  function openFromCard(event) {
+    if (event.target.closest('button')) return;
+    open(song);
+  }
+  return <article className="song-card" onClick={openFromCard}>{rank&&<span className="home-rank">{rank}</span>}<div className="song-heading"><Artwork song={song}/><div className="song-info"><h3><button className="song-title" onClick={()=>open(song)} aria-label={`${song.title}, ${song.artist} — дэлгэрэнгүй харах`}>{song.title}</button></h3><p className="song-artist">Дуучин: {song.artist}</p></div></div><Codes song={song} copy={copy}/><button className="favorite-button" aria-pressed={saved} aria-label={saved?'Дуртай дуунаас хасах':'Дуртай дуунд хадгалах'} onClick={()=>toggle(song)}><Icon name="heart"/></button></article>;
 }
 
 export default function KaraokeApp({ group=null }) {
+  const router=useRouter();
+  const viewHistory=useRef(false);
   const [query,setQuery]=useState('');
   const [limit,setLimit]=useState(40);
   const [favorites,setFavorites]=useState([]);
@@ -50,6 +57,25 @@ export default function KaraokeApp({ group=null }) {
   const visible=home?4:limit;
 
   useEffect(()=>{
+    function returnHome() {
+      if (!viewHistory.current) return;
+      viewHistory.current=false;
+      setSelected(null);
+      if(dialog.current?.open)dialog.current.close();
+      setQuery('');setLimit(40);
+      input.current?.blur();
+      if(group)router.replace('/');
+    }
+    window.addEventListener('popstate',returnHome);
+    return ()=>window.removeEventListener('popstate',returnHome);
+  },[group,router]);
+  function rememberView() {
+    if(viewHistory.current)return;
+    window.history.pushState({...window.history.state,karaokeView:true},'',window.location.href);
+    viewHistory.current=true;
+  }
+
+  useEffect(()=>{
     try { const saved=JSON.parse(localStorage.getItem('karaoke-favorites')||'[]'); setFavorites(restoreFavorites(saved,catalogue)); } catch {}
     const close=e=>{ if(menu.current&&!menu.current.contains(e.target))menu.current.open=false; };
     const escape=e=>{ if(e.key==='Escape'&&menu.current?.open){menu.current.open=false;menu.current.querySelector('summary').focus();} };
@@ -57,6 +83,7 @@ export default function KaraokeApp({ group=null }) {
     return ()=>{document.removeEventListener('click',close);document.removeEventListener('keydown',escape);clearTimeout(toastTimer.current);};
   },[]);
   function openDetail(song) {
+    rememberView();
     setSelected(song);
     if (dialog.current && !dialog.current.open) dialog.current.showModal();
   }
@@ -80,7 +107,7 @@ export default function KaraokeApp({ group=null }) {
       notify(`${code} · Хуулагдсан`);
     }catch{notify('Хуулж чадсангүй. Кодоо гараар оруулна уу.');}
   }
-  function changeQuery(value){setQuery(value);setLimit(40);}
+  function changeQuery(value){if(value.trim())rememberView();setQuery(value);setLimit(40);}
   function clear(){changeQuery('');input.current.focus();}
 
   return <div className={`karaoke-app${home?' home-view':' is-searching'}`} data-song-group={group||''}>

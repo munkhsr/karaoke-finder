@@ -325,3 +325,4 @@ body:has(.install-offer) .toast.copy-notice { bottom:calc(106px + env(safe-area-
   100% { opacity:0; translate:0 -5px; scale:.99; }
 }
 @media(prefers-reduced-motion:reduce) { .copy-notice { animation:none; } }
+.song-card { cursor:pointer; }
