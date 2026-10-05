@@ -10,6 +10,7 @@ import { buildIndex, codes, search, selectGroup, songKey } from '../lib/search.m
 import { Icon, Microphone, Sparkles } from './Icons';
 import { artistImage } from '../lib/artists.mjs';
 import { favoriteKey, restoreFavorites } from '../lib/favorites.mjs';
+import { songUrl } from '../lib/song-links.mjs';
 
 const index = buildIndex(catalogue);
 const groups = { hit: selectGroup(catalogue,selections.hit), new: selectGroup(catalogue,selections.new) };
@@ -33,19 +34,20 @@ function Codes({ song, copy, detailed=false }) {
 }
 function SongCard({ song, rank, saved, toggle, open, copy }) {
   function openFromCard(event) {
-    if (event.target.closest('button')) return;
+    if (event.target.closest('button, a')) return;
     open(song);
   }
-  return <article className="song-card" onClick={openFromCard}>{rank&&<span className="home-rank">{rank}</span>}<div className="song-heading"><Artwork song={song}/><div className="song-info"><h3><button className="song-title" onClick={()=>open(song)} aria-label={`${song.title}, ${song.artist} — дэлгэрэнгүй харах`}>{song.title}</button></h3><p className="song-artist">Дуучин: {song.artist}</p></div></div><Codes song={song} copy={copy}/><button className="favorite-button" aria-pressed={saved} aria-label={saved?'Дуртай дуунаас хасах':'Дуртай дуунд хадгалах'} onClick={()=>toggle(song)}><Icon name="heart"/></button></article>;
+  return <article className="song-card" onClick={openFromCard}>{rank&&<span className="home-rank">{rank}</span>}<div className="song-heading"><Artwork song={song}/><div className="song-info"><h3><a className="song-title" href={songUrl(song)} onClick={event=>{if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();open(song);}} aria-label={`${song.title}, ${song.artist} — дэлгэрэнгүй харах`}>{song.title}</a></h3><p className="song-artist">Дуучин: {song.artist}</p></div></div><Codes song={song} copy={copy}/><button className="favorite-button" aria-pressed={saved} aria-label={saved?'Дуртай дуунаас хасах':'Дуртай дуунд хадгалах'} onClick={()=>toggle(song)}><Icon name="heart"/></button></article>;
 }
 
-export default function KaraokeApp({ group=null }) {
+export default function KaraokeApp({ group=null, initialSong=null }) {
   const router=useRouter();
   const viewHistory=useRef(false);
   const [query,setQuery]=useState('');
   const [limit,setLimit]=useState(40);
   const [favorites,setFavorites]=useState([]);
-  const [selected,setSelected]=useState(null);
+  const [selected,setSelected]=useState(initialSong);
+  const detailOrigin=useRef('/');
   const [toast,setToast]=useState('');
   const [toastId,setToastId]=useState(0);
   const dialog=useRef(null), menu=useRef(null), input=useRef(null), toastTimer=useRef(null);
@@ -57,18 +59,44 @@ export default function KaraokeApp({ group=null }) {
   const visible=home?4:limit;
 
   useEffect(()=>{
+    let keyboardVisible=false;
+    let keyboardClosedAt=0;
+    const viewport=window.visualViewport;
+    function trackKeyboard() {
+      const visible=document.activeElement===input.current && !!viewport && window.innerHeight-viewport.height>120;
+      if(keyboardVisible&&!visible)keyboardClosedAt=Date.now();
+      keyboardVisible=visible;
+    }
+    viewport?.addEventListener('resize',trackKeyboard);
     function returnHome() {
       if (!viewHistory.current) return;
+      const focused=document.activeElement===input.current;
+      if(!dialog.current?.open && focused && (keyboardVisible || Date.now()-keyboardClosedAt<300 || (!viewport&&window.matchMedia('(pointer: coarse)').matches))) {
+        input.current.blur();
+        keyboardVisible=false;keyboardClosedAt=0;
+        window.history.pushState({...window.history.state,karaokeView:true},'',window.location.href);
+        return;
+      }
       viewHistory.current=false;
       setSelected(null);
       if(dialog.current?.open)dialog.current.close();
       setQuery('');setLimit(40);
       input.current?.blur();
-      if(group)router.replace('/');
+      if(group||window.location.pathname.startsWith('/songs/'))router.replace('/');
     }
     window.addEventListener('popstate',returnHome);
-    return ()=>window.removeEventListener('popstate',returnHome);
+    return ()=>{window.removeEventListener('popstate',returnHome);viewport?.removeEventListener('resize',trackKeyboard);};
   },[group,router]);
+  useEffect(()=>{
+    if(!initialSong)return;
+    const url=songUrl(initialSong);
+    window.history.replaceState({...window.history.state},'','/');
+    window.history.pushState({...window.history.state,karaokeView:true},'',url);
+    viewHistory.current=true;
+    if(dialog.current?.open)dialog.current.close();
+    dialog.current?.showModal();
+    setSelected(initialSong);
+  },[initialSong]);
   function rememberView() {
     if(viewHistory.current)return;
     window.history.pushState({...window.history.state,karaokeView:true},'',window.location.href);
@@ -83,11 +111,14 @@ export default function KaraokeApp({ group=null }) {
     return ()=>{document.removeEventListener('click',close);document.removeEventListener('keydown',escape);clearTimeout(toastTimer.current);};
   },[]);
   function openDetail(song) {
+    detailOrigin.current=window.location.pathname.startsWith('/songs/')?'/':window.location.pathname;
     rememberView();
+    window.history.replaceState({...window.history.state},'',songUrl(song));
     setSelected(song);
     if (dialog.current && !dialog.current.open) dialog.current.showModal();
   }
   function closeDetail() {
+    window.history.replaceState({...window.history.state},'',detailOrigin.current);
     setSelected(null);
     if (dialog.current?.open) dialog.current.close();
   }
@@ -139,7 +170,7 @@ export default function KaraokeApp({ group=null }) {
       </section>
     </main>
     <footer className="site-footer"><div className="footer-main"><Link href="/" className="footer-brand"><span className="footer-logo"><Microphone/></span><span><strong>KARAOKE HUB</strong><small>Дуугаа хай → Кодоо ол → Дуул</small></span></Link><a className="footer-contact" href="tel:99551199"><Icon name="phone"/><span><small>Холбоо барих</small><strong>9955 1199</strong></span><Icon name="arrow"/></a></div><nav className="footer-links" aria-label="Доод хэсгийн холбоос"><Link href="/hit-songs">Хит дуунууд</Link><Link href="/new-songs">Шинэ дуунууд</Link><Link href="/favorites">Дуртай дуунууд</Link></nav><div className="footer-bottom"><span>© {new Date().getFullYear()} Karaoke Hub</span><Link href="/image-credits">Зургийн эх сурвалж</Link></div></footer>
-    <dialog ref={dialog} aria-labelledby="detailTitle" onClose={()=>{if(!dialog.current?.open)setSelected(null);}} onCancel={event=>{event.preventDefault();closeDetail();}} onClick={e=>{if(e.target===dialog.current){const b=dialog.current.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)closeDetail();}}}><button className="detail-close" onClick={closeDetail} aria-label="Дэлгэрэнгүйг хаах"><Icon name="arrow-left"/> Буцах</button>{selected&&<><div className="detail-summary"><Artwork song={selected} detailed/><div className="detail-heading"><h2 id="detailTitle">{selected.title}</h2><p className="detail-artist">{selected.artist}</p></div></div><Codes song={selected} copy={copy} detailed/><PhotoCredit song={selected}/>{selected.language&&<dl className="detail-meta"><div><dt>Хэл</dt><dd>{selected.language}</dd></div></dl>}<Banner detailed/></>}<div key={`detail-${toastId}`} className="detail-toast copy-notice" role="status" aria-live="polite" hidden={!toast}><Icon name={toast.includes('Хадгалсан')||toast.includes('хадгаллаа')?'heart':toast.includes('Хуулагдсан')?'check':'close'}/><span>{toast}</span></div></dialog>
+    <dialog ref={dialog} open={initialSong?true:undefined} aria-labelledby="detailTitle" onClose={()=>{if(!dialog.current?.open)setSelected(null);}} onCancel={event=>{event.preventDefault();closeDetail();}} onClick={e=>{if(e.target===dialog.current){const b=dialog.current.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)closeDetail();}}}><button className="detail-close" onClick={closeDetail} aria-label="Дэлгэрэнгүйг хаах"><Icon name="arrow-left"/> Буцах</button>{selected&&<><div className="detail-summary"><Artwork song={selected} detailed/><div className="detail-heading"><h2 id="detailTitle">{selected.title}</h2><p className="detail-artist">{selected.artist}</p></div></div><Codes song={selected} copy={copy} detailed/><PhotoCredit song={selected}/>{selected.language&&<dl className="detail-meta"><div><dt>Хэл</dt><dd>{selected.language}</dd></div></dl>}<Banner detailed/></>}<div key={`detail-${toastId}`} className="detail-toast copy-notice" role="status" aria-live="polite" hidden={!toast}><Icon name={toast.includes('Хадгалсан')||toast.includes('хадгаллаа')?'heart':toast.includes('Хуулагдсан')?'check':'close'}/><span>{toast}</span></div></dialog>
     <div key={`page-${toastId}`} className="toast copy-notice" role="status" aria-live="polite" hidden={!toast||!!selected}><Icon name={toast.includes('Хадгалсан')||toast.includes('хадгаллаа')?'heart':toast.includes('Хуулагдсан')?'check':'close'}/><span>{toast}</span></div>
     <Script src="/_vercel/insights/script.js" strategy="afterInteractive"/>
   </div>;
