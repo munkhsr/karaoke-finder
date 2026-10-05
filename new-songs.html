@@ -4,53 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#070a10">
-  <meta name="description" content="Караоке дууны хоёр төрлийн код, дууны нэр, дуучнаар хялбар хайх үйлчилгээ.">
-  <title>Karaoke Hub — Шинэ дуу</title>
+  <meta name="description" content="Дуу, дуучин эсвэл кодоор хай. Караоке дууны кодоо хурдан ол.">
+  <title>Karaoke Hub — Шинэ дуунууд</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body data-song-group="new">
-  <div class="glow-bg"></div>
   <header class="site-header">
-    <nav class="navbar" aria-label="Үндсэн цэс">
-      <a class="nav-brand" href="index.html" aria-label="Karaoke Hub нүүр хуудас"><i class="fa-solid fa-microphone-lines"></i><span>Karaoke Hub</span></a>
-      <div class="nav-links">
-        <a href="new-songs.html" data-song-filter="new">Шинэ дуу</a>
-        <a href="hit-songs.html" data-song-filter="hit">Хит дуу</a>
-      </div>
-    </nav>
+    <a class="nav-brand" href="index.html"><span class="brand-icon"><svg viewBox="0 0 36 48" fill="none" aria-hidden="true"><g transform="rotate(24 18 22)" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="18" height="28" rx="9"/><path d="M10 9h16M9 14h18M9 19h18M11 24h14M13 30v14h10V30M17 44v3"/><path d="m11 5 14 8m-15 2 15 8m-13-2 12 7" opacity=".6"/></g></svg></span><span><strong><span class="brand-gradient">KARAOKE</span> HUB</strong><small>Дуугаа хай. Кодоо ол. Дуул.</small></span></a>
+    <a class="header-back" href="index.html" aria-label="Нүүр хуудас">←</a>
+    <details class="site-menu">
+      <summary aria-label="Үндсэн цэс"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 5h18M3 12h18M3 19h18"/></svg></summary>
+      <nav aria-label="Үндсэн цэс" class="menu-panel">
+        <a href="index.html">Нүүр хуудас</a>
+        <a href="hit-songs.html">🔥 Хит дуунууд</a>
+        <a href="new-songs.html">✦ Шинэ дуунууд</a>
+      </nav>
+    </details>
   </header>
-  <div class="page-content">
-    <main class="container">
-      <section class="card" aria-labelledby="pageTitle">
-        <a class="back-home" href="index.html"><span aria-hidden="true">←</span> Нүүр хуудас руу буцах</a>
-        <div class="header"><i class="fa-solid fa-microphone-lines logo-icon" aria-hidden="true"></i><h1 id="pageTitle">Шинэ дуу</h1></div>
-        <div class="search-box">
-          <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-          <input type="search" id="searchInput" placeholder="Дуу, дуучин эсвэл код..." aria-label="Дуу хайх" aria-describedby="searchHint" autocomplete="off" enterkeyhint="search" spellcheck="false">
-        </div>
-        <p class="search-hint" id="searchHint">Кирилл болон латин үсгээр хайж болно.</p>
-        <div class="table-container">
-          <table id="songTable" role="table" aria-labelledby="pageTitle">
-            <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Код 1</th><th scope="col" role="columnheader">Код 2</th><th scope="col" role="columnheader">Дууны нэр</th><th scope="col" role="columnheader">Дуучин</th></tr></thead>
-            <tbody id="tableBody" role="rowgroup"></tbody>
-          </table>
-        </div>
-        <div class="card-footer"><span id="songCount">0 дуу</span></div>
-      </section>
-    </main>
-  </div>
-  <footer class="site-footer" id="contact">
-    <div class="footer-content">
-      <div class="footer-contact"><p><span>Холбоо барих:</span> <a href="tel:99551199">99551199</a></p></div>
-      <div class="social-links" aria-label="Сошиал холбоосууд"><a href="#facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div>
-      <p class="copyright">© 2026 Karaoke Hub. Бүх эрх хуулиар хамгаалагдсан.</p>
+  <main class="container">
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="hero-copy"><h1 id="pageTitle">Шинэ дуунууд</h1></div>
+
+    </section>
+    <div class="search-area">
+      <div class="search-box"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></svg><input type="search" id="searchInput" placeholder="Дуу, дуучин эсвэл код хайх…" aria-label="Дуу, дуучин эсвэл код хайх" aria-describedby="searchHint" autocomplete="off" enterkeyhint="search" spellcheck="false"><button id="clearSearch" type="button" aria-label="Хайлтыг цэвэрлэх" hidden>×</button></div>
+      <p id="searchHint" class="search-hint">Кирилл болон латин үсгээр хайж болно.</p>
     </div>
-  </footer>
-  <div class="banner-modal" id="bannerModal" role="dialog" aria-modal="true" aria-labelledby="bannerTitle" hidden>
-    <div class="banner-backdrop" data-close-banner></div>
-    <section class="banner-card"><button class="banner-close" type="button" aria-label="Баннер хаах" data-close-banner><i class="fa-solid fa-xmark"></i></button><div class="banner-content"><p class="banner-label">МЭДЭЭЛЭЛ</p><h2 id="bannerTitle">Таны рекламны орон зай</h2><p>Бидэнтэй холбоо барих бол 99551199 дугаарт холбогдоно уу.</p></div></section>
-  </div>
+    <nav class="quick-links" aria-label="Дууны сонголт"><a href="hit-songs.html" data-song-filter="hit"><span class="hit-icon" aria-hidden="true">🔥</span> Хит дуунууд</a><a href="new-songs.html" data-song-filter="new"><span class="new-icon" aria-hidden="true"><svg class="sparkles-icon" viewBox="0 0 28 28" fill="currentColor" aria-hidden="true"><path d="M17 3c1.1 6 3 7.9 9 9-6 1.1-7.9 3-9 9-1.1-6-3-7.9-9-9 6-1.1 7.9-3 9-9Z"/><path d="M6 1c.5 2.8 1.4 3.7 4.2 4.2C7.4 5.7 6.5 6.6 6 9.4 5.5 6.6 4.6 5.7 1.8 5.2 4.6 4.7 5.5 3.8 6 1Z"/><path d="M6 17c.6 3.4 1.7 4.5 5.1 5.1-3.4.6-4.5 1.7-5.1 5.1-.6-3.4-1.7-4.5-5.1-5.1C4.3 21.5 5.4 20.4 6 17Z"/></svg></span> Шинэ дуунууд</a></nav>
+<aside class="ad-banner reference-banner" aria-label="Загварын жишээ реклам"><span class="reference-frame"><img src="assets/design-reference.png" alt="Амттай хоол, сайхан дууны хамт — жишээ баннер" class="reference-image" width="1312" height="1199"></span></aside>
+    <section class="results-section" aria-labelledby="resultsTitle">
+      <div class="results-header"><h2 id="resultsTitle">Дуунууд</h2><span id="songCount" role="status" aria-live="polite"></span><a class="see-all" href="hit-songs.html">Бүгдийг харах ›</a></div>
+      <div class="search-tabs" role="group" aria-label="Хайх талбар"><button type="button" data-search-field="all" aria-pressed="true">Бүгд</button><button type="button" data-search-field="title" aria-pressed="false">Дууны нэр</button><button type="button" data-search-field="artist" aria-pressed="false">Дуучин</button><button type="button" data-search-field="code" aria-pressed="false">Код</button></div>
+      <div id="songResults" class="song-results"></div>
+      <button id="loadMore" type="button" class="load-more" hidden>Илүү олон дуу харах ↓</button>
+    </section>
+  </main>
+  <footer class="site-footer"><a href="tel:99551199">Холбоо барих · 99551199</a><p>© 2026 Karaoke Hub</p></footer>
+  <dialog id="songDetail" aria-labelledby="detailTitle"><button type="button" class="detail-close" aria-label="Дэлгэрэнгүйг хаах">← Буцах</button><div id="detailContent"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <script src="song-data.js"></script>
   <script src="song-data-extra.js"></script>
   <script src="song-data-extra-2.js"></script>
@@ -58,11 +49,7 @@
   <script src="song-data-extra-4.js"></script>
   <script src="song-selections.js"></script>
   <script src="script.js"></script>
-  <script>
-    window.va = window.va || function () {
-      (window.vaq = window.vaq || []).push(arguments);
-    };
-  </script>
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

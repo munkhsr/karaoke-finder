@@ -5,7 +5,7 @@ window.karaokeSelections = {
                     "code1":  "38146",
                     "code2":  "75226",
                     "title":  "BRATAN",
-                    "artist":  "Гангаа \u0026 Х.Лхагвасүрэн",
+                    "artist":  "Гангаа & Х.Лхагвасүрэн",
                     "year":  2026,
                     "source":  "gangaa"
                 },
@@ -13,7 +13,7 @@ window.karaokeSelections = {
                     "code1":  "38133",
                     "code2":  "75213",
                     "title":  "Хөх толботон",
-                    "artist":  "THUNDERZ \u0026 BLU \u0026 АЛТАН УРАГ",
+                    "artist":  "THUNDERZ & BLU & АЛТАН УРАГ",
                     "year":  2026,
                     "source":  "thunder-huh"
                 },
@@ -21,7 +21,7 @@ window.karaokeSelections = {
                     "code1":  "38132",
                     "code2":  "75212",
                     "title":  "Хаа холдох вэ",
-                    "artist":  "THUNDERZ \u0026 GANGBAY",
+                    "artist":  "THUNDERZ & GANGBAY",
                     "year":  2026,
                     "source":  "collab"
                 },
@@ -37,7 +37,7 @@ window.karaokeSelections = {
                     "code1":  "38097",
                     "code2":  "75177",
                     "title":  "Холын холоос",
-                    "artist":  "THUNDER",
+                    "artist":  "THUNDERZ",
                     "year":  2026,
                     "source":  "thunder"
                 },
@@ -45,7 +45,7 @@ window.karaokeSelections = {
                     "code1":  "38089",
                     "code2":  "75169",
                     "title":  "TENGRI",
-                    "artist":  "THUNDER \u0026 CLICK CLICK BOOM",
+                    "artist":  "THUNDERZ & CLICK CLICK BOOM",
                     "year":  2026,
                     "source":  "tengri"
                 },
@@ -53,7 +53,7 @@ window.karaokeSelections = {
                     "code1":  "38063",
                     "code2":  "75143",
                     "title":  "Мандан Бадраг",
-                    "artist":  "THUNDERZ \u0026 AYAS DAMDYN",
+                    "artist":  "THUNDERZ & AYAS DAMDYN",
                     "year":  2026,
                     "source":  "thunder"
                 },
@@ -85,7 +85,7 @@ window.karaokeSelections = {
                     "code1":  "38113",
                     "code2":  "75193",
                     "title":  "ЗУУНЫ ЗУГАА",
-                    "artist":  "GINJIN \u0026 113",
+                    "artist":  "GINJIN & 113",
                     "year":  2025,
                     "source":  "zuun"
                 },
@@ -93,7 +93,7 @@ window.karaokeSelections = {
                     "code1":  "38088",
                     "code2":  "75168",
                     "title":  "Rich Mongol",
-                    "artist":  "MAGGOD \u0026 CILI \u0026 GINJIN",
+                    "artist":  "MAGGOD & CILI & GINJIN",
                     "year":  2025,
                     "source":  "rich"
                 },
@@ -101,7 +101,7 @@ window.karaokeSelections = {
                     "code1":  "38056",
                     "code2":  "75136",
                     "title":  "200 хувь",
-                    "artist":  "GINJIN \u0026 \u0026 Эгшиглэн",
+                    "artist":  "GINJIN & & Эгшиглэн",
                     "year":  2025,
                     "source":  "ginjin-200"
                 },
@@ -133,7 +133,7 @@ window.karaokeSelections = {
                     "code1":  "37941",
                     "code2":  "75021",
                     "title":  "ХЭЭР МОРЬ",
-                    "artist":  "THUNDERZ \u0026 МОНЖИГО",
+                    "artist":  "THUNDERZ & МОНЖИГО",
                     "year":  2025,
                     "source":  "thunder"
                 },
@@ -157,7 +157,7 @@ window.karaokeSelections = {
                     "code1":  "37840",
                     "code2":  "74920",
                     "title":  "ГИНЖ",
-                    "artist":  "GANGBAY \u0026 SARYUNA \u0026 СҮМЭНХУАР",
+                    "artist":  "GANGBAY & SARYUNA & СҮМЭНХУАР",
                     "year":  2025,
                     "source":  "gangbay"
                 },
@@ -197,7 +197,7 @@ window.karaokeSelections = {
                     "code1":  "37744",
                     "code2":  "74824",
                     "title":  "IN DA HUREE",
-                    "artist":  "GINJIN \u0026 DESANT \u0026 BOOGII",
+                    "artist":  "GINJIN & DESANT & BOOGII",
                     "year":  2025,
                     "source":  "ginjin"
                 },
@@ -205,7 +205,7 @@ window.karaokeSelections = {
                     "code1":  "37727",
                     "code2":  "74807",
                     "title":  "ЦӨВҮҮН ЦАГ УСКД",
-                    "artist":  "GANGBAY \u0026 АЛТАНЖАРГАЛ",
+                    "artist":  "GANGBAY & АЛТАНЖАРГАЛ",
                     "year":  2025,
                     "source":  "gangbay"
                 },
@@ -221,7 +221,7 @@ window.karaokeSelections = {
                     "code1":  "37683",
                     "code2":  "74763",
                     "title":  "DAYGA",
-                    "artist":  "THUNDERZ \u0026 ЭНХБААТАР",
+                    "artist":  "THUNDERZ & ЭНХБААТАР",
                     "year":  2025,
                     "source":  "thunder"
                 },
@@ -229,7 +229,7 @@ window.karaokeSelections = {
                     "code1":  "37682",
                     "code2":  "74762",
                     "title":  "CHARISMA",
-                    "artist":  "GANGBAY \u0026 MINAYU",
+                    "artist":  "GANGBAY & MINAYU",
                     "year":  2025,
                     "source":  "gangbay"
                 },
@@ -237,7 +237,7 @@ window.karaokeSelections = {
                     "code1":  "37664",
                     "code2":  "74744",
                     "title":  "ХУВЬ ЗАЯА",
-                    "artist":  "GINJIN \u0026 BOOGII",
+                    "artist":  "GINJIN & BOOGII",
                     "year":  2025,
                     "source":  "ginjin"
                 },
@@ -253,7 +253,7 @@ window.karaokeSelections = {
                     "code1":  "38151",
                     "code2":  "75231",
                     "title":  "Жингүүдсэн пуужин",
-                    "artist":  "ROKITBAY",
+                    "artist":  "ROKIT BAY",
                     "year":  2024,
                     "source":  "rokit"
                 },
@@ -269,7 +269,7 @@ window.karaokeSelections = {
                     "code1":  "38028",
                     "code2":  "75108",
                     "title":  "TOGETHER",
-                    "artist":  "ЦЭЦЭ \u0026 DANDII",
+                    "artist":  "ЦЭЦЭ & DANDII",
                     "year":  2024,
                     "source":  "together"
                 },
@@ -277,7 +277,7 @@ window.karaokeSelections = {
                     "code1":  "38025",
                     "code2":  "75105",
                     "title":  "5AMINMYSOUL",
-                    "artist":  "Gangaa \u0026 Sai",
+                    "artist":  "Gangaa & Sai",
                     "year":  2024,
                     "source":  "gangaa"
                 },
@@ -285,7 +285,7 @@ window.karaokeSelections = {
                     "code1":  "37994",
                     "code2":  "75074",
                     "title":  "BLUESS",
-                    "artist":  "GANGAA \u0026 JAGYZE",
+                    "artist":  "GANGAA & JAGYZE",
                     "year":  2024,
                     "source":  "gangaa"
                 },
@@ -293,7 +293,7 @@ window.karaokeSelections = {
                     "code1":  "37836",
                     "code2":  "74916",
                     "title":  "KISS ME",
-                    "artist":  "THUNDERZ \u0026 НИНЖИН",
+                    "artist":  "THUNDERZ & НИНЖИН",
                     "year":  2024,
                     "source":  "thunder"
                 },
@@ -301,7 +301,7 @@ window.karaokeSelections = {
                     "code1":  "37684",
                     "code2":  "74764",
                     "title":  "PROMISE",
-                    "artist":  "GINJIN \u0026 MINJINSOR",
+                    "artist":  "GINJIN & MINJINSOR",
                     "year":  2024,
                     "source":  "promise"
                 },
@@ -333,7 +333,7 @@ window.karaokeSelections = {
                     "code1":  "37620",
                     "code2":  "74700",
                     "title":  "GOOD VIBES ONLY",
-                    "artist":  "MVCHI \u0026 BABYNNA",
+                    "artist":  "MVCHI & BABYNNA",
                     "year":  2024,
                     "source":  "mvchi"
                 },
@@ -365,7 +365,7 @@ window.karaokeSelections = {
                     "code1":  "37505",
                     "code2":  "74585",
                     "title":  "ҮҮЛЭН ЦООРХОЙН НАР",
-                    "artist":  "ROKITBAY",
+                    "artist":  "ROKIT BAY",
                     "year":  2024,
                     "source":  "rokit"
                 },
@@ -373,7 +373,7 @@ window.karaokeSelections = {
                     "code1":  "37464",
                     "code2":  "74544",
                     "title":  "HUMBLE",
-                    "artist":  "GINJIN \u0026 MANONTHEMOON",
+                    "artist":  "GINJIN & MAN ON THE MOON",
                     "year":  2024,
                     "source":  "humble"
                 },
@@ -381,7 +381,7 @@ window.karaokeSelections = {
                     "code1":  "37463",
                     "code2":  "74543",
                     "title":  "HAR BENZ",
-                    "artist":  "DESANT \u0026 THUNDERZ",
+                    "artist":  "DESANT & THUNDERZ",
                     "year":  2024,
                     "source":  "thunder"
                 },
@@ -389,7 +389,7 @@ window.karaokeSelections = {
                     "code1":  "37435",
                     "code2":  "74515",
                     "title":  "ГАЛЗУУ НОВШ",
-                    "artist":  "TRISHNA \u0026 ROKITBAY",
+                    "artist":  "TRISHNA & ROKIT BAY",
                     "year":  2024,
                     "source":  "rokit"
                 },
@@ -397,7 +397,7 @@ window.karaokeSelections = {
                     "code1":  "37360",
                     "code2":  "74401",
                     "title":  "BLAAVGAI",
-                    "artist":  "ROKITBAY",
+                    "artist":  "ROKIT BAY",
                     "year":  2024,
                     "source":  "rokit"
                 }
@@ -407,7 +407,7 @@ window.karaokeSelections = {
                     "code1":  "38146",
                     "code2":  "75226",
                     "title":  "BRATAN",
-                    "artist":  "Гангаа \u0026 Х.Лхагвасүрэн",
+                    "artist":  "Гангаа & Х.Лхагвасүрэн",
                     "source":  "daily"
                 },
                 {
@@ -435,28 +435,28 @@ window.karaokeSelections = {
                     "code1":  "37994",
                     "code2":  "75074",
                     "title":  "BLUESS",
-                    "artist":  "GANGAA \u0026 JAGYZE",
+                    "artist":  "GANGAA & JAGYZE",
                     "source":  "daily"
                 },
                 {
                     "code1":  "38025",
                     "code2":  "75105",
                     "title":  "5AMINMYSOUL",
-                    "artist":  "Gangaa \u0026 Sai",
+                    "artist":  "Gangaa & Sai",
                     "source":  "daily"
                 },
                 {
                     "code1":  "38132",
                     "code2":  "75212",
                     "title":  "Хаа холдох вэ",
-                    "artist":  "THUNDERZ \u0026 GANGBAY",
+                    "artist":  "THUNDERZ & GANGBAY",
                     "source":  "daily"
                 },
                 {
                     "code1":  "38088",
                     "code2":  "75168",
                     "title":  "Rich Mongol",
-                    "artist":  "MAGGOD \u0026 CILI \u0026 GINJIN",
+                    "artist":  "MAGGOD & CILI & GINJIN",
                     "source":  "apple"
                 },
                 {
@@ -477,7 +477,7 @@ window.karaokeSelections = {
                     "code1":  "37528",
                     "code2":  "74608",
                     "title":  "ГЭГЭЭ",
-                    "artist":  "SASH \u0026 VANDE",
+                    "artist":  "SASH & VANDE",
                     "source":  "apple"
                 },
                 {
@@ -519,7 +519,7 @@ window.karaokeSelections = {
                     "code1":  "",
                     "code2":  "72721",
                     "title":  "ҮҮЛЭН ДОМОГ",
-                    "artist":  "БОЛД.Д \u0026 ROKIT BAY",
+                    "artist":  "БОЛД.Д & ROKIT BAY",
                     "source":  "apple"
                 },
                 {
@@ -547,14 +547,14 @@ window.karaokeSelections = {
                     "code1":  "",
                     "code2":  "73295",
                     "title":  "ЭНЭ МӨЧ",
-                    "artist":  "GINJIN \u0026 MRS.M",
+                    "artist":  "GINJIN & MRS.M",
                     "source":  "apple"
                 },
                 {
                     "code1":  "37360",
                     "code2":  "74401",
                     "title":  "BLAAVGAI",
-                    "artist":  "ROKITBAY",
+                    "artist":  "ROKIT BAY",
                     "source":  "weekly"
                 },
                 {
@@ -568,14 +568,14 @@ window.karaokeSelections = {
                     "code1":  "",
                     "code2":  "73472",
                     "title":  "БОРОО",
-                    "artist":  "GINJIN \u0026 MRS.M",
+                    "artist":  "GINJIN & MRS.M",
                     "source":  "ginjin-hits"
                 },
                 {
                     "code1":  "",
                     "code2":  "72866",
                     "title":  "ГЭГЭЭН ЦАГААН ӨГЛӨӨ",
-                    "artist":  "OPOZIT ХАМТЛАГ \u0026 D45 ХАМТЛАГ",
+                    "artist":  "OPOZIT ХАМТЛАГ & D45 ХАМТЛАГ",
                     "source":  "apple"
                 },
                 {
@@ -694,7 +694,7 @@ window.karaokeSelections = {
                     "code1":  "",
                     "code2":  "72847",
                     "title":  "САНАХГҮЙ ЮМ БАЙНА",
-                    "artist":  "ТАТАР ХАМТЛАГ \u0026 УКА",
+                    "artist":  "ТАТАР ХАМТЛАГ & УКА",
                     "source":  "classic"
                 },
                 {

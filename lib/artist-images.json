@@ -1,0 +1,1397 @@
+[
+  {
+    "id": "naran",
+    "name": "НАРАН.С",
+    "aliases": [
+      "НАРАН.С",
+      "С.НАРАН",
+      "НАРАН",
+      "NARAN"
+    ],
+    "src": "/assets/artists/naran.png",
+    "source": "https://commons.wikimedia.org/wiki/File:Naran_Singer.png",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Naran_Singer.png",
+    "author": "Nikki Urtnasan",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Wikimedia 960px thumbnail; displayed with CSS object-fit crop. No other edits."
+  },
+  {
+    "id": "rokitbay",
+    "name": "ROKITBAY",
+    "aliases": [
+      "ROKITBAY",
+      "ROKIT BAY",
+      "РОКИТ БЭЙ",
+      "РОКИТБЭЙ"
+    ],
+    "src": "/assets/artists/rokitbay.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Rokitbay_1st_album_he_edit_himself_that_photo.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/9/98/Rokitbay_1st_album_he_edit_himself_that_photo.jpg",
+    "author": "Txmxxlxn",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "changes": "Wikimedia 960px thumbnail; displayed with CSS object-fit crop. No other edits."
+  },
+  {
+    "id": "javkhlan",
+    "name": "С. Жавхлан",
+    "aliases": [
+      "ЖАВХЛАН.С",
+      "С.ЖАВХЛАН"
+    ],
+    "src": "/assets/artists/javkhlan.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "boldbaatar",
+    "name": "Л. Болдбаатар",
+    "aliases": [
+      "БОЛДБААТАР.Л",
+      "Л.БОЛДБААТАР"
+    ],
+    "src": "/assets/artists/boldbaatar.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "chuluunchimeg",
+    "name": "Э. Чулуунчимэг",
+    "aliases": [
+      "ЧУЛУУНЧИМЭГ.Э",
+      "Э.ЧУЛУУНЧИМЭГ"
+    ],
+    "src": "/assets/artists/chuluunchimeg.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "ariunaa",
+    "name": "Т. Ариунаа",
+    "aliases": [
+      "АРИУНАА.Т",
+      "Т.АРИУНАА"
+    ],
+    "src": "/assets/artists/ariunaa.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "sarantuya",
+    "name": "Б. Сарантуяа",
+    "aliases": [
+      "САРАНТУЯА.Б",
+      "Б.САРАНТУЯА"
+    ],
+    "src": "/assets/artists/sarantuya.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "turmandakh",
+    "name": "Э. Төрмандах",
+    "aliases": [
+      "ТӨРМАНДАХ.Э",
+      "Э.ТӨРМАНДАХ"
+    ],
+    "src": "/assets/artists/turmandakh.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "lkhagvasuren",
+    "name": "Х. Лхагвасүрэн",
+    "aliases": [
+      "ЛХАГВАСҮРЭН.Х",
+      "Х.ЛХАГВАСҮРЭН"
+    ],
+    "src": "/assets/artists/lkhagvasuren.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "icetop",
+    "name": "Ice Top",
+    "aliases": [
+      "ICE TOP",
+      "ICE TOP ХАМТЛАГ",
+      "ICETOP ХАМТЛАГ",
+      "ICE TOP ХАТТЛАГ"
+    ],
+    "src": "/assets/artists/icetop.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "bayasgalan",
+    "name": "Т. Баясгалан",
+    "aliases": [
+      "БАЯСГАЛАН.Т",
+      "Т.БАЯСГАЛАН"
+    ],
+    "src": "/assets/artists/bayasgalan.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "bayandalai",
+    "name": "Б. Баяндалай",
+    "aliases": [
+      "БАЯНДАЛАЙ.Б",
+      "Б.БАЯНДАЛАЙ"
+    ],
+    "src": "/assets/artists/bayandalai.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "nomintalst",
+    "name": "Номин Талст",
+    "aliases": [
+      "НОМИН ТАЛСТ",
+      "НОМИН ТАЛСТ ХАМТЛАГ"
+    ],
+    "src": "/assets/artists/nomintalst.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "banzragch",
+    "name": "Л. Банзрагч",
+    "aliases": [
+      "БАНЗРАГЧ.Л",
+      "Л.БАНЗРАГЧ"
+    ],
+    "src": "/assets/artists/banzragch.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "batsukh",
+    "name": "С. Батсүх",
+    "aliases": [
+      "БАТСҮХ.С",
+      "С.БАТСҮХ"
+    ],
+    "src": "/assets/artists/batsukh.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "camerton",
+    "name": "Камертон",
+    "aliases": [
+      "КАМЕРТОН",
+      "КАМЕРТОН ХАМТЛАГ",
+      "CAMERTON"
+    ],
+    "src": "/assets/artists/camerton.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "ginjin",
+    "name": "Ginjin",
+    "aliases": [
+      "GINJIN"
+    ],
+    "src": "/assets/artists/ginjin.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "outlaw",
+    "name": "Outlaw",
+    "aliases": [
+      "OUTLAW",
+      "OUTLAW ХАМТЛАГ",
+      "OUTLAW ХАТТЛАГ"
+    ],
+    "src": "/assets/artists/outlaw.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "desant",
+    "name": "Desant",
+    "aliases": [
+      "DESANT"
+    ],
+    "src": "/assets/artists/desant.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "tsetse",
+    "name": "Цэцэ",
+    "aliases": [
+      "ЦЭЦЭ",
+      "TSETSE"
+    ],
+    "src": "/assets/artists/tsetse.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "mccollection",
+    "name": "MC Collection",
+    "aliases": [
+      "MC COLLECTION",
+      "MC COLLECTION ХАМТЛАГ",
+      "MC COLLECTION ХАТТЛАГ"
+    ],
+    "src": "/assets/artists/mccollection.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "gangbay",
+    "name": "Gangbay",
+    "aliases": [
+      "GANGBAY",
+      "GANGBAY ХАМТЛАГ"
+    ],
+    "src": "/assets/artists/gangbay.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "gangaa",
+    "name": "Гангаа",
+    "aliases": [
+      "GANGAA",
+      "ГАНГАА"
+    ],
+    "src": "/assets/artists/gangaa.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "haranga",
+    "name": "Харанга",
+    "aliases": [
+      "ХАРАНГА",
+      "ХАРАНГА ХАМТЛАГ",
+      "HARANGA",
+      "HARANGA ХАМТЛАГ"
+    ],
+    "src": "/assets/artists/haranga-user.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "thunderz",
+    "name": "ThunderZ",
+    "aliases": [
+      "THUNDERZ"
+    ],
+    "src": "/assets/artists/thunderz.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "sash",
+    "name": "Sash",
+    "aliases": [
+      "SASH"
+    ],
+    "src": "/assets/artists/sash.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "btamir",
+    "name": "Б. Тамир",
+    "aliases": [
+      "B.TAMIR",
+      "ТАМИР.Б",
+      "Б.ТАМИР"
+    ],
+    "src": "/assets/artists/btamir.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "hurd",
+    "name": "Хурд",
+    "aliases": [
+      "ХУРД ХАМТЛАГ",
+      "ХУРД",
+      "HURD",
+      "HURD ХАМТЛАГ"
+    ],
+    "src": "/assets/artists/hurd-user.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "vandebo",
+    "name": "Vandebo",
+    "aliases": [
+      "VANDEBO"
+    ],
+    "src": "/assets/artists/vandebo.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "lemons",
+    "name": "The Lemons",
+    "aliases": [
+      "LEMONS",
+      "LEMONS ХАМТЛАГ",
+      "THE LEMONS"
+    ],
+    "src": "/assets/artists/lemons.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "bold-d",
+    "name": "Д. Болд",
+    "aliases": [
+      "БОЛД.Д",
+      "Д.БОЛД"
+    ],
+    "src": "/assets/artists/bold-d.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "kiwi",
+    "name": "Киви",
+    "aliases": [
+      "КИВИ",
+      "КИВИ ХАМТЛАГ",
+      "KIWI"
+    ],
+    "src": "/assets/artists/kiwi.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "opozit",
+    "name": "Opozit",
+    "aliases": [
+      "OPOZIT",
+      "OPOZIT ХАМТЛАГ"
+    ],
+    "src": "/assets/artists/opozit.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "niciton",
+    "name": "Никитон",
+    "aliases": [
+      "НИКИТОН",
+      "НИКИТОН ХАМТЛАГ",
+      "NICITON"
+    ],
+    "src": "/assets/artists/niciton.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "tatar",
+    "name": "Татар",
+    "aliases": [
+      "ТАТАР",
+      "ТАТАР ХАМТЛАГ",
+      "TATAR"
+    ],
+    "src": "/assets/artists/tatar.webp",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "biggee",
+    "name": "Big Gee",
+    "aliases": [
+      "BIG GEE"
+    ],
+    "src": "/assets/artists/biggee.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "trishna",
+    "name": "Trishna",
+    "aliases": [
+      "TRISHNA"
+    ],
+    "src": "/assets/artists/trishna.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "quiza",
+    "name": "Quiza",
+    "aliases": [
+      "QUIZA"
+    ],
+    "src": "/assets/artists/quiza.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "bx",
+    "name": "BX",
+    "aliases": [
+      "BX"
+    ],
+    "src": "/assets/artists/bx.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "asound",
+    "name": "A Sound",
+    "aliases": [
+      "A SOUND",
+      "A SOUND ХАМТЛАГ"
+    ],
+    "src": "/assets/artists/asound.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "tumenulzii",
+    "name": "А. Түмэн-Өлзий",
+    "aliases": [
+      "ТҮМЭН-ӨЛЗИЙ.А",
+      "А.ТҮМЭН-ӨЛЗИЙ"
+    ],
+    "src": "/assets/artists/tumenulzii.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "khishigdalai",
+    "name": "А. Хишигдалай",
+    "aliases": [
+      "ХИШИГДАЛАЙ.А",
+      "А.ХИШИГДАЛАЙ"
+    ],
+    "src": "/assets/artists/khishigdalai.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "uka",
+    "name": "Ука",
+    "aliases": [
+      "УКА",
+      "UKA"
+    ],
+    "src": "/assets/artists/uka.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "batsaikhan-t",
+    "name": "Т. Батсайхан",
+    "aliases": [
+      "БАТСАЙХАН.Т",
+      "Т.БАТСАЙХАН"
+    ],
+    "src": "/assets/artists/batsaikhan-t.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "altantulkhuur",
+    "name": "Ч. Алтантүлхүүр",
+    "aliases": [
+      "АЛТАНТҮЛХҮҮР.Ч",
+      "Ч.АЛТАНТҮЛХҮҮР"
+    ],
+    "src": "/assets/artists/altantulkhuur.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "gerelchuluun",
+    "name": "Я. Гэрэлчулуун",
+    "aliases": [
+      "ГЭРЭЛЧУЛУУН.Я",
+      "Я.ГЭРЭЛЧУЛУУН"
+    ],
+    "src": "/assets/artists/gerelchuluun.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "jargalsaikhan-d",
+    "name": "Д. Жаргалсайхан",
+    "aliases": [
+      "ЖАРГАЛСАЙХАН.Д",
+      "Д.ЖАРГАЛСАЙХАН"
+    ],
+    "src": "/assets/artists/jargalsaikhan-d.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "acool",
+    "name": "A Cool",
+    "aliases": [
+      "A COOL",
+      "A-COOL"
+    ],
+    "src": "/assets/artists/acool.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "motiv",
+    "name": "Мотив",
+    "aliases": [
+      "МОТИВ",
+      "МОТИВ ХАМТЛАГ"
+    ],
+    "src": "/assets/artists/motiv.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "gurvanbuduun",
+    "name": "Гурван бүдүүн",
+    "aliases": [
+      "ГУРВАН БҮДҮҮН",
+      "ГУРВАН БҮДҮҮН ХАМТЛАГ",
+      "3 БҮДҮҮН"
+    ],
+    "src": "/assets/artists/gurvanbuduun.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "baterdene-ch",
+    "name": "Ч. Бат-Эрдэнэ",
+    "aliases": [
+      "БАТ-ЭРДЭНЭ.Ч",
+      "Ч.БАТ-ЭРДЭНЭ"
+    ],
+    "src": "/assets/artists/baterdene-ch.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "enkhzul-d",
+    "name": "Д. Энхзул",
+    "aliases": [
+      "ЭНХЗУЛ.Д",
+      "Д.ЭНХЗУЛ"
+    ],
+    "src": "/assets/artists/enkhzul-d.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "boldbaatar-b",
+    "name": "Б. Болдбаатар",
+    "aliases": [
+      "БОЛДБААТАР.Б",
+      "Б.БОЛДБААТАР"
+    ],
+    "src": "/assets/artists/boldbaatar-b.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "namsrainorov",
+    "name": "Д. Намсрайноров",
+    "aliases": [
+      "НАМСРАЙНОРОВ.Д",
+      "Д.НАМСРАЙНОРОВ"
+    ],
+    "src": "/assets/artists/namsrainorov.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "burmaa",
+    "name": "Д. Бурмаа",
+    "aliases": [
+      "БУРМАА.Д",
+      "Д.БУРМАА"
+    ],
+    "src": "/assets/artists/burmaa.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "delgermurun",
+    "name": "Т. Дэлгэрмөрөн",
+    "aliases": [
+      "ДЭЛГЭРМӨРӨН.Т",
+      "Т.ДЭЛГЭРМӨРӨН"
+    ],
+    "src": "/assets/artists/delgermurun.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "guys",
+    "name": "Guys",
+    "aliases": [
+      "GUYS",
+      "GUYS ХАМТЛАГ"
+    ],
+    "src": "/assets/artists/guys.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "ganzorig-s",
+    "name": "С. Ганзориг",
+    "aliases": [
+      "ГАНЗОРИГ.С",
+      "С. Ганзориг"
+    ],
+    "src": "/assets/artists/ganzorig-s.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "bichuu",
+    "name": "С. Бичүү",
+    "aliases": [
+      "БИЧҮҮ.С",
+      "С. Бичүү"
+    ],
+    "src": "/assets/artists/bichuu.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "delgermaa-r",
+    "name": "Р. Дэлгэрмаа",
+    "aliases": [
+      "ДЭЛГЭРМАА.Р",
+      "Р. Дэлгэрмаа"
+    ],
+    "src": "/assets/artists/delgermaa-r.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "3ohin",
+    "name": "3 охин",
+    "aliases": [
+      "3 ОХИН ХАМТЛАГ",
+      "3 охин"
+    ],
+    "src": "/assets/artists/3ohin.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "munguntsetseg",
+    "name": "Х. Мөнгөнцэцэг",
+    "aliases": [
+      "МӨНГӨНЦЭЦЭГ.Х",
+      "Х. Мөнгөнцэцэг"
+    ],
+    "src": "/assets/artists/munguntsetseg.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "serchmaa",
+    "name": "С. Сэрчмаа",
+    "aliases": [
+      "СЭРЧМАА.С",
+      "С. Сэрчмаа"
+    ],
+    "src": "/assets/artists/serchmaa.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "maaraa",
+    "name": "Маараа",
+    "aliases": [
+      "МААРАА",
+      "Маараа"
+    ],
+    "src": "/assets/artists/maaraa.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "batmend",
+    "name": "Х. Батмэнд",
+    "aliases": [
+      "БАТМЭНД.Х",
+      "Х. Батмэнд"
+    ],
+    "src": "/assets/artists/batmend.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "noyonbondgor",
+    "name": "Ноён Бондгор",
+    "aliases": [
+      "НОЁН БОНДГОР",
+      "Ноён Бондгор"
+    ],
+    "src": "/assets/artists/noyonbondgor.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "nmn",
+    "name": "NMN",
+    "aliases": [
+      "NMN",
+      "NMN"
+    ],
+    "src": "/assets/artists/nmn.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "dalantai",
+    "name": "У. Далантай",
+    "aliases": [
+      "ДАЛАНТАЙ.У",
+      "У. Далантай"
+    ],
+    "src": "/assets/artists/dalantai.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "batmunkh-yo",
+    "name": "Ё. Батмөнх",
+    "aliases": [
+      "БАТМӨНХ.Ё",
+      "Ё. Батмөнх"
+    ],
+    "src": "/assets/artists/batmunkh-yo.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "buyanjargal-b",
+    "name": "Б. Буянжаргал",
+    "aliases": [
+      "БУЯНЖАРГАЛ.Б",
+      "Б. Буянжаргал"
+    ],
+    "src": "/assets/artists/buyanjargal-b.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "otgongerel-m",
+    "name": "М. Отгонгэрэл",
+    "aliases": [
+      "ОТГОНГЭРЭЛ.М",
+      "М. Отгонгэрэл"
+    ],
+    "src": "/assets/artists/otgongerel-m.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "bayartsengel",
+    "name": "П. Баярцэнгэл",
+    "aliases": [
+      "БАЯРЦЭНГЭЛ.П",
+      "П. Баярцэнгэл"
+    ],
+    "src": "/assets/artists/bayartsengel.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "zorigt-s",
+    "name": "С. Зоригт",
+    "aliases": [
+      "ЗОРИГТ.С",
+      "С. Зоригт"
+    ],
+    "src": "/assets/artists/zorigt-s.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "mrsm",
+    "name": "Mrs.M",
+    "aliases": [
+      "MRS.M",
+      "Mrs.M"
+    ],
+    "src": "/assets/artists/mrsm.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "enkherdene-e",
+    "name": "Э. Энх-Эрдэнэ",
+    "aliases": [
+      "ЭНХ-ЭРДЭНЭ.Э",
+      "Э.ЭНХ-ЭРДЭНЭ"
+    ],
+    "src": "/assets/artists/enkherdene-e.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "enerel",
+    "name": "Энэрэл",
+    "aliases": [
+      "ЭНЭРЭЛ",
+      "ENEREL"
+    ],
+    "src": "/assets/artists/enerel.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "flash",
+    "name": "Flash хамтлаг",
+    "aliases": [
+      "FLASH",
+      "FLASH ХАМТЛАГ",
+      "FLASH ХАТТЛАГ"
+    ],
+    "src": "/assets/artists/flash.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "digital",
+    "name": "Дижитал",
+    "aliases": [
+      "ДИЖИТАЛ ХАМТЛАГ",
+      "Дижитал",
+      "DIGITAL ХАМТЛАГ",
+      "ДИЖИТАЛ"
+    ],
+    "src": "/assets/artists/digital.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "erdenetungalag",
+    "name": "Г. Эрдэнэтунгалаг",
+    "aliases": [
+      "ЭРДЭНЭТУНГАЛАГ.Г",
+      "Г. Эрдэнэтунгалаг"
+    ],
+    "src": "/assets/artists/erdenetungalag.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "bizyaa",
+    "name": "Ц. Бизъяа",
+    "aliases": [
+      "БИЗЪЯА.Ц",
+      "Ц. Бизъяа"
+    ],
+    "src": "/assets/artists/bizyaa.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "sync",
+    "name": "Sync",
+    "aliases": [
+      "SYNC ХАМТЛАГ",
+      "Sync",
+      "SYNC"
+    ],
+    "src": "/assets/artists/sync.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "naidandorj",
+    "name": "Д. Найдандорж",
+    "aliases": [
+      "НАЙДАНДОРЖ.Д",
+      "Д. Найдандорж"
+    ],
+    "src": "/assets/artists/naidandorj.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "iderjavkhlan",
+    "name": "П. Идэржавхлан",
+    "aliases": [
+      "ИДЭРЖАВХЛАН.П",
+      "П. Идэржавхлан"
+    ],
+    "src": "/assets/artists/iderjavkhlan.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "mungunshagai",
+    "name": "Н. Мөнгөншагай",
+    "aliases": [
+      "МӨНГӨНШАГАЙ.Н",
+      "Н. Мөнгөншагай"
+    ],
+    "src": "/assets/artists/mungunshagai.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "narantungalag",
+    "name": "С. Нарантунгалаг",
+    "aliases": [
+      "НАРАНТУНГАЛАГ.С",
+      "С. Нарантунгалаг"
+    ],
+    "src": "/assets/artists/narantungalag.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "beezy",
+    "name": "Beezy",
+    "aliases": [
+      "BEEZY",
+      "Beezy"
+    ],
+    "src": "/assets/artists/beezy.webp",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "bayartsetseg",
+    "name": "Б. Баярцэцэг",
+    "aliases": [
+      "БАЯРЦЭЦЭГ.Б",
+      "Б. Баярцэцэг"
+    ],
+    "src": "/assets/artists/bayartsetseg.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "gantulga-n",
+    "name": "Н. Гантулга",
+    "aliases": [
+      "ГАНТУЛГА.Н",
+      "Н. Гантулга"
+    ],
+    "src": "/assets/artists/gantulga-n.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "d45",
+    "name": "D45",
+    "aliases": [
+      "D45 ХАМТЛАГ",
+      "D45",
+      "D45"
+    ],
+    "src": "/assets/artists/d45.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "sorolt",
+    "name": "Л. Сөрөлт",
+    "aliases": [
+      "СӨРӨЛТ.Л",
+      "Л. Сөрөлт"
+    ],
+    "src": "/assets/artists/sorolt.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "tsovoo",
+    "name": "Д. Цовоо",
+    "aliases": [
+      "ЦОВОО.Д",
+      "Д. Цовоо"
+    ],
+    "src": "/assets/artists/tsovoo.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  },
+  {
+    "id": "davaidasha",
+    "name": "Davaidasha",
+    "aliases": [
+      "DAVAIDASHA",
+      "ДАВАЙДАША"
+    ],
+    "src": "/assets/artists/davaidasha.jpg",
+    "providedByUser": true,
+    "source": null,
+    "author": "Хэрэглэгчийн өгсөн зураг",
+    "license": null,
+    "licenseUrl": null,
+    "changes": "Original user-supplied image; CSS crop only."
+  }
+]
