@@ -1,3 +1,3 @@
 export default function robots() {
-  return { rules:{ userAgent:'*', allow:'/' } };
+  return { rules:{ userAgent:'*', allow:'/' }, sitemap:'https://www.karaokehub.mn/sitemap.xml' };
 }

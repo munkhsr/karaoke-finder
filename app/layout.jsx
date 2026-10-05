@@ -2,6 +2,8 @@ import './globals.css';
 import PromoBanner from '../components/PromoBanner';
 import InstallApp from '../components/InstallApp';
 export const metadata = {
+  metadataBase: new URL('https://www.karaokehub.mn'),
+  verification: { google:'vYJ8OHQNL6scqtTiMRVeI6Qbt8HUnCEy0T-mdvSM6Zs' },
   title: 'Караоке дууны код хайх — Karaoke Hub',
   description: 'Монгол караоке дууны кодыг дууны нэр, дуучин эсвэл кодоор хай. Хит болон шинэ дуунуудын Код 1, Код 2-ыг олж, хуулж, дуртай дуундаа хадгалаарай.',
   robots: { index:true, follow:true },
