@@ -1,5 +1,4 @@
 import './globals.css';
-import PromoBanner from '../components/PromoBanner';
 import InstallApp from '../components/InstallApp';
 export const metadata = {
   metadataBase: new URL('https://www.karaokehub.mn'),
@@ -12,5 +11,5 @@ export const metadata = {
 };
 export const viewport = { themeColor: '#050a11', width: 'device-width', initialScale: 1 };
 export default function RootLayout({ children }) {
-  return <html lang="mn"><body>{children}<PromoBanner/><InstallApp/></body></html>;
+  return <html lang="mn"><body>{children}<InstallApp/></body></html>;
 }

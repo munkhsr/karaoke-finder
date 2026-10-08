@@ -9,8 +9,8 @@ const selections=JSON.parse(await readFile(new URL('lib/selections.json',root),'
 const index=buildIndex(songs);
 test('migration preserves all original songs, alternate codes and selections',async()=>{
   const context=vm.createContext({window:{}});
-  for(const file of ['song-data.js','song-data-extra.js','song-data-extra-2.js','song-data-extra-3.js','song-data-extra-4.js','song-selections.js'])vm.runInContext(await readFile(new URL(file,root),'utf8'),context);
-  const original=vm.runInContext('[...window.karaokeSongs,...window.karaokeExtraSongs,...window.karaokeExtraSongs2,...window.karaokeExtraSongs3,...window.karaokeExtraSongs4]',context);
+  for(const file of ['song-data.js','song-data-extra.js','song-data-extra-2.js','song-data-extra-3.js','song-data-extra-4.js','song-data-extra-5.js','song-selections.js'])vm.runInContext(await readFile(new URL(file,root),'utf8'),context);
+  const original=vm.runInContext('[...window.karaokeSongs,...window.karaokeExtraSongs,...window.karaokeExtraSongs2,...window.karaokeExtraSongs3,...window.karaokeExtraSongs4,...window.karaokeExtraSongs5]',context);
   assert.deepEqual(songs,JSON.parse(JSON.stringify(original)));
   assert.deepEqual(selections,JSON.parse(JSON.stringify(context.window.karaokeSelections)));
   for(const group of ['hit','new'])assert.equal(selectGroup(songs,selections[group]).length,50);

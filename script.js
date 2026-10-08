@@ -1,4 +1,4 @@
-const songs = [...(window.karaokeSongs ?? []), ...(window.karaokeExtraSongs ?? []), ...(window.karaokeExtraSongs2 ?? []), ...(window.karaokeExtraSongs3 ?? []), ...(window.karaokeExtraSongs4 ?? [])];
+const songs = [...(window.karaokeSongs ?? []), ...(window.karaokeExtraSongs ?? []), ...(window.karaokeExtraSongs2 ?? []), ...(window.karaokeExtraSongs3 ?? []), ...(window.karaokeExtraSongs4 ?? []), ...(window.karaokeExtraSongs5 ?? [])];
 
 // Explicit, researched selections; see SONG-SELECTION-RESEARCH.md.
 const songGroups = window.karaokeSelections ?? { new: [], hit: [] };
