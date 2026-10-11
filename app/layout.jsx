@@ -1,5 +1,7 @@
 import './globals.css';
 import InstallApp from '../components/InstallApp';
+import Script from 'next/script';
+import { measurementId } from '../lib/analytics.mjs';
 export const metadata = {
   metadataBase: new URL('https://www.karaokehub.mn'),
   verification: { google:'vYJ8OHQNL6scqtTiMRVeI6Qbt8HUnCEy0T-mdvSM6Zs' },
@@ -11,5 +13,13 @@ export const metadata = {
 };
 export const viewport = { themeColor: '#050a11', width: 'device-width', initialScale: 1 };
 export default function RootLayout({ children }) {
-  return <html lang="mn"><body>{children}<InstallApp/></body></html>;
+  return <html lang="mn"><body>{children}<InstallApp/>
+    <Script id="google-analytics-init" strategy="afterInteractive">{`
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+      window.gtag('js', new Date());
+      window.gtag('config', '${measurementId}');
+    `}</Script>
+    <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive"/>
+  </body></html>;
 }

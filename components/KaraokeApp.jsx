@@ -11,6 +11,7 @@ import { Icon, Microphone, Sparkles } from './Icons';
 import { artistImage } from '../lib/artists.mjs';
 import { favoriteKey, restoreFavorites } from '../lib/favorites.mjs';
 import { songUrl } from '../lib/song-links.mjs';
+import { scheduleNoResults, trackCodeCopied } from '../lib/analytics.mjs';
 
 const index = buildIndex(catalogue);
 const groups = { hit: selectGroup(catalogue,selections.hit), new: selectGroup(catalogue,selections.new) };
@@ -30,7 +31,7 @@ function Banner({ detailed=false }) {
   return <aside className={`ad-banner reference-banner${detailed?' detail-banner':''}`} aria-label="Реклам"><span className="reference-frame"><img className="reference-image" src="/assets/design-reference.png" alt={detailed?'Good friends, great beer':'Амттай хоол, сайхан дууны хамт'} width="1312" height="1199"/></span><button className="banner-details-button" type="button" onClick={()=>window.dispatchEvent(new CustomEvent('karaoke-promo-open',{detail:{detailed}}))}>Дэлгэрэнгүй <Icon name="arrow-right"/></button></aside>;
 }
 function Codes({ song, copy, detailed=false }) {
-  return <div className="code-grid">{['code2','code1'].map((field,i)=><div className={`code-box${field==='code2'?' ky':''}`} key={field}><span className="code-label">Код {i+1}</span>{codes(song,field).length?codes(song,field).map(code=><button className="copy-button" type="button" key={code} aria-label={`Код ${i+1} ${code} хуулах`} onClick={()=>copy(String(code))}><span className="code-value">{code}</span><span className="copy-mark" aria-hidden="true"><Icon name="copy"/>{detailed&&<span>Хуулах</span>}</span></button>):<span className="missing-code">Байхгүй</span>}</div>)}</div>;
+  return <div className="code-grid">{['code2','code1'].map((field,i)=><div className={`code-box${field==='code2'?' ky':''}`} key={field}><span className="code-label">Код {i+1}</span>{codes(song,field).length?codes(song,field).map(code=><button className="copy-button" type="button" key={code} aria-label={`Код ${i+1} ${code} хуулах`} onClick={()=>copy(String(code), song, field)}><span className="code-value">{code}</span><span className="copy-mark" aria-hidden="true"><Icon name="copy"/>{detailed&&<span>Хуулах</span>}</span></button>):<span className="missing-code">Байхгүй</span>}</div>)}</div>;
 }
 function SongCard({ song, rank, saved, toggle, open, copy }) {
   function openFromCard(event) {
@@ -57,6 +58,12 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
     return search(source,index,query);
   },[group,home,query,favorites]);
   const visible=home?4:limit;
+
+  useEffect(()=>{
+    // A missing result in favorites or a curated list may still exist elsewhere.
+    const count=results.length || (group && query.trim() ? search(catalogue,index,query).length : 0);
+    return scheduleNoResults(query,count,group||'all');
+  },[query,results.length,group]);
 
   useEffect(()=>{
     let keyboardVisible=false;
@@ -131,11 +138,12 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
     notify(saved?'Хадгалсан дуунаас хаслаа':'Дуртай дуунд хадгаллаа');
   }
   function notify(message){setToast(message);setToastId(id=>id+1);clearTimeout(toastTimer.current);toastTimer.current=setTimeout(()=>setToast(''),2600);}
-  async function copy(code){
+  async function copy(code, song, field){
     try{
       if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(code);
       else{const focus=document.activeElement;const textarea=document.createElement('textarea');textarea.value=code;textarea.style.cssText='position:fixed;left:-9999px;top:0';(dialog.current.open?dialog.current:document.body).append(textarea);textarea.select();let ok;try{ok=document.execCommand('copy');}finally{textarea.remove();focus?.focus();}if(!ok)throw new Error('Clipboard unavailable');}
       notify(`${code} · Хуулагдсан`);
+      trackCodeCopied(song, code, field);
     }catch{notify('Хуулж чадсангүй. Кодоо гараар оруулна уу.');}
   }
   function changeQuery(value){if(value.trim())rememberView();setQuery(value);setLimit(40);}
