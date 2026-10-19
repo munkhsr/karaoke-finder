@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import catalogue from '../lib/catalogue.json';
 import selections from '../lib/selections.json';
-import { buildIndex, codes, search, selectGroup, songKey } from '../lib/search.mjs';
+import { buildIndex, codes, search, suggest, selectGroup, songKey } from '../lib/search.mjs';
 import { Icon, Microphone, Sparkles } from './Icons';
 import { artistImage } from '../lib/artists.mjs';
 import { favoriteKey, restoreFavorites } from '../lib/favorites.mjs';
@@ -57,6 +57,11 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
     const source=group==='favorites'?catalogue.filter(song=>favorites.includes(favoriteKey(song))):group?groups[group]:home?groups.hit:catalogue;
     return search(source,index,query);
   },[group,home,query,favorites]);
+  const suggestions=useMemo(()=>{
+    if(results.length||!query.trim())return [];
+    const source=group==='favorites'?catalogue.filter(song=>favorites.includes(favoriteKey(song))):group?groups[group]:catalogue;
+    return suggest(source,index,query);
+  },[results.length,query,group,favorites]);
   const visible=home?4:limit;
 
   useEffect(()=>{
@@ -176,6 +181,7 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
       {home&&<><nav className="quick-links" aria-label="Дууны сонголт"><Link href="/hit-songs"><span className="hit-icon" aria-hidden="true">🔥</span> Хит дуунууд</Link><Link href="/new-songs"><span className="new-icon"><Sparkles/></span> Шинэ дуунууд</Link></nav><p className="catalogue-description">Монгол караоке дууны кодыг нэр, дуучин эсвэл кодоор хайж олоорой.</p><Banner/></>}
       <section className="results-section" aria-labelledby="resultsTitle"><div className="results-header"><h2 id="resultsTitle">{group==='favorites'?'Дуртай дуунууд':query.trim()?'Хайлтын үр дүн':group==='new'?'Шинэ дуунууд':home?<><Icon name="crown" className="popular-icon"/>Эрэлттэй дуунууд</>:'Хит дуунууд'}</h2>{home?<Link className="see-all" href="/hit-songs"><span>Бүгдийг харах</span><Icon name="arrow"/></Link>:<span role="status" aria-live="polite">{results.length.toLocaleString('mn')} дуу</span>}</div>
         <div className="song-results">{results.slice(0,visible).map((song,i)=><SongCard key={songKey(song)} song={song} rank={home?i+1:null} saved={favorites.includes(favoriteKey(song))} toggle={toggle} open={openDetail} copy={copy}/>)}{!results.length&&<div className="empty-state"><strong>{group==='favorites'&&!favorites.length?'Хадгалсан дуу алга':'Илэрц олдсонгүй'}</strong>{group==='favorites'&&!favorites.length?'Дууны зүрхэн дээр дараад энд хадгалаарай.':'Дууны нэр, дуучин эсвэл кодоо өөрөөр бичиж үзээрэй.'}</div>}</div>
+        {!!suggestions.length&&<section aria-labelledby="suggestionsTitle"><h3 id="suggestionsTitle">Ойролцоо нэртэй дуунууд</h3><p className="search-hint">Та эдгээр дууг хайсан уу?</p><div className="song-results">{suggestions.map(song=><SongCard key={songKey(song)} song={song} saved={favorites.includes(favoriteKey(song))} toggle={toggle} open={openDetail} copy={copy}/>)}</div></section>}
         {!home&&results.length>limit&&<button className="load-more" onClick={()=>setLimit(n=>n+40)}>Илүү олон дуу харах ({Math.min(40,results.length-limit)}) ↓</button>}
       </section>
     </main>
