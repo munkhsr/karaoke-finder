@@ -11,7 +11,7 @@ import { Icon, Microphone, Sparkles } from './Icons';
 import { artistImage } from '../lib/artists.mjs';
 import { favoriteKey, restoreFavorites } from '../lib/favorites.mjs';
 import { songUrl } from '../lib/song-links.mjs';
-import { scheduleNoResults, trackCodeCopied } from '../lib/analytics.mjs';
+import { scheduleNoResults, scheduleSuccessfulSearch, trackCodeCopied } from '../lib/analytics.mjs';
 
 const index = buildIndex(catalogue);
 const groups = { hit: selectGroup(catalogue,selections.hit), new: selectGroup(catalogue,selections.new) };
@@ -62,7 +62,9 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
   useEffect(()=>{
     // A missing result in favorites or a curated list may still exist elsewhere.
     const count=results.length || (group && query.trim() ? search(catalogue,index,query).length : 0);
-    return scheduleNoResults(query,count,group||'all');
+    const cancelMissing = scheduleNoResults(query,count,group||'all');
+    const cancelSuccess = scheduleSuccessfulSearch(query,count,group||'all');
+    return () => { cancelMissing(); cancelSuccess(); };
   },[query,results.length,group]);
 
   useEffect(()=>{
