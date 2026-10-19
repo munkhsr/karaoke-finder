@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { measurementId, scheduleNoResults, trackCodeCopied, trackEvent } from '../lib/analytics.mjs';
+import { measurementId, scheduleNoResults, trackCodeCopied, trackEvent, trackSongCodeView } from '../lib/analytics.mjs';
 
 test('unfinished and successful searches do not produce missing-song events', t => {
   t.mock.timers.enable({ apis: ['setTimeout'] });
@@ -35,4 +35,20 @@ test('copied codes carry the song and the visible code label; analytics failure 
     assert.doesNotThrow(() => trackEvent('code_copied', {}));
   } finally { delete globalThis.window; }
   assert.doesNotThrow(() => trackEvent('code_copied', {}));
+});
+
+test('code views carry song identity and search context independently of copies',()=>{
+  globalThis.window={dataLayer:[]};
+  try {
+    const song={title:'108',artist:'BIG GEE'};
+    trackSongCodeView(song,'  Gee  ','all');
+    assert.deepEqual(Array.from(window.dataLayer[0]),['event','song_code_view',{
+      song_title:'108',artist:'BIG GEE',search_term:'Gee',search_scope:'all',send_to:measurementId,
+    }]);
+    trackSongCodeView(song);
+    assert.equal(window.dataLayer.length,2);
+    assert.equal(window.dataLayer[1][2].search_term,'');
+    window.gtag=()=>{throw new Error('blocked');};
+    assert.doesNotThrow(()=>trackSongCodeView(song));
+  } finally {delete globalThis.window;}
 });
