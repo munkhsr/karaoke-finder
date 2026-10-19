@@ -366,3 +366,20 @@ body:has(.karaoke-app.is-searching) .install-offer { display:none; }
 @media(prefers-reduced-motion:reduce) {
   .is-searching .song-card { animation:none; }
 }
+
+/* Gently reveal code details without delaying the content or copy controls. */
+@keyframes code-detail-enter {
+  from { opacity:0; transform:translateY(12px) scale(.985); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
+@keyframes code-backdrop-enter {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@media(prefers-reduced-motion:no-preference) {
+  .karaoke-app dialog[open] { animation:code-detail-enter 220ms cubic-bezier(.22,1,.36,1) both; }
+  .karaoke-app dialog[open]::backdrop { animation:code-backdrop-enter 180ms ease-out both; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .karaoke-app dialog[open],.karaoke-app dialog[open]::backdrop { animation:none; }
+}
