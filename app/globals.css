@@ -354,3 +354,15 @@ body:has(.install-offer) .toast.copy-notice { bottom:calc(106px + env(safe-area-
 .is-searching .view-code-button:active { background:none; box-shadow:none; color:#fff; }
 body:has(.karaoke-app.is-searching) .install-offer { display:none; }
 @media(max-width:360px) { .is-searching .song-card { grid-template-columns:52px minmax(0,1fr) 32px; gap:0 9px; padding:12px; }.is-searching .artist-avatar { width:52px; height:52px; } }
+
+/* Animate newly matched cards without delaying input or search. */
+@keyframes search-result-enter {
+  from { opacity:0; transform:translateY(4px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@media(prefers-reduced-motion:no-preference) {
+  .is-searching .song-card { animation:search-result-enter 180ms ease-out both; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .is-searching .song-card { animation:none; }
+}
