@@ -11,7 +11,7 @@ import { Icon, Microphone, Sparkles } from './Icons';
 import { artistImage } from '../lib/artists.mjs';
 import { favoriteKey, restoreFavorites } from '../lib/favorites.mjs';
 import { songUrl } from '../lib/song-links.mjs';
-import { scheduleNoResults, scheduleSuccessfulSearch, trackCodeCopied } from '../lib/analytics.mjs';
+import { scheduleNoResults, scheduleSuccessfulSearch, trackCodeCopied, trackSongCodeView } from '../lib/analytics.mjs';
 
 const index = buildIndex(catalogue);
 const groups = { hit: selectGroup(catalogue,selections.hit), new: selectGroup(catalogue,selections.new) };
@@ -38,7 +38,7 @@ function SongCard({ song, rank, saved, toggle, open, copy }) {
     if (event.target.closest('button, a')) return;
     open(song);
   }
-  return <article className="song-card" onClick={openFromCard}>{rank&&<span className="home-rank">{rank}</span>}<div className="song-heading"><Artwork song={song}/><div className="song-info"><h3><a className="song-title" href={songUrl(song)} onClick={event=>{if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();open(song);}} aria-label={`${song.title}, ${song.artist} — дэлгэрэнгүй харах`}>{song.title}</a></h3><p className="song-artist">Дуучин: {song.artist}</p></div></div><Codes song={song} copy={copy}/><button className="favorite-button" aria-pressed={saved} aria-label={saved?'Дуртай дуунаас хасах':'Дуртай дуунд хадгалах'} onClick={()=>toggle(song)}><Icon name="heart"/></button></article>;
+  return <article className="song-card" onClick={openFromCard}>{rank&&<span className="home-rank">{rank}</span>}<div className="song-heading"><Artwork song={song}/><div className="song-info"><h3><a className="song-title" href={songUrl(song)} onClick={event=>{if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();open(song);}} aria-label={`${song.title}, ${song.artist} — дэлгэрэнгүй харах`}>{song.title}</a></h3><p className="song-artist">Дуучин: {song.artist}</p></div></div>{!rank&&<button className="view-code-button" type="button" onClick={()=>open(song)} aria-label={`${song.title} — код харах`}>Код харах <Icon name="arrow"/></button>}<button className="favorite-button" aria-pressed={saved} aria-label={saved?'Дуртай дуунаас хасах':'Дуртай дуунд хадгалах'} onClick={()=>toggle(song)}><Icon name="heart"/></button></article>;
 }
 
 export default function KaraokeApp({ group=null, initialSong=null }) {
@@ -48,6 +48,7 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
   const [limit,setLimit]=useState(40);
   const [favorites,setFavorites]=useState([]);
   const [selected,setSelected]=useState(initialSong);
+  const trackedDetail=useRef(null);
   const detailOrigin=useRef('/');
   const [toast,setToast]=useState('');
   const [toastId,setToastId]=useState(0);
@@ -111,6 +112,13 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
     dialog.current?.showModal();
     setSelected(initialSong);
   },[initialSong]);
+  useEffect(()=>{
+    if(!selected){trackedDetail.current=null;return;}
+    if(dialog.current?.open&&trackedDetail.current!==selected){
+      trackedDetail.current=selected;
+      trackSongCodeView(selected,query,group||'all');
+    }
+  },[selected,query,group]);
   function rememberView() {
     if(viewHistory.current)return;
     window.history.pushState({...window.history.state,karaokeView:true},'',window.location.href);

@@ -54,3 +54,5 @@ Browser verification uses a stub for the external Google script so test activity
 The original `song-data*.js` and `song-selections.js` remain the source of truth. After editing them, run `npm run catalogue`; this also runs before production builds. `lib/catalogue.json` and `lib/selections.json` are generated from those sources.
 
 The root HTML/CSS/script files are retained as the previous static version. New design changes belong in the React components and `app/globals.css`.
+
+Code detail analytics: `song_code_view` fires once per opened detail (including direct song links), with `song_title`, `artist`, `search_term`, `search_scope`. Reopening counts again. This does not measure banner visibility. Register these event-scoped dimensions in GA4 to report their values; event counts appear independently. Search cards now show a compact Код харах action; actual codes and copying are available inside the dialog.
