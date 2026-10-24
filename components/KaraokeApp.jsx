@@ -40,14 +40,20 @@ function Banner({ detailed=false }) {
       cancel();
       if(visible&&!sent&&document.visibilityState==='visible')timer=setTimeout(()=>{
         if(!visible||document.visibilityState!=='visible')return;
-        sent=true;trackEvent('banner_impression',{banner_id:detailed?'code-detail':'home',banner_placement:detailed?'song_detail':'home'});
+        sent=true;trackEvent('banner_impression',{banner_id:detailed?'house-favorites':'house-advertise',banner_placement:detailed?'song_detail':'home',banner_kind:'house'});
       },1000);
     };
     const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting&&entries[0].intersectionRatio>=0.5;start();},{threshold:[0,0.5]});
     observer.observe(element);document.addEventListener('visibilitychange',start);
     return ()=>{cancel();observer.disconnect();document.removeEventListener('visibilitychange',start);};
   },[detailed]);
-  return <aside ref={ref} className={`ad-banner reference-banner${detailed?' detail-banner':''}`} aria-label="Реклам"><span className="reference-frame"><img className="reference-image" src="/assets/design-reference.png" alt={detailed?'Good friends, great beer':'Амттай хоол, сайхан дууны хамт'} width="1312" height="1199"/></span><button className="banner-details-button" type="button" onClick={()=>{trackEvent('banner_click',{banner_id:detailed?'code-detail':'home',banner_placement:detailed?'song_detail':'home'});window.dispatchEvent(new CustomEvent('karaoke-promo-open',{detail:{detailed}}));}}>Дэлгэрэнгүй <Icon name="arrow-right"/></button></aside>;
+  const onClick=()=>trackEvent('banner_click',{banner_id:detailed?'house-favorites':'house-advertise',banner_placement:detailed?'song_detail':'home',banner_kind:'house'});
+  return <aside ref={ref} className={`house-banner${detailed?' house-banner-favorites':''}`} aria-label={detailed?'Хадгалсан дуунуудын тухай':'Сурталчилгаа байршуулах'}>
+    <span className="house-banner-label">{detailed?'ДУРТАЙ ДУУНУУД':'ХАМТРАН АЖИЛЛАХ'}</span>
+    <h2>{detailed?'Дуртай дуугаа хадгалаарай':'Танай брэнд энд байрших боломжтой'}</h2>
+    <p>{detailed?'Зүрхэн дээр дараад дараагийн удаа хурдан олоорой.':'Караоке хэрэглэгчдэд сурталчилгаагаа хүргээрэй.'}</p>
+    {detailed?<Link className="house-banner-link" href="/favorites" onClick={onClick}>Хадгалсан дуунууд <Icon name="arrow-right"/></Link>:<a className="house-banner-link" href="tel:99551199" onClick={onClick}>Холбоо барих <Icon name="arrow-right"/></a>}
+  </aside>;
 }
 function Codes({ song, copy, detailed=false }) {
   return <div className="code-grid">{['code2','code1'].map((field,i)=><div className={`code-box${field==='code2'?' ky':''}`} key={field}><span className="code-label">Код {i+1}</span>{codes(song,field).length?codes(song,field).map(code=><button className="copy-button" type="button" key={code} aria-label={`Код ${i+1} ${code} хуулах`} onClick={()=>copy(String(code), song, field)}><span className="code-value">{code}</span><span className="copy-mark" aria-hidden="true"><Icon name="copy"/>{detailed&&<span>Хуулах</span>}</span></button>):<span className="missing-code">Байхгүй</span>}</div>)}</div>;
