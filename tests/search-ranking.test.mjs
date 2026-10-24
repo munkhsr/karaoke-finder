@@ -56,3 +56,8 @@ test('suggestions are limited, stable, and scoped to the supplied songs',()=>{
   assert.deepEqual(suggest(source,lookup,'bratann'),source.slice(0,6));
   assert.deepEqual(suggest(source.slice(8),lookup,'bratann'),source.slice(8));
 });
+
+test('closest whole title precedes a longer title for a misspelling',()=>{
+ const source=[{title:'ЧИ МИНИЙ АМЬДРАЛ',artist:'A'},{title:'АМЬДРАЛ',artist:'B'}];
+ assert.equal(suggest(source,buildIndex(source),'amdiral')[0],source[1]);
+});

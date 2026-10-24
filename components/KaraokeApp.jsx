@@ -6,15 +6,16 @@ import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import catalogue from '../lib/catalogue.json';
 import selections from '../lib/selections.json';
+import weeklyHits from '../lib/weekly-hits.json';
 import { buildIndex, codes, search, suggest, selectGroup, songKey } from '../lib/search.mjs';
 import { Icon, Microphone, Sparkles } from './Icons';
 import { artistImage } from '../lib/artists.mjs';
 import { favoriteKey, restoreFavorites } from '../lib/favorites.mjs';
 import { songUrl } from '../lib/song-links.mjs';
-import { scheduleNoResults, scheduleSuccessfulSearch, trackCodeCopied, trackSongCodeView } from '../lib/analytics.mjs';
+import { scheduleNoResults, scheduleSuccessfulSearch, trackCodeCopied, trackSongCodeView, trackEvent } from '../lib/analytics.mjs';
 
 const index = buildIndex(catalogue);
-const groups = { hit: selectGroup(catalogue,selections.hit), new: selectGroup(catalogue,selections.new) };
+const groups = { hit: selectGroup(catalogue,weeklyHits.hit.length?weeklyHits.hit:selections.hit), new: selectGroup(catalogue,selections.new) };
 
 function Artwork({ song, detailed=false }) {
   const artist = artistImage(song.artist);
@@ -28,7 +29,25 @@ function PhotoCredit({ song }) {
   return <p className="photo-credit">Зураг: <a href={artist.source} target="_blank" rel="noreferrer">{artist.author}</a> · {artist.licenseUrl?<a href={artist.licenseUrl} target="_blank" rel="noreferrer">{artist.license}</a>:artist.license}</p>;
 }
 function Banner({ detailed=false }) {
-  return <aside className={`ad-banner reference-banner${detailed?' detail-banner':''}`} aria-label="Реклам"><span className="reference-frame"><img className="reference-image" src="/assets/design-reference.png" alt={detailed?'Good friends, great beer':'Амттай хоол, сайхан дууны хамт'} width="1312" height="1199"/></span><button className="banner-details-button" type="button" onClick={()=>window.dispatchEvent(new CustomEvent('karaoke-promo-open',{detail:{detailed}}))}>Дэлгэрэнгүй <Icon name="arrow-right"/></button></aside>;
+  const ref=useRef(null);
+  useEffect(()=>{
+    const element=ref.current;
+    if(!element||!('IntersectionObserver' in window))return;
+    let timer, sent=false;
+    const cancel=()=>{clearTimeout(timer);timer=null;};
+    let visible=false;
+    const start=()=>{
+      cancel();
+      if(visible&&!sent&&document.visibilityState==='visible')timer=setTimeout(()=>{
+        if(!visible||document.visibilityState!=='visible')return;
+        sent=true;trackEvent('banner_impression',{banner_id:detailed?'code-detail':'home',banner_placement:detailed?'song_detail':'home'});
+      },1000);
+    };
+    const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting&&entries[0].intersectionRatio>=0.5;start();},{threshold:[0,0.5]});
+    observer.observe(element);document.addEventListener('visibilitychange',start);
+    return ()=>{cancel();observer.disconnect();document.removeEventListener('visibilitychange',start);};
+  },[detailed]);
+  return <aside ref={ref} className={`ad-banner reference-banner${detailed?' detail-banner':''}`} aria-label="Реклам"><span className="reference-frame"><img className="reference-image" src="/assets/design-reference.png" alt={detailed?'Good friends, great beer':'Амттай хоол, сайхан дууны хамт'} width="1312" height="1199"/></span><button className="banner-details-button" type="button" onClick={()=>{trackEvent('banner_click',{banner_id:detailed?'code-detail':'home',banner_placement:detailed?'song_detail':'home'});window.dispatchEvent(new CustomEvent('karaoke-promo-open',{detail:{detailed}}));}}>Дэлгэрэнгүй <Icon name="arrow-right"/></button></aside>;
 }
 function Codes({ song, copy, detailed=false }) {
   return <div className="code-grid">{['code2','code1'].map((field,i)=><div className={`code-box${field==='code2'?' ky':''}`} key={field}><span className="code-label">Код {i+1}</span>{codes(song,field).length?codes(song,field).map(code=><button className="copy-button" type="button" key={code} aria-label={`Код ${i+1} ${code} хуулах`} onClick={()=>copy(String(code), song, field)}><span className="code-value">{code}</span><span className="copy-mark" aria-hidden="true"><Icon name="copy"/>{detailed&&<span>Хуулах</span>}</span></button>):<span className="missing-code">Байхгүй</span>}</div>)}</div>;
@@ -45,6 +64,8 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
   const router=useRouter();
   const viewHistory=useRef(false);
   const [query,setQuery]=useState('');
+  const [allSongs,setAllSongs]=useState(false);
+  useEffect(()=>{const term=new URLSearchParams(window.location.search).get('q');if(term)setQuery(term);},[]);
   const [limit,setLimit]=useState(40);
   const [favorites,setFavorites]=useState([]);
   const [selected,setSelected]=useState(initialSong);
@@ -55,23 +76,23 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
   const dialog=useRef(null), menu=useRef(null), input=useRef(null), toastTimer=useRef(null);
   const home=!group&&!query.trim();
   const results=useMemo(()=>{
-    const source=group==='favorites'?catalogue.filter(song=>favorites.includes(favoriteKey(song))):group?groups[group]:home?groups.hit:catalogue;
+    const source=!allSongs&&group==='favorites'?catalogue.filter(song=>favorites.includes(favoriteKey(song))):group&&!allSongs?groups[group]:home?groups.hit:catalogue;
     return search(source,index,query);
-  },[group,home,query,favorites]);
+  },[group,home,query,favorites,allSongs]);
   const suggestions=useMemo(()=>{
     if(results.length||!query.trim())return [];
-    const source=group==='favorites'?catalogue.filter(song=>favorites.includes(favoriteKey(song))):group?groups[group]:catalogue;
+    const source=!allSongs&&group==='favorites'?catalogue.filter(song=>favorites.includes(favoriteKey(song))):group&&!allSongs?groups[group]:catalogue;
     return suggest(source,index,query);
-  },[results.length,query,group,favorites]);
+  },[results.length,query,group,favorites,allSongs]);
   const visible=home?4:limit;
 
   useEffect(()=>{
     // A missing result in favorites or a curated list may still exist elsewhere.
     const count=results.length || (group && query.trim() ? search(catalogue,index,query).length : 0);
-    const cancelMissing = scheduleNoResults(query,count,group||'all');
-    const cancelSuccess = scheduleSuccessfulSearch(query,count,group||'all');
+    const cancelMissing = scheduleNoResults(query,count,allSongs?'all':group||'all');
+    const cancelSuccess = scheduleSuccessfulSearch(query,count,allSongs?'all':group||'all');
     return () => { cancelMissing(); cancelSuccess(); };
-  },[query,results.length,group]);
+  },[query,results.length,group,allSongs]);
 
   useEffect(()=>{
     let keyboardVisible=false;
@@ -116,9 +137,9 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
     if(!selected){trackedDetail.current=null;return;}
     if(dialog.current?.open&&trackedDetail.current!==selected){
       trackedDetail.current=selected;
-      trackSongCodeView(selected,query,group||'all');
+      trackSongCodeView(selected,query,allSongs?'all':group||'all');
     }
-  },[selected,query,group]);
+  },[selected,query,group,allSongs]);
   function rememberView() {
     if(viewHistory.current)return;
     window.history.pushState({...window.history.state,karaokeView:true},'',window.location.href);
@@ -185,10 +206,10 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
     </header>
     <main className="container">
       {home&&<section className="hero" aria-labelledby="pageTitle"><div className="hero-copy"><h1 id="pageTitle">Дуртай дуугаа<br/>хурдан олоорой <span className="title-mic" aria-hidden="true">🎤</span></h1></div></section>}
-      <div className="search-area"><div className="search-box"><Icon name="search" className="search-icon"/><input ref={input} type="search" value={query} onChange={e=>changeQuery(e.target.value)} placeholder={group==='favorites'?'Хадгалсан дуу хайх…':group==='hit'?'Хит дуу хайх…':group==='new'?'Шинэ дуу хайх…':'Дуу, дуучин эсвэл код хайх…'} aria-label="Дуу, дуучин эсвэл код хайх" aria-describedby="searchHint" autoComplete="off" enterKeyHint="search" spellCheck={false}/>{query&&<button type="button" onClick={clear} aria-label="Хайлтыг цэвэрлэх"><Icon name="close"/></button>}</div><p id="searchHint" className="search-hint">Кирилл болон латин үсгээр хайж болно.</p></div>
+      <div className="search-area"><div className="search-box"><Icon name="search" className="search-icon"/><input ref={input} type="search" value={query} onChange={e=>changeQuery(e.target.value)} placeholder={allSongs?'Дуу, дуучин эсвэл код хайх…':group==='favorites'?'Хадгалсан дуу хайх…':group==='hit'?'Хит дуу хайх…':group==='new'?'Шинэ дуу хайх…':'Дуу, дуучин эсвэл код хайх…'} aria-label="Дуу, дуучин эсвэл код хайх" aria-describedby="searchHint" autoComplete="off" enterKeyHint="search" spellCheck={false}/>{query&&<button type="button" onClick={clear} aria-label="Хайлтыг цэвэрлэх"><Icon name="close"/></button>}</div><p id="searchHint" className="search-hint">Кирилл болон латин үсгээр хайж болно.</p></div>
       {home&&<><nav className="quick-links" aria-label="Дууны сонголт"><Link href="/hit-songs"><span className="hit-icon" aria-hidden="true">🔥</span> Хит дуунууд</Link><Link href="/new-songs"><span className="new-icon"><Sparkles/></span> Шинэ дуунууд</Link></nav><p className="catalogue-description">Монгол караоке дууны кодыг нэр, дуучин эсвэл кодоор хайж олоорой.</p><Banner/></>}
       <section className="results-section" aria-labelledby="resultsTitle"><div className="results-header"><h2 id="resultsTitle">{group==='favorites'?'Дуртай дуунууд':query.trim()?'Хайлтын үр дүн':group==='new'?'Шинэ дуунууд':home?<><Icon name="crown" className="popular-icon"/>Эрэлттэй дуунууд</>:'Хит дуунууд'}</h2>{home?<Link className="see-all" href="/hit-songs"><span>Бүгдийг харах</span><Icon name="arrow"/></Link>:<span role="status" aria-live="polite">{results.length.toLocaleString('mn')} дуу</span>}</div>
-        <div className="song-results">{results.slice(0,visible).map((song,i)=><SongCard key={songKey(song)} song={song} rank={home?i+1:null} saved={favorites.includes(favoriteKey(song))} toggle={toggle} open={openDetail} copy={copy}/>)}{!results.length&&<div className="empty-state"><strong>{group==='favorites'&&!favorites.length?'Хадгалсан дуу алга':'Илэрц олдсонгүй'}</strong>{group==='favorites'&&!favorites.length?'Дууны зүрхэн дээр дараад энд хадгалаарай.':'Дууны нэр, дуучин эсвэл кодоо өөрөөр бичиж үзээрэй.'}</div>}</div>
+        <div className="song-results">{results.slice(0,visible).map((song,i)=><SongCard key={songKey(song)} song={song} rank={home?i+1:null} saved={favorites.includes(favoriteKey(song))} toggle={toggle} open={openDetail} copy={copy}/>)}{!results.length&&<div className="empty-state"><strong>{group==='favorites'&&!favorites.length?'Хадгалсан дуу алга':group&&!allSongs?'Энэ жагсаалтад олдсонгүй':'Илэрц олдсонгүй'}</strong>{group==='favorites'&&!favorites.length?'Дууны зүрхэн дээр дараад энд хадгалаарай.':'Дууны нэр, дуучин эсвэл кодоо өөрөөр бичиж үзээрэй.'}{group&&!allSongs&&query.trim()&&<button className="load-more" onClick={()=>{setAllSongs(true);setLimit(40);input.current?.focus();}}>Бүх дуунаас хайх</button>}</div>}</div>
         {!!suggestions.length&&<section aria-labelledby="suggestionsTitle"><h3 id="suggestionsTitle">Ойролцоо нэртэй дуунууд</h3><p className="search-hint">Та эдгээр дууг хайсан уу?</p><div className="song-results">{suggestions.map(song=><SongCard key={songKey(song)} song={song} saved={favorites.includes(favoriteKey(song))} toggle={toggle} open={openDetail} copy={copy}/>)}</div></section>}
         {!home&&results.length>limit&&<button className="load-more" onClick={()=>setLimit(n=>n+40)}>Илүү олон дуу харах ({Math.min(40,results.length-limit)}) ↓</button>}
       </section>
