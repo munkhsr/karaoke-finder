@@ -383,3 +383,15 @@ body:has(.karaoke-app.is-searching) .install-offer { display:none; }
 @media(prefers-reduced-motion:reduce) {
   .karaoke-app dialog[open],.karaoke-app dialog[open]::backdrop { animation:none; }
 }
+
+/* House promotions occupy the existing banner placements. */
+.house-banner { position:relative; width:100%; box-sizing:border-box; margin:0 0 25px; padding:20px; overflow:hidden; border:1px solid #8152a166; border-radius:14px; background:radial-gradient(ellipse at top right,#7546a344,transparent 70%),#141323; text-align:left; }
+.house-banner-label { display:block; color:#c49aee; font-size:10px; font-weight:700; letter-spacing:1.2px; }
+.house-banner h2 { max-width:28ch; margin:9px 0 7px; color:#f6efff; font-size:20px; line-height:1.35; overflow-wrap:anywhere; }
+.house-banner p { margin:0 0 16px; color:#b6b2c6; font-size:13px; line-height:1.6; }
+.house-banner-link { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:44px; padding:0 16px; border:1px solid #b27cdb77; border-radius:10px; background:#8b45be; color:#fff; font-size:13px; font-weight:700; text-decoration:none; }
+.house-banner-link svg { width:17px; height:17px; flex-shrink:0; }
+.house-banner-link:hover { background:#9b53cc; }
+.house-banner-link:focus-visible { outline:2px solid #e1b8ff; outline-offset:4px; }
+.house-banner-favorites { margin:20px 0 0; }
+.house-banner-favorites h2 { font-size:18px; }
