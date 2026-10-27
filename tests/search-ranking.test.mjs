@@ -61,3 +61,35 @@ test('closest whole title precedes a longer title for a misspelling',()=>{
  const source=[{title:'ЧИ МИНИЙ АМЬДРАЛ',artist:'A'},{title:'АМЬДРАЛ',artist:'B'}];
  assert.equal(suggest(source,buildIndex(source),'amdiral')[0],source[1]);
 });
+
+test('GA4 artist spellings find canonical credits and collaborations without matching titles',()=>{
+  const kiwi=search(songs,index,'киви');
+  assert.ok(kiwi.length);
+  assert.deepEqual(search(songs,index,'Kiwi'),kiwi);
+  const namsrai=search(songs,index,'намсрайноров');
+  assert.ok(namsrai.length);
+  assert.deepEqual(search(songs,index,'Namsarnorow'),namsrai);
+  const source=[{title:'КИВИ',artist:'OTHER'},{title:'SONG',artist:'КИВИ ХАМТЛАГ'},{title:'DUET',artist:'БАЙДРАГ.Ц & КИВИ ХАМТЛАГ'}];
+  const lookup=buildIndex(source);
+  assert.deepEqual(search(source,lookup,'kiwi'),source.slice(1));
+  assert.deepEqual(search(source,lookup,'kiwi','title'),[]);
+  assert.deepEqual(search(source.slice(0,1),lookup,'kiwi'),[]);
+  assert.deepEqual(search(songs,index,'Magnet Brain'),[]);
+});
+
+test('numeric title words tolerate missing spaces and punctuation but digits remain exact',()=>{
+  const song={title:'1000 ШАЛТГААН',artist:'A',code1:'75166'};
+  const source=[song],lookup=buildIndex(source);
+  for(const q of ['1000шалтгаан','1000 shaltgaan','1000-шалтгаан','  1000   ШАЛТГААН  '])assert.deepEqual(search(source,lookup,q),source,q);
+  assert.deepEqual(suggest(source,lookup,'1000 shaltgaanн','title'),source);
+  assert.deepEqual(suggest(source,lookup,'1001 shaltgaann'),[]);
+  assert.deepEqual(suggest(source,lookup,'75167'),[]);
+});
+
+test('exact multi-word title wins over repeated partial words and exact artist',()=>{
+  const exact={title:'LOVE LOVE',artist:'B',code1:'12345'};
+  const source=[{title:'LOVE LOVE AGAIN',artist:'LOVE LOVE'},{title:'OTHER',artist:'LOVE LOVE'},exact];
+  const lookup=buildIndex(source);
+  assert.equal(search(source,lookup,'love love')[0],exact);
+  assert.equal(search(source,lookup,'12345')[0],exact);
+});
