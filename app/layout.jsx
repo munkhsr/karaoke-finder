@@ -1,5 +1,6 @@
 import './globals.css';
 import InstallApp from '../components/InstallApp';
+import PromoBanner from '../components/PromoBanner';
 import Script from 'next/script';
 import { measurementId } from '../lib/analytics.mjs';
 export const metadata = {
@@ -13,7 +14,7 @@ export const metadata = {
 };
 export const viewport = { themeColor: '#050a11', width: 'device-width', initialScale: 1 };
 export default function RootLayout({ children }) {
-  return <html lang="mn"><body>{children}<InstallApp/>
+  return <html lang="mn"><body>{children}<InstallApp/><PromoBanner/>
     <Script id="google-analytics-init" strategy="afterInteractive">{`
       window.dataLayer = window.dataLayer || [];
       window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
