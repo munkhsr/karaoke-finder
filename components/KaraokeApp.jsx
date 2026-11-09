@@ -8,7 +8,7 @@ import catalogue from '../lib/catalogue.json';
 import selections from '../lib/selections.json';
 import weeklyHits from '../lib/weekly-hits.json';
 import { buildIndex, codes, search, suggest, selectGroup, songKey } from '../lib/search.mjs';
-import { Icon, Microphone, Sparkles } from './Icons';
+import { Icon, Microphone } from './Icons';
 import { artistImage } from '../lib/artists.mjs';
 import { favoriteKey, restoreFavorites } from '../lib/favorites.mjs';
 import { songUrl } from '../lib/song-links.mjs';
@@ -203,7 +203,6 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
           {[
             { href:'/', label:'Нүүр хуудас', icon:<Icon name="home"/>, active:!group, tone:'home' },
             { href:'/hit-songs', label:'Хит дуунууд', icon:<Icon name="fire"/>, active:group==='hit', tone:'hit' },
-            { href:'/new-songs', label:'Шинэ дуунууд', icon:<Sparkles/>, active:group==='new', tone:'new' },
             { href:'/favorites', label:'Дуртай дуунууд', icon:<Icon name="heart"/>, active:group==='favorites', tone:'new' },
           ].map(item=><Link key={item.href} href={item.href} aria-current={item.active?'page':undefined} onClick={()=>{menu.current.open=false;if(item.href==='/'){changeQuery('');}}}>
             <span className={`menu-icon menu-icon-${item.tone}`} aria-hidden="true">{item.icon}</span>
@@ -214,7 +213,7 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
     </header>
     <main className="container">
       {home&&<section className="hero" aria-labelledby="pageTitle"><div className="hero-copy"><h1 id="pageTitle">Дуртай дуугаа<br/>хурдан олоорой <span className="title-mic" aria-hidden="true">🎤</span></h1></div></section>}
-      <div className="search-area"><div className="search-box"><Icon name="search" className="search-icon"/><input ref={input} type="search" value={query} onChange={e=>changeQuery(e.target.value)} placeholder={allSongs?'Дуу эсвэл дуучны нэрээр хайна уу…':group==='favorites'?'Хадгалсан дуу хайх…':group==='hit'?'Хит дуу хайх…':group==='new'?'Шинэ дуу хайх…':'Дуу эсвэл дуучны нэрээр хайна уу…'} aria-label="Дуу, дуучин эсвэл код хайх" aria-describedby="searchHint" autoComplete="off" enterKeyHint="search" spellCheck={false}/>{query&&<button type="button" onClick={clear} aria-label="Хайлтыг цэвэрлэх"><Icon name="close"/></button>}</div><p id="searchHint" className="search-hint">Кирилл болон латин үсгээр хайж болно.</p></div>
+      {group!=='hit'&&<div className="search-area"><div className="search-box"><Icon name="search" className="search-icon"/><input ref={input} type="search" value={query} onChange={e=>changeQuery(e.target.value)} placeholder={allSongs?'Дуу эсвэл дуучны нэрээр хайна уу…':group==='favorites'?'Хадгалсан дуу хайх…':group==='hit'?'Хит дуу хайх…':group==='new'?'Шинэ дуу хайх…':'Дуу эсвэл дуучны нэрээр хайна уу…'} aria-label="Дуу, дуучин эсвэл код хайх" aria-describedby="searchHint" autoComplete="off" enterKeyHint="search" spellCheck={false}/>{query&&<button type="button" onClick={clear} aria-label="Хайлтыг цэвэрлэх"><Icon name="close"/></button>}</div><p id="searchHint" className="search-hint">Кирилл болон латин үсгээр хайж болно.</p></div>}
       {home&&<Banner/>}
       <section className="results-section" aria-labelledby="resultsTitle"><div className="results-header"><h2 id="resultsTitle">{group==='favorites'?'Дуртай дуунууд':searchQuery.trim()?'Хайлтын үр дүн':group==='new'?'Шинэ дуунууд':home?<><Icon name="crown" className="popular-icon"/>Хит дуунууд</>:'Хит дуунууд'}</h2>{home?<Link className="see-all" href="/hit-songs"><span>Бүгдийг харах</span><Icon name="arrow"/></Link>:<span role="status" aria-live="polite">{results.length.toLocaleString('mn')} дуу</span>}</div>
         <div className="song-results">{results.slice(0,visible).map((song,i)=><SongCard key={songKey(song)} song={song} rank={home?i+1:null} saved={favorites.includes(favoriteKey(song))} toggle={toggle} open={openDetail} copy={copy}/>)}{!results.length&&<div className="empty-state"><strong>{group==='favorites'&&!favorites.length?'Хадгалсан дуу алга':group&&!allSongs?'Энэ жагсаалтад олдсонгүй':'Илэрц олдсонгүй'}</strong>{group==='favorites'&&!favorites.length?'Дууны зүрхэн дээр дараад энд хадгалаарай.':'Дууны нэр, дуучин эсвэл кодоо өөрөөр бичиж үзээрэй.'}{group&&!allSongs&&searchQuery.trim()&&<button className="load-more" onClick={()=>{setAllSongs(true);setLimit(40);input.current?.focus();}}>Бүх дуунаас хайх</button>}</div>}</div>
