@@ -284,6 +284,13 @@ dialog.promo-banner:focus { outline:none; }
 .install-dialog p { color:var(--muted); line-height:1.8; }
 .karaoke-app dialog .copy-mark,.karaoke-app dialog .ky .copy-mark { background:linear-gradient(135deg,#a34fea,#7935cb); color:#fff; border:1px solid #d49cff55; box-shadow:0 4px 14px #8d3fce25; }
 .karaoke-app dialog .copy-button:hover .copy-mark { background:linear-gradient(135deg,#b365f2,#8c43dc); }
+/* One save action per song replaces the per-code copy bars in the detail dialog. */
+.detail-save { display:flex; align-items:center; justify-content:center; gap:9px; width:100%; min-height:48px; margin-top:12px; border:1px solid #d49cff55; border-radius:11px; background:linear-gradient(135deg,#a34fea,#7935cb); box-shadow:0 4px 14px #8d3fce25; color:#fff; font-size:15px; font-weight:650; }
+.detail-save:hover { background:linear-gradient(135deg,#b365f2,#8c43dc); }
+.detail-save:focus-visible { outline:2px solid #e1b8ff; outline-offset:3px; }
+.detail-save svg { width:20px; height:20px; }
+.detail-save[aria-pressed="true"] { background:linear-gradient(135deg,#6b2a8f,#4a1f75); border-color:#ed36c588; }
+.detail-save[aria-pressed="true"] svg { fill:currentColor; color:#ff7ad9; }
 .copy-notice { display:flex; align-items:center; justify-content:center; gap:9px; border:1px solid #b878ef66; border-radius:14px; background:linear-gradient(120deg,#332044f5,#21142ff5); color:#efddff; box-shadow:0 8px 24px #0005; font-weight:550; animation:copy-notice-fade 2.6s ease both; }
 .copy-notice svg { display:block; flex-shrink:0; width:21px; height:21px; color:#cb91ff; }
 .toast.copy-notice { width:max-content; max-width:calc(100% - 32px); min-height:48px; padding:12px 18px; bottom:calc(20px + env(safe-area-inset-bottom)); z-index:8; border-radius:16px; background:linear-gradient(120deg,#352047,#241530); box-shadow:0 10px 32px #0008; pointer-events:none; }
