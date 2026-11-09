@@ -265,6 +265,9 @@ dialog.promo-banner:focus { outline:none; }
 .is-searching .nav-brand .brand-icon { width:32px; height:32px; flex-basis:32px; order:0; }
 .home-view .results-header h2 { display:flex; align-items:center; gap:8px; font-size:clamp(15px,4.5vw,19px); }
 .popular-icon { display:block; flex-shrink:0; width:23px; height:23px; color:#ffc64a; }
+/* The hit list has no search box, so its heading stays visible. */
+.karaoke-app[data-song-group="hit"] .results-header { position:static; width:auto; height:auto; overflow:visible; clip-path:none; margin:4px 0 14px; }
+.karaoke-app[data-song-group="hit"] .results-header h2 { display:flex; align-items:center; gap:8px; font-size:clamp(17px,5vw,21px); }
 .see-all { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; gap:7px; min-height:40px; padding:8px 12px; border:1px solid #8864b64d; border-radius:11px; background:linear-gradient(135deg,#241934,#141321); color:#e5d7f8; font-size:11px; font-weight:600; line-height:1; }
 .see-all svg { display:block; width:14px; height:14px; flex-shrink:0; color:#c28aff; }
 .see-all:hover { background:#2d1c40; border-color:#a16aff88; }
