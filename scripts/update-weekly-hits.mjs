@@ -1,5 +1,6 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {createSign} from 'node:crypto';
+import {rankWeeklyHits} from '../lib/weekly-ranking.mjs';
 const local=new Date(Date.now()+8*3600000).toISOString().slice(0,10);
 if(local<'2026-11-02') { console.log('Weekly ranking starts November 2, 2026.'); process.exit(0); }
 if(new Date(local+'T00:00:00Z').getUTCDay()!==1)throw new Error('Only Monday updates are permitted');
@@ -13,20 +14,20 @@ const auth=await fetch('https://oauth2.googleapis.com/token',{method:'POST',body
 if(!auth.ok)throw new Error('Google authentication failed');
 const {access_token}=await auth.json();
 const day=offset=>new Date(Date.parse(local+'T00:00:00Z')+offset*86400000).toISOString().slice(0,10);
-const response=await fetch('https://analyticsdata.googleapis.com/v1beta/properties/558397976:runReport',{method:'POST',headers:{Authorization:`Bearer ${access_token}`,'Content-Type':'application/json'},body:JSON.stringify({dateRanges:[{startDate:day(-7),endDate:day(-1)}],dimensions:[{name:'customEvent:song_title'}],metrics:[{name:'totalUsers'}],dimensionFilter:{filter:{fieldName:'eventName',stringFilter:{matchType:'EXACT',value:'song_code_view'}}},orderBys:[{metric:{metricName:'totalUsers'},desc:true}],limit:10000})});
-if(!response.ok)throw new Error('GA4 report failed; existing selections retained');
-const report=await response.json();
-if(report.dataLossFromOtherRow)throw new Error('Incomplete GA4 ranking; existing selections retained');
-const catalogue=JSON.parse(await readFile('lib/catalogue.json','utf8'));
-
-const ranked=[];
-for(const row of report.rows||[]) {
- const title=row.dimensionValues[0].value;
- const matches=catalogue.filter(song=>song.title.slice(0,100)===title);
- // Title-only analytics cannot safely identify songs with duplicate names.
- if(matches.length!==1)continue;
- if(Number(row.metricValues[0].value)>0)ranked.push(matches[0]);
+// Rank by code views. Use the artist dimension when it is registered in GA4
+// so songs sharing a title can be told apart; otherwise rank by title alone.
+async function report(dimensions) {
+  return fetch('https://analyticsdata.googleapis.com/v1beta/properties/558397976:runReport',{method:'POST',headers:{Authorization:`Bearer ${access_token}`,'Content-Type':'application/json'},body:JSON.stringify({dateRanges:[{startDate:day(-7),endDate:day(-1)}],dimensions:dimensions.map(name=>({name})),metrics:[{name:'eventCount'},{name:'totalUsers'}],dimensionFilter:{filter:{fieldName:'eventName',stringFilter:{matchType:'EXACT',value:'song_code_view'}}},orderBys:[{metric:{metricName:'eventCount'},desc:true}],limit:10000})});
 }
-if(ranked.length<50)throw new Error('Fewer than 50 unambiguous ranked songs; existing selections retained');
-await writeFile('lib/weekly-hits.json',JSON.stringify({updatedAt:local,startDate:day(-7),endDate:day(-1),hit:ranked.slice(0,50)},null,2)+'\n');
-console.log(`Updated 50 songs using ${day(-7)} through ${day(-1)}. Duplicate titles excluded.`);
+let response=await report(['customEvent:song_title','customEvent:artist']);
+const withArtist=response.ok;
+if(!withArtist&&response.status===400)response=await report(['customEvent:song_title']);
+if(!response.ok)throw new Error('GA4 report failed; existing selections retained');
+const data=await response.json();
+if(data.dataLossFromOtherRow)throw new Error('Incomplete GA4 ranking; existing selections retained');
+const catalogue=JSON.parse(await readFile('lib/catalogue.json','utf8'));
+const rows=(data.rows||[]).map(row=>({title:row.dimensionValues[0].value,artist:withArtist?row.dimensionValues[1].value:null,views:row.metricValues[0].value,users:row.metricValues[1].value}));
+let hit;
+try { hit=rankWeeklyHits(catalogue,rows); } catch(error) { throw new Error(`${error.message}; existing selections retained`); }
+await writeFile('lib/weekly-hits.json',JSON.stringify({updatedAt:local,startDate:day(-7),endDate:day(-1),hit},null,2)+'\n');
+console.log(`Updated ${hit.length} songs by code views, ${day(-7)} through ${day(-1)}${withArtist?'':' (title only; duplicate titles excluded)'}.`);

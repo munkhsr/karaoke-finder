@@ -43,6 +43,13 @@ After deploying, open Google Analytics → Reports → Realtime, search for an u
 
 Browser verification uses a stub for the external Google script so test activity is not sent to the production property.
 
+### Weekly hit songs
+
+Every Monday at 12:00 Ulaanbaatar time, `.github/workflows/weekly-hits.yml` runs `scripts/update-weekly-hits.mjs`, which writes the 33 songs with the most `song_code_view` events in the previous Monday–Sunday to `lib/weekly-hits.json` (ranking in `lib/weekly-ranking.mjs`). The homepage shows the first four as Хит дуунууд and `/hit-songs` shows all 33. If GA4 cannot be read or fewer than 33 songs can be identified, the previous list is kept.
+
+- The workflow needs the repository secret `GA4_SERVICE_ACCOUNT_JSON`: a Google Cloud service-account JSON key whose email has Viewer access to the GA4 property.
+- Songs are matched by `song_title`. Titles shared by several catalogue songs are skipped unless the `artist` event-scoped custom dimension is registered in GA4; once it is, the script uses it automatically.
+
 ## Files
 
 - `components/KaraokeApp.jsx`: search, menu, cards, favorites, clipboard and detail dialog.

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Icon } from './Icons';
+import { trackEvent } from '../lib/analytics.mjs';
 
 export default function PromoBanner() {
   const dialog = useRef(null);
@@ -22,9 +23,9 @@ export default function PromoBanner() {
     if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom) dialog.current.close();
   }}>
     <button className="promo-close" type="button" aria-label="Баннер хаах" onClick={()=>dialog.current.close()}><Icon name="close"/></button>
-    <div className="reference-banner promo-art"><span className="reference-frame"><img className="reference-image" src="/assets/design-reference.png" width="1312" height="1199" alt="Амттай хоол, сайхан дууны хамт"/></span></div>
-    <p className="promo-label">РЕКЛАМ</p>
-    <h2 id="bannerTitle">Амттай хоол, сайхан дууны хамт</h2>
-    <p>Бидэнтэй холбоо барих бол <a href="tel:99551199">99551199</a> дугаарт холбогдоно уу.</p>
+    <span className="promo-slot-badge">ЗАР</span>
+    <h2 id="bannerTitle">Танай бүтээгдэхүүн<br/>энд</h2>
+    <p>Караоке дуулахаар код хайж буй хэрэглэгчдэд брэнд, бүтээгдэхүүнээ хүргээрэй.</p>
+    <a className="promo-contact" href="tel:99551199" onClick={()=>trackEvent('banner_click',{banner_id:'house-advertise',banner_placement:'popup',banner_kind:'house'})}><Icon name="phone"/> Холбоо барих · 9955 1199</a>
   </dialog>;
 }
