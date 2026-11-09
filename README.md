@@ -30,7 +30,7 @@ npm start
 
 Vercel can detect this project as Next.js. Build command: `npm run build`; leave the output directory at its framework default. This migration does not publish or change the existing deployment.
 
-Routes: `/`, `/hit-songs`, `/new-songs`. Old `/index.html`, `/hit-songs.html`, `/new-songs.html` URLs redirect to the corresponding new routes.
+Routes: `/`, `/hit-songs`, `/favorites`, `/songs/[slug]`. Old `/index.html` and `/hit-songs.html` URLs redirect to the corresponding new routes; the removed new songs list (`/new-songs`, `/new-songs.html`) redirects to `/`.
 
 ## Google Analytics
 
