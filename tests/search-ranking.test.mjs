@@ -61,3 +61,12 @@ test('closest whole title precedes a longer title for a misspelling',()=>{
  const source=[{title:'ЧИ МИНИЙ АМЬДРАЛ',artist:'A'},{title:'АМЬДРАЛ',artist:'B'}];
  assert.equal(suggest(source,buildIndex(source),'amdiral')[0],source[1]);
 });
+
+test('common Latin spellings find Cyrillic artist and song names',()=>{
+  const cases={kiwi:/КИВИ/,lumino:/ЛЮМИНО/,camerton:/КАМЕРТОН/,niciton:/НИКИТОН/,jawhlan:/ЖАВХЛАН/,shuwu:/ШУВУУ/,'rockit bay':/ROKIT BAY/};
+  for(const [query,pattern] of Object.entries(cases)) {
+    const results=search(songs,index,query);
+    assert.ok(results.length,query);
+    assert.match(`${results[0].title} ${results[0].artist}`,new RegExp(pattern.source,"i"),query);
+  }
+});
