@@ -1,1 +1,310 @@
-{"updatedAt":null,"hit":[]}
+{
+  "updatedAt": "2026-11-09",
+  "startDate": "2026-11-02",
+  "endDate": "2026-11-08",
+  "hit": [
+    {
+      "code1": "38146",
+      "code2": "75226",
+      "title": "BRATAN",
+      "artist": "Гангаа & Х.Лхагвасүрэн"
+    },
+    {
+      "code1": "",
+      "code2": "73089",
+      "title": "ИТГЭЛ ЮМ ШҮҮ",
+      "artist": "БОЛДБААТАР.Л",
+      "alternateCodes": {
+        "code1": [
+          "36011"
+        ]
+      }
+    },
+    {
+      "code1": "37629",
+      "code2": "74709",
+      "title": "ТҮҮНДЭЭ \"АМЬДРАЛ\" УСК ДУУ",
+      "artist": "MC COLLECTION"
+    },
+    {
+      "code1": "37996",
+      "code2": "75076",
+      "title": "DESTINY",
+      "artist": "GANGAA"
+    },
+    {
+      "code1": "",
+      "code2": "71184",
+      "title": "ҮРГЭЛЖ ХАМТДАА",
+      "artist": "ICE TOP ХАМТЛАГ & S AND I ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "31184"
+        ]
+      }
+    },
+    {
+      "code1": "37525",
+      "code2": "74605",
+      "title": "БОДЛЫН ГҮНЭЭС",
+      "artist": "MORNINGSTAR"
+    },
+    {
+      "code1": "37755",
+      "code2": "74835",
+      "title": "ХАРАНГА",
+      "artist": "GANGBAY"
+    },
+    {
+      "code1": "37808",
+      "code2": "74888",
+      "title": "ҮРГЭЛЖ ХАМТДАА 2",
+      "artist": "ICE TOP"
+    },
+    {
+      "code1": "",
+      "code2": "70127",
+      "title": "HOT LINE",
+      "artist": "КИВИ ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "30509"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71021",
+      "title": "ШҮРЭН БУГУЙВЧ УСК ДУУ",
+      "artist": "БАЯРЦЭЦЭГ.Б & АМАРАА SYNC ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "30370"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71032",
+      "title": "ЯНАГ ЦЭЦЭГ",
+      "artist": "НИКИТОН ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "30478"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "70588",
+      "title": "СҮҮЛИЙН УЯНГА",
+      "artist": "LEMONS ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "35019"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71322",
+      "title": "ХАЙР НЬ АРЫГ НЬ ДААНА",
+      "artist": "КИВИ ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "32600"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "70405",
+      "title": "ТОЛИН ХУЛ",
+      "artist": "ХАРАНГА ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "31057"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71349",
+      "title": "ЭНЭ БОЛ ДУРЛАЛ БИШ",
+      "artist": "ХАРАНГА ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "31349"
+        ]
+      }
+    },
+    {
+      "code1": "37650",
+      "code2": "74730",
+      "title": "3030",
+      "artist": "B.TAMIR"
+    },
+    {
+      "code1": "",
+      "code2": "70040",
+      "title": "ХАМГИЙН САЙХАН НЬ",
+      "artist": "OPOZIT ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "31775"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "70638",
+      "title": "ЧИ МИНЬ БАЙГАА БОЛОХООР",
+      "artist": "ХУРД ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "30655"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "72027",
+      "title": "БИ ЭР ХҮНД ХАЙРТАЙ \"ЖҮЖГИЙН ДУУ\"",
+      "artist": "ПОП ЭМЭГТЭЙ ДУУЧИД",
+      "alternateCodes": {
+        "code1": [
+          "32027"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "72721",
+      "title": "ҮҮЛЭН ДОМОГ",
+      "artist": "БОЛД.Д & ROKIT BAY",
+      "alternateCodes": {
+        "code1": [
+          "32721"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "72877",
+      "title": "ЭВДЭРХИЙ ХҮН",
+      "artist": "ROKIT BAY & УЯНГА",
+      "alternateCodes": {
+        "code1": [
+          "32877"
+        ]
+      }
+    },
+    {
+      "code1": "38088",
+      "code2": "75168",
+      "title": "Rich Mongol",
+      "artist": "MAGGOD & CILI & GINJIN"
+    },
+    {
+      "code1": "38025",
+      "code2": "75105",
+      "title": "5AMINMYSOUL",
+      "artist": "Gangaa & Sai"
+    },
+    {
+      "code1": "",
+      "code2": "70050",
+      "title": "ХОСУУДАД",
+      "artist": "TEEYO",
+      "alternateCodes": {
+        "code1": [
+          "31777"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71085",
+      "title": "ЭРХҮҮГИЙН ХАВАР",
+      "artist": "ЖАРГАЛСАЙХАН.Д",
+      "alternateCodes": {
+        "code1": [
+          "30643"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "70716",
+      "title": "ДӨРВӨН УЛИРАЛ ХОЁР АМРАГ",
+      "artist": "ЧИНГИС & МИНЖИНСОР.Э",
+      "alternateCodes": {
+        "code1": [
+          "30246"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "72297",
+      "title": "ХОЁР ХОЁРЫН ТАВ",
+      "artist": "ЭГШИГЛЭН",
+      "alternateCodes": {
+        "code1": [
+          "32297"
+        ]
+      }
+    },
+    {
+      "code1": "38132",
+      "code2": "75212",
+      "title": "Хаа холдох вэ",
+      "artist": "THUNDERZ & GANGBAY"
+    },
+    {
+      "code1": "",
+      "code2": "72003",
+      "title": "ЗУУН ХУВЬ",
+      "artist": "BX & ЭГШИГЛЭН",
+      "alternateCodes": {
+        "code1": [
+          "32003"
+        ]
+      }
+    },
+    {
+      "code1": "37994",
+      "code2": "75074",
+      "title": "BLUESS",
+      "artist": "GANGAA & JAGYZE"
+    },
+    {
+      "code1": "",
+      "code2": "70361",
+      "title": "НАМАЙГ ДАГААД ЦЭНГЭ",
+      "artist": "ЛЮМИНО ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "30645"
+        ]
+      }
+    },
+    {
+      "code1": "37360",
+      "code2": "74401",
+      "title": "BLAAVGAI",
+      "artist": "ROKIT BAY"
+    },
+    {
+      "code1": "",
+      "code2": "70565",
+      "title": "ҮГҮЙЛЭН САНАНА",
+      "artist": "ХАРАНГА ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "30940"
+        ]
+      }
+    }
+  ]
+}
