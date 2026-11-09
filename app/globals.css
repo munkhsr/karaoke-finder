@@ -227,11 +227,11 @@ body:has(dialog[open]) { overflow:hidden; }
 .detail-banner .banner-details-button { left:4.8%; bottom:7%; width:44%; height:29%; min-height:36px; padding:0 10px; gap:8px; font-size:12px; line-height:1; font-weight:700; }
 .detail-banner .banner-details-button svg { width:16px; height:16px; }
 .promo-art { margin:10px 0 22px; width:100%; }
-/* House ad slot shown in the popup until a paying advertiser replaces it. */
-.promo-slot { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; aspect-ratio:378 / 177; margin:10px 0 22px; padding:16px; box-sizing:border-box; border:2px dashed #a78bfa99; border-radius:14px; background:radial-gradient(circle at 15% 20%,#e65aff33,transparent 45%),radial-gradient(circle at 85% 80%,#50caff33,transparent 45%),#141323; }
-.promo-slot strong { color:#fff; font-size:22px; line-height:1.2; background:linear-gradient(90deg,#f0abfc,#7dd3fc); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-.promo-slot small { color:#b6b2c6; font-size:12px; }
-.promo-slot-badge { position:absolute; top:10px; left:10px; padding:2px 8px; border:1px solid #c49aee66; border-radius:999px; color:#c49aee; font-size:10px; font-weight:700; letter-spacing:.12em; }
+/* The whole popup is a house ad slot until a paying advertiser replaces it. */
+dialog.promo-banner { min-height:0; padding:64px 24px 28px; border:2px dashed #a78bfa99; background:radial-gradient(circle at 15% 15%,#e65aff33,transparent 45%),radial-gradient(circle at 85% 85%,#50caff33,transparent 45%),#141323; }
+dialog.promo-banner h2 { margin:0 0 14px; font-size:30px; line-height:1.2; background:linear-gradient(90deg,#f0abfc,#7dd3fc); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+dialog.promo-banner:focus { outline:none; }
+.promo-slot-badge { position:absolute; top:22px; left:20px; padding:3px 10px; border:1px solid #c49aee66; border-radius:999px; color:#c49aee; font-size:11px; font-weight:700; letter-spacing:.12em; }
 .promo-banner .promo-contact { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px; margin-top:6px; padding:0 18px; border:1px solid #b27cdb77; border-radius:10px; background:#8b45be; color:#fff; font-size:14px; font-weight:700; text-decoration:none; }
 .promo-banner .promo-contact:hover { background:#9b53cc; }
 .promo-banner .promo-contact:focus-visible { outline:2px solid #e1b8ff; outline-offset:4px; }

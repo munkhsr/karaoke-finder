@@ -23,13 +23,8 @@ export default function PromoBanner() {
     if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom) dialog.current.close();
   }}>
     <button className="promo-close" type="button" aria-label="Баннер хаах" onClick={()=>dialog.current.close()}><Icon name="close"/></button>
-    <div className="promo-slot" aria-hidden="true">
-      <span className="promo-slot-badge">ЗАР</span>
-      <strong>Танай бүтээгдэхүүн<br/>энд</strong>
-      <small>Баннер байршуулах орон зай</small>
-    </div>
-    <p className="promo-label">СУРТАЛЧИЛГААНЫ ОРОН ЗАЙ</p>
-    <h2 id="bannerTitle">Танай бүтээгдэхүүний орон зай</h2>
+    <span className="promo-slot-badge">ЗАР</span>
+    <h2 id="bannerTitle">Танай бүтээгдэхүүн<br/>энд</h2>
     <p>Караоке дуулахаар код хайж буй хэрэглэгчдэд брэнд, бүтээгдэхүүнээ хүргээрэй.</p>
     <a className="promo-contact" href="tel:99551199" onClick={()=>trackEvent('banner_click',{banner_id:'house-advertise',banner_placement:'popup',banner_kind:'house'})}><Icon name="phone"/> Холбоо барих · 9955 1199</a>
   </dialog>;
