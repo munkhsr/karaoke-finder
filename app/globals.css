@@ -101,6 +101,7 @@ h1 { margin:0; font-size:clamp(24px,8vw,32px); font-weight:750; line-height:1.12
 .is-searching .nav-brand small { display:none; }
 .is-searching .brand-icon { width:26px; height:36px; order:2; }
 .is-searching .search-area { margin-bottom:20px; }
+.home-view .search-area { margin-bottom:22px; }
 .empty-state { text-align:center; padding:42px 20px; color:var(--muted); border:1px dashed var(--border); border-radius:16px; grid-column:1 / -1; }
 .empty-state strong { display:block; color:#fff; margin-bottom:8px; }
 .load-more { display:block; margin:24px auto 0; padding:12px 24px; min-height:48px; border:1px solid #51516e; border-radius:12px; background:#171929; color:#fff; }
@@ -291,7 +292,6 @@ dialog.promo-banner:focus { outline:none; }
 .toast.copy-notice svg { width:20px; height:20px; padding:3px; box-sizing:content-box; border-radius:50%; background:#b878ef20; }
 @media(max-width:360px) { .toast.copy-notice { padding:11px 14px; gap:8px; } }
 .copy-notice { animation-timing-function:cubic-bezier(.22,1,.36,1); }
-.catalogue-description { margin:12px 0 20px; color:var(--muted); font-size:12px; line-height:1.6; }
 .site-footer { margin-top:32px; padding:24px 16px 16px; border:1px solid #ac71f224; border-radius:20px 20px 0 0; background:radial-gradient(ellipse at 0 0,#70369c18,transparent 70%),#0a101a; text-align:left; }
 .footer-main { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; }
 .footer-brand { display:flex; align-items:center; gap:10px; }
