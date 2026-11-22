@@ -3,7 +3,6 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import Script from 'next/script';
 import catalogue from '../lib/catalogue.json';
 import selections from '../lib/selections.json';
 import weeklyHits from '../lib/weekly-hits.json';
@@ -224,6 +223,5 @@ export default function KaraokeApp({ group=null, initialSong=null }) {
     <footer className="site-footer"><div className="footer-main"><Link href="/" className="footer-brand"><span className="footer-logo"><Microphone/></span><span><strong>KARAOKE HUB</strong><small>Дуугаа хай → Кодоо ол → Дуул</small></span></Link><a className="footer-contact" href="tel:99551199"><Icon name="phone"/><span><small>Холбоо барих</small><strong>9955 1199</strong></span><Icon name="arrow"/></a></div><nav className="footer-links" aria-label="Доод хэсгийн холбоос"><Link href="/hit-songs">Хит дуунууд</Link><Link href="/favorites">Дуртай дуунууд</Link></nav><div className="footer-bottom"><span>© {new Date().getFullYear()} Karaoke Hub</span><Link href="/image-credits">Зургийн эх сурвалж</Link></div></footer>
     <dialog ref={dialog} open={initialSong?true:undefined} aria-labelledby="detailTitle" onClose={()=>{if(!dialog.current?.open)setSelected(null);}} onCancel={event=>{event.preventDefault();closeDetail();}} onClick={e=>{if(e.target===dialog.current){const b=dialog.current.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)closeDetail();}}}><button className="detail-close" onClick={closeDetail} aria-label="Дэлгэрэнгүйг хаах"><Icon name="arrow-left"/> Буцах</button>{selected&&<><div className="detail-summary"><Artwork song={selected} detailed/><div className="detail-heading"><h2 id="detailTitle">{selected.title}</h2><p className="detail-artist">{selected.artist}</p></div></div><Codes song={selected} copy={copy} detailed/><button type="button" className="detail-save" aria-pressed={favorites.includes(favoriteKey(selected))} onClick={()=>toggle(selected)}><Icon name="heart"/>{favorites.includes(favoriteKey(selected))?'Хадгалсан':'Хадгалах'}</button><PhotoCredit song={selected}/>{selected.language&&<dl className="detail-meta"><div><dt>Хэл</dt><dd>{selected.language}</dd></div></dl>}<Banner detailed/></>}<div key={`detail-${toastId}`} className="detail-toast copy-notice" role="status" aria-live="polite" hidden={!toast}><Icon name={toast.includes('Хадгалсан')||toast.includes('хадгаллаа')?'heart':toast.includes('Хуулагдсан')?'check':'close'}/><span>{toast}</span></div></dialog>
     <div key={`page-${toastId}`} className="toast copy-notice" role="status" aria-live="polite" hidden={!toast||!!selected}><Icon name={toast.includes('Хадгалсан')||toast.includes('хадгаллаа')?'heart':toast.includes('Хуулагдсан')?'check':'close'}/><span>{toast}</span></div>
-    <Script src="/_vercel/insights/script.js" strategy="afterInteractive"/>
   </div>;
 }

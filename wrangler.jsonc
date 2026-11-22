@@ -1,0 +1,12 @@
+// Cloudflare Workers static assets: serves the static export written to out/
+// by `npm run build`. There is no Worker script; public/_redirects and
+// public/_headers are copied into out/ and applied by Cloudflare.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "karaoke-finder",
+  "compatibility_date": "2026-11-22",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

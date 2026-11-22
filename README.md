@@ -28,13 +28,15 @@ npm run build
 npm start
 ```
 
-Vercel can detect this project as Next.js. Build command: `npm run build`; leave the output directory at its framework default. This migration does not publish or change the existing deployment.
+The site is a static export (`output: 'export'`) hosted on Cloudflare Workers static assets (`wrangler.jsonc`, no Worker script). `npm run build` writes everything to `out/`, including one HTML page per song; `postbuild` (`scripts/prune-export.mjs`) then drops the per-song client navigation payloads, which are never requested, to stay well under the free plan's 20,000 files per deployment. `npm start` serves `out/` locally the same way (`scripts/serve-export.mjs`); `npx wrangler dev` runs it in Cloudflare's own runtime.
 
-Routes: `/`, `/hit-songs`, `/favorites`, `/songs/[slug]`. Old `/index.html` and `/hit-songs.html` URLs redirect to the corresponding new routes; the removed new songs list (`/new-songs`, `/new-songs.html`) redirects to `/`.
+Cloudflare Workers Builds settings: build command `npm run build`, deploy command `npx wrangler deploy`. Every push to `main`, including the weekly hit songs commit, rebuilds and deploys the site.
+
+Routes: `/`, `/hit-songs`, `/favorites`, `/songs/[slug]`. Redirects live in `public/_redirects`: old `/index.html` and `/hit-songs.html` URLs go to the corresponding routes, and the removed new songs list (`/new-songs`, `/new-songs.html`) goes to `/`. Cache headers live in `public/_headers`.
 
 ## Google Analytics
 
-GA4 is configured for `G-1PHTLHG65N` in `lib/analytics.mjs` and loads once from the root layout. Vercel Web Analytics remains enabled separately.
+GA4 is configured for `G-1PHTLHG65N` in `lib/analytics.mjs` and loads once from the root layout.
 
 - `search_no_results`: sent after 1.5 seconds without typing, for a search of at least two characters that has no match anywhere in the catalogue. Parameters: `search_term`, `search_scope`.
 - `code_copied`: sent only after a successful clipboard copy, with `song_title`, `artist`, `karaoke_code`, and `code_type` (the visible Код 1/Код 2 label).
