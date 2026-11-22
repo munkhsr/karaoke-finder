@@ -28,9 +28,9 @@ npm run build
 npm start
 ```
 
-The site is a static export (`output: 'export'`) hosted on Cloudflare Pages. `npm run build` writes everything to `out/`, including one HTML page per song; `postbuild` (`scripts/prune-export.mjs`) then drops the per-song client navigation payloads, which are never requested, to stay well under the free plan's 20,000 files per deployment. `npm start` serves `out/` locally the way Pages does (`scripts/serve-export.mjs`).
+The site is a static export (`output: 'export'`) hosted on Cloudflare Workers static assets (`wrangler.jsonc`, no Worker script). `npm run build` writes everything to `out/`, including one HTML page per song; `postbuild` (`scripts/prune-export.mjs`) then drops the per-song client navigation payloads, which are never requested, to stay well under the free plan's 20,000 files per deployment. `npm start` serves `out/` locally the same way (`scripts/serve-export.mjs`); `npx wrangler dev` runs it in Cloudflare's own runtime.
 
-Cloudflare Pages project settings: framework preset **None**, build command `npm run build`, build output directory `out`, environment variable `NODE_VERSION=22`. Every push to `main`, including the weekly hit songs commit, rebuilds the site.
+Cloudflare Workers Builds settings: build command `npm run build`, deploy command `npx wrangler deploy`. Every push to `main`, including the weekly hit songs commit, rebuilds and deploys the site.
 
 Routes: `/`, `/hit-songs`, `/favorites`, `/songs/[slug]`. Redirects live in `public/_redirects`: old `/index.html` and `/hit-songs.html` URLs go to the corresponding routes, and the removed new songs list (`/new-songs`, `/new-songs.html`) goes to `/`. Cache headers live in `public/_headers`.
 
