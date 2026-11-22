@@ -4,6 +4,9 @@ import { useEffect, useRef } from 'react';
 import { Icon } from './Icons';
 import { trackEvent } from '../lib/analytics.mjs';
 
+// Temporarily off: set to true to open the popup on the homepage again.
+const PROMO_ENABLED = false;
+
 export default function PromoBanner() {
   const dialog = useRef(null);
   useEffect(() => {
@@ -14,7 +17,7 @@ export default function PromoBanner() {
       }
     };
     window.addEventListener('karaoke-promo-open',open);
-    if (window.location.pathname === '/') open();
+    if (PROMO_ENABLED && window.location.pathname === '/') open();
     return () => {window.removeEventListener('karaoke-promo-open',open);dialog.current?.close();};
   }, []);
   return <dialog className="promo-banner" ref={dialog} tabIndex={-1} aria-labelledby="bannerTitle" onClick={event=>{
