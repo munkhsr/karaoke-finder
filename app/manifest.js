@@ -1,3 +1,5 @@
+// Generated once at build time for the static export.
+export const dynamic = 'force-static';
 export default function manifest() {
   return {
     name:'Karaoke Hub', short_name:'Karaoke Hub',

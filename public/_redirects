@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects (replaces the former next.config redirects).
+/index.html      /           301
+/hit-songs.html  /hit-songs  301
+# The new songs list was removed; send old links to the homepage.
+/new-songs.html  /           301
+/new-songs       /           301

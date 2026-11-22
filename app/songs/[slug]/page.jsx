@@ -3,8 +3,10 @@ import catalogue from '../../../lib/catalogue.json';
 import { songSlug, songUrl } from '../../../lib/song-links.mjs';
 import KaraokeApp from '../../../components/KaraokeApp';
 
-export async function generateStaticParams() { return []; }
 const songs=new Map(catalogue.map(song=>[songSlug(song),song]));
+// Every song page is written at build time; unknown slugs get the static 404 page.
+export const dynamicParams=false;
+export async function generateStaticParams() { return [...songs.keys()].map(slug=>({slug})); }
 export async function generateMetadata({params}) {
   const song=songs.get((await params).slug);
   if(!song)return {};
