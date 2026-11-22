@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-09",
-  "startDate": "2026-11-02",
-  "endDate": "2026-11-08",
+  "updatedAt": "2026-11-16",
+  "startDate": "2026-11-09",
+  "endDate": "2026-11-15",
   "hit": [
     {
       "code1": "38146",
@@ -21,12 +21,6 @@
       }
     },
     {
-      "code1": "37629",
-      "code2": "74709",
-      "title": "ТҮҮНДЭЭ \"АМЬДРАЛ\" УСК ДУУ",
-      "artist": "MC COLLECTION"
-    },
-    {
       "code1": "37996",
       "code2": "75076",
       "title": "DESTINY",
@@ -44,22 +38,16 @@
       }
     },
     {
+      "code1": "37629",
+      "code2": "74709",
+      "title": "ТҮҮНДЭЭ \"АМЬДРАЛ\" УСК ДУУ",
+      "artist": "MC COLLECTION"
+    },
+    {
       "code1": "37525",
       "code2": "74605",
       "title": "БОДЛЫН ГҮНЭЭС",
       "artist": "MORNINGSTAR"
-    },
-    {
-      "code1": "37755",
-      "code2": "74835",
-      "title": "ХАРАНГА",
-      "artist": "GANGBAY"
-    },
-    {
-      "code1": "37808",
-      "code2": "74888",
-      "title": "ҮРГЭЛЖ ХАМТДАА 2",
-      "artist": "ICE TOP"
     },
     {
       "code1": "",
@@ -84,37 +72,10 @@
       }
     },
     {
-      "code1": "",
-      "code2": "71032",
-      "title": "ЯНАГ ЦЭЦЭГ",
-      "artist": "НИКИТОН ХАМТЛАГ",
-      "alternateCodes": {
-        "code1": [
-          "30478"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "70588",
-      "title": "СҮҮЛИЙН УЯНГА",
-      "artist": "LEMONS ХАМТЛАГ",
-      "alternateCodes": {
-        "code1": [
-          "35019"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "71322",
-      "title": "ХАЙР НЬ АРЫГ НЬ ДААНА",
-      "artist": "КИВИ ХАМТЛАГ",
-      "alternateCodes": {
-        "code1": [
-          "32600"
-        ]
-      }
+      "code1": "38025",
+      "code2": "75105",
+      "title": "5AMINMYSOUL",
+      "artist": "Gangaa & Sai"
     },
     {
       "code1": "",
@@ -139,129 +100,6 @@
       }
     },
     {
-      "code1": "37650",
-      "code2": "74730",
-      "title": "3030",
-      "artist": "B.TAMIR"
-    },
-    {
-      "code1": "",
-      "code2": "70040",
-      "title": "ХАМГИЙН САЙХАН НЬ",
-      "artist": "OPOZIT ХАМТЛАГ",
-      "alternateCodes": {
-        "code1": [
-          "31775"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "70638",
-      "title": "ЧИ МИНЬ БАЙГАА БОЛОХООР",
-      "artist": "ХУРД ХАМТЛАГ",
-      "alternateCodes": {
-        "code1": [
-          "30655"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "72027",
-      "title": "БИ ЭР ХҮНД ХАЙРТАЙ \"ЖҮЖГИЙН ДУУ\"",
-      "artist": "ПОП ЭМЭГТЭЙ ДУУЧИД",
-      "alternateCodes": {
-        "code1": [
-          "32027"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "72721",
-      "title": "ҮҮЛЭН ДОМОГ",
-      "artist": "БОЛД.Д & ROKIT BAY",
-      "alternateCodes": {
-        "code1": [
-          "32721"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "72877",
-      "title": "ЭВДЭРХИЙ ХҮН",
-      "artist": "ROKIT BAY & УЯНГА",
-      "alternateCodes": {
-        "code1": [
-          "32877"
-        ]
-      }
-    },
-    {
-      "code1": "38088",
-      "code2": "75168",
-      "title": "Rich Mongol",
-      "artist": "MAGGOD & CILI & GINJIN"
-    },
-    {
-      "code1": "38025",
-      "code2": "75105",
-      "title": "5AMINMYSOUL",
-      "artist": "Gangaa & Sai"
-    },
-    {
-      "code1": "",
-      "code2": "70050",
-      "title": "ХОСУУДАД",
-      "artist": "TEEYO",
-      "alternateCodes": {
-        "code1": [
-          "31777"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "71085",
-      "title": "ЭРХҮҮГИЙН ХАВАР",
-      "artist": "ЖАРГАЛСАЙХАН.Д",
-      "alternateCodes": {
-        "code1": [
-          "30643"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "70716",
-      "title": "ДӨРВӨН УЛИРАЛ ХОЁР АМРАГ",
-      "artist": "ЧИНГИС & МИНЖИНСОР.Э",
-      "alternateCodes": {
-        "code1": [
-          "30246"
-        ]
-      }
-    },
-    {
-      "code1": "",
-      "code2": "72297",
-      "title": "ХОЁР ХОЁРЫН ТАВ",
-      "artist": "ЭГШИГЛЭН",
-      "alternateCodes": {
-        "code1": [
-          "32297"
-        ]
-      }
-    },
-    {
-      "code1": "38132",
-      "code2": "75212",
-      "title": "Хаа холдох вэ",
-      "artist": "THUNDERZ & GANGBAY"
-    },
-    {
       "code1": "",
       "code2": "72003",
       "title": "ЗУУН ХУВЬ",
@@ -280,6 +118,50 @@
     },
     {
       "code1": "",
+      "code2": "70716",
+      "title": "ДӨРВӨН УЛИРАЛ ХОЁР АМРАГ",
+      "artist": "ЧИНГИС & МИНЖИНСОР.Э",
+      "alternateCodes": {
+        "code1": [
+          "30246"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71085",
+      "title": "ЭРХҮҮГИЙН ХАВАР",
+      "artist": "ЖАРГАЛСАЙХАН.Д",
+      "alternateCodes": {
+        "code1": [
+          "30643"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "70040",
+      "title": "ХАМГИЙН САЙХАН НЬ",
+      "artist": "OPOZIT ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "31775"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "72297",
+      "title": "ХОЁР ХОЁРЫН ТАВ",
+      "artist": "ЭГШИГЛЭН",
+      "alternateCodes": {
+        "code1": [
+          "32297"
+        ]
+      }
+    },
+    {
+      "code1": "",
       "code2": "70361",
       "title": "НАМАЙГ ДАГААД ЦЭНГЭ",
       "artist": "ЛЮМИНО ХАМТЛАГ",
@@ -290,19 +172,152 @@
       }
     },
     {
-      "code1": "37360",
-      "code2": "74401",
-      "title": "BLAAVGAI",
-      "artist": "ROKIT BAY"
+      "code1": "",
+      "code2": "71032",
+      "title": "ЯНАГ ЦЭЦЭГ",
+      "artist": "НИКИТОН ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "30478"
+        ]
+      }
     },
     {
       "code1": "",
-      "code2": "70565",
-      "title": "ҮГҮЙЛЭН САНАНА",
-      "artist": "ХАРАНГА ХАМТЛАГ",
+      "code2": "70050",
+      "title": "ХОСУУДАД",
+      "artist": "TEEYO",
       "alternateCodes": {
         "code1": [
-          "30940"
+          "31777"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "72877",
+      "title": "ЭВДЭРХИЙ ХҮН",
+      "artist": "ROKIT BAY & УЯНГА",
+      "alternateCodes": {
+        "code1": [
+          "32877"
+        ]
+      }
+    },
+    {
+      "code1": "37650",
+      "code2": "74730",
+      "title": "3030",
+      "artist": "B.TAMIR"
+    },
+    {
+      "code1": "",
+      "code2": "72027",
+      "title": "БИ ЭР ХҮНД ХАЙРТАЙ \"ЖҮЖГИЙН ДУУ\"",
+      "artist": "ПОП ЭМЭГТЭЙ ДУУЧИД",
+      "alternateCodes": {
+        "code1": [
+          "32027"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "70588",
+      "title": "СҮҮЛИЙН УЯНГА",
+      "artist": "LEMONS ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "35019"
+        ]
+      }
+    },
+    {
+      "code1": "37808",
+      "code2": "74888",
+      "title": "ҮРГЭЛЖ ХАМТДАА 2",
+      "artist": "ICE TOP"
+    },
+    {
+      "code1": "37755",
+      "code2": "74835",
+      "title": "ХАРАНГА",
+      "artist": "GANGBAY"
+    },
+    {
+      "code1": "",
+      "code2": "70638",
+      "title": "ЧИ МИНЬ БАЙГАА БОЛОХООР",
+      "artist": "ХУРД ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "30655"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71322",
+      "title": "ХАЙР НЬ АРЫГ НЬ ДААНА",
+      "artist": "КИВИ ХАМТЛАГ",
+      "alternateCodes": {
+        "code1": [
+          "32600"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "72721",
+      "title": "ҮҮЛЭН ДОМОГ",
+      "artist": "БОЛД.Д & ROKIT BAY",
+      "alternateCodes": {
+        "code1": [
+          "32721"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71058",
+      "title": "БУРУУ ЭРГЭЛТ УСК ДУУ",
+      "artist": "ДЭЛГЭРМӨРӨН.Т",
+      "alternateCodes": {
+        "code1": [
+          "30327"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71596",
+      "title": "САНААНДГҮЙ УЧРАЛ",
+      "artist": "ДРАМЫН 4",
+      "alternateCodes": {
+        "code1": [
+          "31596"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "73917",
+      "title": "МЭДЭХГҮЙ",
+      "artist": "MORNINGSTAR",
+      "alternateCodes": {
+        "code1": [
+          "36837"
+        ]
+      }
+    },
+    {
+      "code1": "",
+      "code2": "71821",
+      "title": "DON’T STOP",
+      "artist": "УКА",
+      "alternateCodes": {
+        "code1": [
+          "35491"
         ]
       }
     }
